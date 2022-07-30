@@ -1,0 +1,90 @@
+.navbar{
+    height: 50px;
+    border-bottom:0.5px solid rgb(231,228,228) ;
+    display: flex;
+align-items: center;
+font-size: 14px;
+color:#555;
+
+
+
+.wrapper{
+display: flex;
+width: 100%;
+padding: 20px;
+align-items: center;//doesnt do much
+// ,maves icons go to the far right side(end right side)
+justify-content: space-between;
+
+.search{
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    border: 0.5px solid lightgray;
+
+    input{
+        border: none;
+        outline: none;//removes outline when you click on search bar
+        background: transparent;
+    
+        &::placeholder{
+            font-size: 12px; //minimize splaceholder font
+        }
+    }
+
+
+
+}
+
+
+
+.items{
+    display: flex;
+
+    .item{
+
+display: flex;
+align-items: center;
+margin-right: 20px;
+position:relative;//makes the counters on the notif and chat bubble appear on top of the items
+.icon{
+font-size:20px ;
+
+}
+
+.avatar{
+    width:30px;
+    height: 30px;
+    border-radius:50% ;
+    
+    }
+.counter{
+    width: 15px;
+    height: 15px;
+    background-color: red;
+
+border-radius: 50%;
+color: white;
+display: flex;//useless
+align-items: center;//useless
+justify-content: center;//makes red text in the center
+font-size: 10px;
+font-weight: bold;
+
+// remember if your using position absolute the parren shud be position absolute
+position: absolute; //makes counters appear in the items instead of being in the far right
+top: -5px;//this will make the counter appear a bit slanted or to the top right of the item element
+right: -5px;
+}
+
+
+
+    }
+
+    
+}
+
+}
+
+
+}
