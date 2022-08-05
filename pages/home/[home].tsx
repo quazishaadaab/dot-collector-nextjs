@@ -26,8 +26,14 @@ type id ={
   userid : String
 
 }
+type Payload ={
 
-let payload;
+  userid: String,
+  username: String ,
+  userPhoto: String,
+  loggedIn: boolean,
+}
+let payload :Payload;
 
 const Home = ({userid}:id ) => {
 
