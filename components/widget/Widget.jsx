@@ -6,8 +6,9 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import DataService2 from "../../services/dot-services";
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import {payload} from "../../pages/home/[home]"
 
-
+import {widget_payload} from "../../services/calculateAvgDot"
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -18,21 +19,24 @@ const Widget = ({type}) => {
 const amount = 100
 const diff = 20
 
-const { user } = useSelector((state) => state.user);
 
 
 const [avgDot,setAvgDot] = React.useState([])
 
-
+console.log(widget_payload)
 
 React.useEffect(() => {
-retriveAvgDot(userDoc)
-}, [avgDot,user.userid])
+
+
+// retriveAvgDot(userDoc)
+setAvgDot(widget_payload)
+
+}, [widget_payload.length])
 
 
 const userDoc={
 
-  userid:user.userid
+  userid:payload?.userid
 
 }
 
@@ -60,7 +64,7 @@ switch(type){
           isMoney:false,
           link:"See a all users",
           icon:<PeopleAltIcon className={styles.icon} style={{color:"crimson",backgroundColor:"rgba(9255,0,0,0.2)"}}/>,
-          value:avgDot[0]
+          value:avgDot[0]?.toFixed()
           
         };
         break;
@@ -70,7 +74,7 @@ switch(type){
           isMoney:false,
           link:"See a orders",
           icon:<AddShoppingCartIcon className={styles.icon}  style={{color:"goldenrod",backgroundColor:"rgba(218,165,32,0.2)"}}/>,
-          value:avgDot[1]
+          value:avgDot[1]?.toFixed()
 
           
         };
@@ -81,7 +85,7 @@ switch(type){
           isMoney:true,
           link:"View earnings",
           icon:<AttachMoneyIcon className={styles.icon}  style={{color:"green",backgroundColor:"rgba(0,128,0,0.2)"}}/>,
-          value:avgDot[2]
+          value:avgDot[2]?.toFixed()
 
           
         };
@@ -93,7 +97,7 @@ switch(type){
             isMoney:true,
             link:"View balance",
             icon:<AccountBalanceWalletIcon className={styles.icon}  style={{color:"purple",backgroundColor:"rgba(128,0,128,0.2)"}}/>,
-            value:avgDot[3]
+            value:avgDot[3]?.toFixed()
 
             
           };

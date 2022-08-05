@@ -13,6 +13,9 @@ import { useDispatch, useSelector } from "react-redux";
 import DataService from "../../services/service";
 
 import SpeakerOption from "../../components/speakeroption/SpeakerOption"
+import {payload} from "../home/[home]"
+import { useRouter } from "next/router";
+import DataService2 from "../../services/dot-services";
 
 const Rooms = (unique_id) => {
 
@@ -20,27 +23,27 @@ const Rooms = (unique_id) => {
 
 
 
-const { user } = useSelector((state) => state.user);
 
-const {roomId} = useParams()
-
-
+const router=useRouter()
+console.log(router.query?.room)
+const roomId= router.query?.room
 console.log("this is room id "+ roomId)
 const url = `https://sleepy-dawn-45361.herokuapp.com/rooms/${roomId}/home.html`
 
-console.log(user.userid)
 
+
+console.log(roomId)
 React.useEffect(() => {
-
+DataService2.launch()
 DataService.sendRoomId(roomId)
 insertPeersInRoom(usersDoc)
-}, [roomId,user.userid])
+}, [])
 
 // DataService.createRoom(data)
 const usersDoc={
-  userid:user?.userid,
-  username:user?.username,
-  userPhoto:user?.userPhoto,
+  userid:payload?.userid,
+  username:payload?.username,
+  userPhoto:payload?.userPhoto,
   roomid:roomId
 }
 
@@ -68,7 +71,8 @@ const [dot,setDot]=React.useState(null)
 
     
      
-    <>
+    
+    <div className="bg-white">
     <Horz/>
 <Vert roomid={roomId} />
 <SpeakerOption roomid={roomId} />
@@ -78,8 +82,7 @@ const [dot,setDot]=React.useState(null)
 
 
     </div>
-    </>
-
+</div>
 
   )
 }

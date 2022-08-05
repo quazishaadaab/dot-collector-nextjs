@@ -28,8 +28,10 @@
     "react-redux": "^8.0.2",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
-    "recharts": "^2.1.13",
+    "recharts": "^2.1.12",
     "redux": "^4.2.0",
+    "redux-persist": "^6.0.0",
+    "sha-1": "^1.0.0",
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {

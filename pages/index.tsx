@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import Image from 'next/image'
 
 
@@ -8,7 +7,8 @@ import Image from 'next/image'
 import React from "react";
 import { useEffect, useState } from "react";
 
-import Home from "./home/Home";
+import Home from "./home/[home]";
+import Login from "./login/Login"
 // import Grids from "./Grids.js"
 // import ScriptTag from 'react-script-tag';
 // import Test from "./Test.js"
@@ -16,16 +16,16 @@ import Home from "./home/Home";
 // import './components/src/sketch.js';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./login/Login";
 import List from "./list/List";
 
-import Rooms from "./rooms/Room";
+import Rooms from "./rooms/[room]";
 import { v4 as uuid } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 // import Search from "../components/search/Search"
 
 
 import { SessionProvider } from "next-auth/react";
+import {payload} from "./home/[home]"
 
 const App: NextPage = () => {
 
@@ -35,27 +35,29 @@ const App: NextPage = () => {
   //specify the name of the slice( in this case it is user)
   // const user=useSelector((state)=>state.user)
 
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState('');
 
   // must be named after the slice name( const {user} has to be the same name as slice name)
-  // const { user } =  useSelector((state) => state?.user);
   //very important to add the question mark here. if we dont, then a bug will occur since the question mark verifies if the user object exits or not before accessing the userid label
 
-  // console.log(user?.userid);
-  // let userid = user?.userid;
+  let userid = payload?.userid;
 
-  useEffect(() => {
-    // setUserData(userid);
-  }, []);
+  // useEffect(() => {
+  //  setUserData(userid);
+  // }, []);
   return (
     <>
 
-      <BrowserRouter>
-        {/* {!userid ? (
-          <Login /> */}
-        {/* // ) : ( */}
-          <>  
-          <div>hello</div>
+         {!userid ? (
+         
+          <Login/>
+    
+         ) : ( 
+          <>
+          <Home userid={userData} /> 
+
+         
+      {/* <Home userid={userid}/> */}
           {/* <Home userid={userid} /> */}
             {/* <Routes> */}
               {/* <Route path="/">
@@ -83,10 +85,10 @@ const App: NextPage = () => {
 
 
           </>
-        {/* )} */}
-      </BrowserRouter>
+        )} 
 
-      {/* <div dangerouslySetInnerHTML={iframe()} /> */}
+
+
 
     </>
   );

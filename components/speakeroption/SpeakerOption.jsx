@@ -86,10 +86,10 @@ setUsers((response?.data?.users))
 
 
   return (
-<div className={styles.speaker-option}>
+<div className={styles.speaker_option}>
 
 
-    <div className={styles.profile-card}>
+    <div className={styles.profile_card}>
 
 
 

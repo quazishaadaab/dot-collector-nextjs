@@ -1,15 +1,13 @@
 import React from "react";
 import $ from "jquery";
 import "jquery-ui-dist/jquery-ui";
-import Script from "next/script"
 import 'jquery'
 import DataService from "../../services/service";
 import { useDispatch, useSelector } from "react-redux";
 // jquery guidline: always do import $ from jquery and import jquery-ui-dist/jquery-ui
 // always make the function in the top then call it in render. or else react children error will appear
-
+import {payload} from "../../pages/home/[home]"
 function Search() {
-  const { user } = useSelector((state) => state.user);
 
   const action = () => {
     $(document).ready(function () {
@@ -34,7 +32,7 @@ function Search() {
         autoFocus: true,
         select: function (event, ui) {
           const peerdoc = {
-            userid: user?.userid,
+            userid: payload?.userid,
             peerid: ui?.item?.id,
           };
 // need to add off(click).on(click) or else it will send multiple requests at the same time. we only want to send 
@@ -70,8 +68,8 @@ function Search() {
           href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"
         />
         <link rel="stylesheet" href="/resources/demos/style.css" />
-        <Script src="https://code.jquery.com/jquery-3.6.0.js"></Script>
-        <Script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></Script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
         <div className="ui-widget">
           <label for="usersearch">User Search</label>
           <br />

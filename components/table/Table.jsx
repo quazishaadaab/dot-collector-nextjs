@@ -12,6 +12,8 @@ import Paper from "@mui/material/Paper";
 import DataService from "../../services/service"
 import {useDispatch,useSelector} from "react-redux"
 
+import {payload} from "../../pages/home/[home]"
+
 
 let rows = []
 
@@ -19,71 +21,100 @@ const List = () => {
 
 
 
-const { user } = useSelector((state) => state.user);
 
-const [p,setP]=React.useState([''])
-// const [rows,setRows]=React.useState([])
+const [peers,setPeers]=React.useState([''])
+const [rows,setRows]=React.useState([
+  {customer:'',
+  id:'',
+  img:'',
+method:'',
+product:'',
+status:''},])
 const userdoc ={
-  userid:user?.userid
+  userid:payload?.userid
 
 }
 
 let peerdata
+let array_size = peers.length
 React.useEffect( () => {
 
-   DataService.getUserById(userdoc).then((response)=>{
-   peerdata= response?.data?.peers
-   setP(peerdata)
+  //  DataService.getUserById(userdoc).then((response)=>{
+  //  peerdata= response?.data?.peers
+  //  setPeers(peerdata)
+  //   }).then( ()=>{
+     
 
-    })
+  //   })
 
-  }, [user?.userid,p])
+  //retrivePeers() here is optional but makes it slow, but basically we call mapPeers() first which basically uses the peer array to get user JSON data and stores it in rows.
+mapPeers()
 
 
-console.log(peerdata)
+  }, [array_size])
 
-// const retrivePeers=async ()=>{
 
-//  await DataService.getUserById({userid:user?.userid}).then((response)=>{
-//   console.log(response?.data?.peers)
-// const peerdata= response?.data?.peers
-//      setPeers(peerdata)
-//   })
+
+
+
+
+const retrivePeers=async ()=>{
+ await DataService.getUserById({userid:payload?.userid}).then((response)=>{
+
+const peerdata=(response?.data?.peers)
+     setPeers(peerdata)
+
+     array_size = peers.length
+
+  })
   
 
-// }
+}
 
-// const mapPeers=async ()=>{
+// we repeatedly call retrivePeers to get the updated state of our app. if we were to put it inside useEffect, then it would only get called once.
+// therefore, if we add or delete a peer, our peer list will automatically get updated without refreshing the page. if we want to only get the updated peer list,
+//upon page refresh, then we basically need to put retrivePeers inside the useEffect hook.
+retrivePeers()
 
-//   let buffer=[];
 
-//  peers?.map(async(peerid)=>{
 
-//   await DataService.getUserById({userid:peerid}).then(async (response)=>{
+
+const mapPeers= async ()=>{
+
+  let buffer=[];
+
+ peers?.map(async(peerid)=>{
+
+  await DataService.getUserById({userid:peerid}).then(async (response)=>{
  
-//   const row={
+  const row={
  
-//      id:await response?.data?.userid,
-//      product: await response?.data?.username,
-//      img:await response?.data?.photoURL,
-//      customer: await response?.data?.username,
-//      // amount: Object.keys(response?.data?.dotCollection)?.length,
-//      method: "Cash on Delivery",
-//      status: "Approved",}
-//  buffer.push(row)
+     id:await response?.data?.userid,
+     product: await response?.data?.username,
+     img:await response?.data?.photoURL,
+     customer: await response?.data?.username,
+     // amount: Object.keys(response?.data?.dotCollection)?.length,
+     method: "Cash on Delivery",
+     status: "Approved",}
+ buffer.push(row)
 
-// })
-// rows=buffer;
+})
+rows=buffer;
 
-//  })
-// }
+setRows(rows)
 
 
+
+ })
+}
 
 
 
 
   return (
+    <div className="bg-white">
+
+
 
     <TableContainer className={styles.table} component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -105,7 +136,9 @@ console.log(peerdata)
 
         <TableBody>
           {/* insert data key */}
-          {rows?.map((row) => (
+          {
+            
+  rows?.map((row) => (
             
             <TableRow key={row?.id} >
 
@@ -121,7 +154,6 @@ console.log(peerdata)
               </div>
 
               </TableCell>
-              {console.log("render"+ row?.id)}
               <TableCell className="tableCell">{row?.customer}</TableCell>
               <TableCell className="tableCell">{row?.date}</TableCell>
               <TableCell className="tableCell">{row?.amount}</TableCell>
@@ -138,11 +170,12 @@ console.log(peerdata)
 
             
             </TableRow>
-          ))}
+          ))
+  }
         </TableBody>
       </Table>
     </TableContainer>
-    
+    </div>
     )
 }
 

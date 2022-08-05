@@ -8,15 +8,15 @@ import 'react-circular-progressbar/dist/styles.css';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import DataService2 from "../../services/dot-services";
 import { useDispatch, useSelector } from "react-redux";
+import {payload} from "../../pages/home/[home]"
 
 
 
 
 const Featured = () => {
-  const { user } = useSelector((state) => state.user);
 
   const countDoc={
-userid:user?.userid
+userid:payload?.userid
   }
 
 const [dotCollection,setDotCollection]=React.useState(0)
@@ -29,7 +29,7 @@ DataService2.getDotCollectionCount(countDoc).then( r=>{
 })
 
 
-}, [user?.userid,dotCollection])
+}, [payload?.userid,dotCollection])
 
 let count;
 

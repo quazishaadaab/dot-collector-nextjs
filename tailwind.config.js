@@ -6,6 +6,12 @@ module.exports = {
   ],
   theme: {
     extend: {},
+
+  // custom fonts go here 
+  fontFamily:{
+    sans:['Inter','sans-serif']
+  }
   },
   plugins: [],
+
 }

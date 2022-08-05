@@ -17,7 +17,7 @@ flex:1;
 min-height:100vh;
 background-color: rgba(251, 251, 251, 0.976);
 z-index:-2;
-#login-image{
+#login_image{
 max-width: 48rem;
 position: absolute;
 margin-top: 147px;
@@ -25,7 +25,7 @@ margin-left: 189px;
 z-index:1;
 }
 
-.DotCollector-title{
+.DotCollector_title{
 position: absolute;
 margin-left:40px;
 margin-top: 20px;
@@ -40,14 +40,14 @@ color:rgb(181, 181, 181);
 }
 
 
-.bottom-diagonal{
+.bottom_diagonal{
     bottom: 0px;
     z-index: -1;
     width: 80%;
     position: absolute;
 
 }
-.bottom-plant{
+.bottom_plant{
     bottom: 0px;
     z-index: -1;
     width: 70%;
@@ -74,10 +74,10 @@ border: 1.5px solid rgb(230, 230, 230);
 
 position: absolute;
 
-.top-container{
+.top_container{
     margin-bottom: 1.5rem;
     box-sizing: inherit;
-    .login-label{
+    .login_label{
 
         // margin-top:205px;
         // margin-left:141px;
@@ -90,7 +90,7 @@ position: absolute;
         font-weight: 600;
     }
         
-        .login-label-2{
+        .login_label_2{
     
             margin-top: 1px;
             margin-left: 56px;
@@ -124,7 +124,7 @@ position: absolute;
         }
 
 
-        .bottom-container{
+        .bottom_container{
 
             display: flex;
     -webkit-box-align: center;
@@ -134,7 +134,7 @@ position: absolute;
     margin-top: 281px;
 
 
-.google-icon{
+.google_icon{
 
     width: 20%;
     height: 20%;

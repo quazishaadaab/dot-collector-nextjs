@@ -9,13 +9,13 @@ import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutline
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 
 import { useDispatch, useSelector } from "react-redux";
+import {payload} from "../../pages/home/[home]"
 
 const Navbar = () => {
 
 
 
 
-  const { user } = useSelector((state) => state.user);
 
 
   return (
@@ -65,7 +65,7 @@ const Navbar = () => {
     </div>
     
     <div className={styles.item}>
-<img src={`${user?.userPhoto}`} alt="" className={styles.avatar} />  
+<img src={`${payload?.userPhoto}`} alt="" className={styles.avatar} />  
     </div>
 </div>
 

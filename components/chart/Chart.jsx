@@ -4,6 +4,7 @@ import { Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis, 
 import { useDispatch, useSelector } from "react-redux";
 
 import DataService2 from "../../services/dot-services";
+import {payload} from "../../pages/home/[home]"
 
 
 const Chart = ({title,aspect}) => {
@@ -11,7 +12,6 @@ const Chart = ({title,aspect}) => {
 
 
   
-const { user } = useSelector((state) => state.user);
 
 
 const [avgDot,setAvgDot] = React.useState([])
@@ -20,25 +20,18 @@ const [avgDot,setAvgDot] = React.useState([])
 
 React.useEffect(() => {
 retriveAvgDot(userDoc)
-}, [avgDot,user.userid])
+}, [avgDot,payload?.userid])
 
 
 const userDoc={
-
-  userid:user.userid
-
+  userid:payload?.userid
 }
 
 
 const retriveAvgDot=async (userdoc)=>{
-
   await DataService2.getAvgDot(userdoc).then(r=>{
     setAvgDot(r.data)
-
-  })
-
-
-}
+  })}
 
 
 
@@ -78,7 +71,7 @@ const retriveAvgDot=async (userdoc)=>{
   <PolarGrid />
   <PolarAngleAxis dataKey="subject" />
   <PolarRadiusAxis angle={30} domain={[0, 10]} />
-  <Radar name={user?.username} dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+  <Radar name={payload?.username} dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
   {/* <Radar name="Lily" dataKey="B" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.6} /> */}
   <Legend />
 </RadarChart>
