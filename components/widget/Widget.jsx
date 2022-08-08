@@ -62,7 +62,7 @@ switch(type){
         data={
           title:"THINKING",
           isMoney:false,
-          link:"See a all users",
+          link:"See Dots",
           icon:<PeopleAltIcon className={styles.icon} style={{color:"crimson",backgroundColor:"rgba(9255,0,0,0.2)"}}/>,
           value:avgDot[0]?.toFixed()
           
@@ -72,7 +72,7 @@ switch(type){
         data={
           title:"CREATIVITY",
           isMoney:false,
-          link:"See a orders",
+          link:"See Dots",
           icon:<AddShoppingCartIcon className={styles.icon}  style={{color:"goldenrod",backgroundColor:"rgba(218,165,32,0.2)"}}/>,
           value:avgDot[1]?.toFixed()
 
@@ -83,7 +83,7 @@ switch(type){
         data={
           title:"ASSERTIVENESS",
           isMoney:true,
-          link:"View earnings",
+          link:"See Dots",
           icon:<AttachMoneyIcon className={styles.icon}  style={{color:"green",backgroundColor:"rgba(0,128,0,0.2)"}}/>,
           value:avgDot[2]?.toFixed()
 
@@ -95,11 +95,9 @@ switch(type){
           data={
             title:"EMPATHY",
             isMoney:true,
-            link:"View balance",
+            link:"See Dots",
             icon:<AccountBalanceWalletIcon className={styles.icon}  style={{color:"purple",backgroundColor:"rgba(128,0,128,0.2)"}}/>,
             value:avgDot[3]?.toFixed()
-
-            
           };
           break;
         default:

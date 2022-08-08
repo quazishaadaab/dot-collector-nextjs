@@ -22,7 +22,7 @@ const List = () => {
 
 
 
-const [peers,setPeers]=React.useState([''])
+const [peers,setPeers]=React.useState([null])
 const [rows,setRows]=React.useState([
   {customer:'',
   id:'',
@@ -94,7 +94,6 @@ const mapPeers= async ()=>{
      img:await response?.data?.photoURL,
      customer: await response?.data?.username,
      // amount: Object.keys(response?.data?.dotCollection)?.length,
-     method: "Cash on Delivery",
      status: "Approved",}
  buffer.push(row)
 
@@ -125,7 +124,6 @@ setRows(rows)
            <TableCell className="tableCell">Customer</TableCell>
            <TableCell className="tableCell">Age</TableCell>
            <TableCell className="tableCell">Dots</TableCell>
-           <TableCell className="tableCell">Years Known</TableCell>
            <TableCell className="tableCell">Friend Request Status</TableCell>
 
            
@@ -157,7 +155,6 @@ setRows(rows)
               <TableCell className="tableCell">{row?.customer}</TableCell>
               <TableCell className="tableCell">{row?.date}</TableCell>
               <TableCell className="tableCell">{row?.amount}</TableCell>
-              <TableCell className="tableCell">{row?.method}</TableCell>
               <TableCell className="tableCell">
              
              {/* the unique status enables us to change the color depending on the value, approved or pending */}
