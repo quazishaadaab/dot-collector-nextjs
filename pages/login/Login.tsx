@@ -73,7 +73,7 @@ function Login() {
     
       const register = () => {
         signIn("google", {
-          callbackUrl: `http://dotcollector.ca/home/${sha(
+          callbackUrl: `https://dot-collector-nextjs.vercel.app/home/${sha(
             `${session?.user?.email}`
           )}`,
         }).then(async (result) => {

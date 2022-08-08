@@ -40,7 +40,7 @@ DataService.createRoom(data)
 const selectRoom=()=>{
   
   // change this upon deployment
-router.push(`http://dotcollector.ca/rooms/${roomid}`)
+router.push(`https://dot-collector-nextjs.vercel.app/rooms/${roomid}`)
 
 
 }
