@@ -73,7 +73,7 @@ function Login() {
     
       const register = () => {
         signIn("google", {
-          callbackUrl: `http://localhost:3000/home/${sha(
+          callbackUrl: `http://dotcollector.ca/home/${sha(
             `${session?.user?.email}`
           )}`,
         }).then(async (result) => {

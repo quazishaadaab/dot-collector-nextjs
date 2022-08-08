@@ -40,7 +40,7 @@ DataService.createRoom(data)
 const selectRoom=()=>{
   
   // change this upon deployment
-router.push(`http://localhost:3000/rooms/${roomid}`)
+router.push(`http://dotcollector.ca/rooms/${roomid}`)
 
 
 }
