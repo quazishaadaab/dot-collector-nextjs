@@ -9,5 +9,7 @@ export default NextAuth({
       clientId: `176309719056-rr2qb5ifakhgcs8eqbtc11fiqph82mn9.apps.googleusercontent.com` ,
       clientSecret: `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`
     })
-  ]
+  ],
+      secret: 'IamVeryHandsome' 
+
 })
