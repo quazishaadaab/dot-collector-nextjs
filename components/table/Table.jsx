@@ -36,7 +36,7 @@ const userdoc ={
 }
 
 let peerdata
-let array_size = peers.length
+let array_size = peers?.length
 React.useEffect( () => {
 
   //  DataService.getUserById(userdoc).then((response)=>{
@@ -64,7 +64,7 @@ const retrivePeers=async ()=>{
 const peerdata=(response?.data?.peers)
      setPeers(peerdata)
 
-     array_size = peers.length
+     array_size = peers?.length
 
   })
   
