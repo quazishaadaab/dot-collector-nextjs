@@ -4,6 +4,14 @@ class DataService{
 
 
     // room api
+
+getRoomData(data){
+    return http.post("/getRoomById",data)
+}
+
+
+
+
 createRoom(data){
 return http.post("/postRooms",data);
 
@@ -50,6 +58,11 @@ getUsersInRoom(data){
 
 
     return http.post("/getUsersInRoom",data)
+}
+
+deleteUsersInRoom(data){
+
+    return http.put("/deleteUsersInRoom",data)
 }
 
 

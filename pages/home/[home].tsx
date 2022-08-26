@@ -21,6 +21,8 @@ import dynamic from "next/dynamic";
 
 import CalculateAvgDot from "../../services/calculateAvgDot"
 
+
+
 type id ={
 
   userid : String
@@ -108,7 +110,7 @@ const NoSSR_Search = dynamic(
       <div className={styles.homeContainer}>
         <Navbar />
 
-<NoSSR_Search/>
+<NoSSR_Search searchtype={'peer'}/>
         <div className={styles.widgets}>
           <Widget type="user" />
           <Widget type="order" />
@@ -124,7 +126,7 @@ const NoSSR_Search = dynamic(
         <div className="bg-white">
         <div className={styles.listContainer}>
         
-          <div className={styles.listTitle}>Latest Transactions</div>
+          <div className={styles.listTitle}>Friends</div>
         
         <Table/>
 

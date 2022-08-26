@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import DataService2 from "../../services/dot-services";
 import {payload} from "../../pages/home/[home]"
 
+import {widget_payload} from "../../services/calculateAvgDot"
 
 const Chart = ({title,aspect}) => {
 
@@ -14,12 +15,12 @@ const Chart = ({title,aspect}) => {
   
 
 
-const [avgDot,setAvgDot] = React.useState([])
+const [avgDot,setAvgDot] = React.useState([1,2,3,4,5])
 
 
 
 React.useEffect(() => {
-retriveAvgDot(userDoc)
+ retriveAvgDot(userDoc)
 }, [avgDot,payload?.userid])
 
 
@@ -31,14 +32,17 @@ const userDoc={
 const retriveAvgDot=async (userdoc)=>{
   await DataService2.getAvgDot(userdoc).then(r=>{
     setAvgDot(r.data)
-  })}
+
+  })
+setAvgDot(widget_payload)
+}
 
 
 
     
   const data = [
     {
-      "subject": "Thinking",
+      "subject": "Thinking ",
       "A": avgDot[0],
       // "B": 110,
       "fullMark": 10

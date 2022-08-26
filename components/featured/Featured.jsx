@@ -9,6 +9,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import DataService2 from "../../services/dot-services";
 import { useDispatch, useSelector } from "react-redux";
 import {payload} from "../../pages/home/[home]"
+import { GridArrowUpwardIcon } from "@mui/x-data-grid";
 
 
 
@@ -60,11 +61,11 @@ dotCollection?(count=Object.keys(dotCollection).length):(count=0);
 
     <div className={styles.item}>
 
-            <div className={styles.itemTitle}>Target</div>
+            <div className={styles.itemTitle}>Yesterday</div>
 
             <div className={styles.itemResultpositive}>
               <ArrowDropDownIcon fontSize="small"/>
-                <div className={styles.resultAmount}>$12.4k</div>
+                <div className="text-lg text-green-600 ml-3">1</div>
             </div>
 
     </div>
@@ -75,8 +76,8 @@ dotCollection?(count=Object.keys(dotCollection).length):(count=0);
             <div className={styles.itemTitle}>Last Week</div>
 
             <div className={styles.itemResultnegative}>
-              <ArrowDropDownIcon fontSize="small"/>
-                <div className={styles.resultAmount}>$12.4k</div>
+              <GridArrowUpwardIcon fontSize="small"/>
+              <div className="text-lg text-green-600 ml-3">2</div>
             </div>
 
     </div>
@@ -90,7 +91,7 @@ dotCollection?(count=Object.keys(dotCollection).length):(count=0);
 
             <div className={styles.itemResultpositive}>
               <ArrowDropDownIcon fontSize="small"/>
-                <div className={styles.resultAmount}>$12.4k</div>
+              <div className="text-lg text-green-600 ml-3">1</div>
             </div>
 
     </div>

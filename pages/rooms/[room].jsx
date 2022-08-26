@@ -17,9 +17,21 @@ import {payload} from "../home/[home]"
 import { useRouter } from "next/router";
 import DataService2 from "../../services/dot-services";
 
+
+import retriveUserState from "../../utils/userPersist"
+import dynamic from "next/dynamic";
+
+
 const Rooms = (unique_id) => {
 
 // const [data,setData]=React.useState(null)
+
+
+const [canvas, setCanvas] = React.useState('')
+const [creator,setCreator] = React.useState('')
+
+const {userid} = retriveUserState()
+
 
 
 
@@ -30,14 +42,47 @@ const roomId= router.query?.room
 console.log("this is room id "+ roomId)
 const url = `https://sleepy-dawn-45361.herokuapp.com/rooms/${roomId}/home.html`
 
+const NoSSR_Search = dynamic(
+  ()=> import('../../components/search/Search'),{ssr:false}
+)
 
 
 console.log(roomId)
+
+
 React.useEffect(() => {
 DataService2.launch()
 DataService.sendRoomId(roomId)
 insertPeersInRoom(usersDoc)
+
+
+
+
+
 }, [])
+
+
+
+React.useEffect(() => {
+  DataService.getRoomData({roomid:roomId}).then(async(res)=>{
+  
+    const creatorid = await res?.data?.roomdata?.creatorid
+setCreator(creatorid)  
+})
+}, [creator])
+
+// React.useEffect(()=>{
+//   DataService.getRoomData({roomid:roomId}).then(async(response)=>{
+
+//     const data = await response?.data?.roomdata?.dot
+  
+//     const stringifiedDot=JSON.stringify(data)
+//     setCanvas(stringifiedDot)
+//   })
+// reloadiframe()
+// },[canvas])
+
+
 
 // DataService.createRoom(data)
 const usersDoc={
@@ -53,7 +98,6 @@ DataService.postUsersInRoom(data)
 }
 
 
-
     function iframe() {
   return {
       __html: `<iframe src=${url} width="700" height="650" border="0" frameborder="0"  ></iframe>`
@@ -61,7 +105,17 @@ DataService.postUsersInRoom(data)
 }
 
 
+
+
 const [dot,setDot]=React.useState(null)
+
+
+
+
+
+
+
+
 
 
 
@@ -72,13 +126,21 @@ const [dot,setDot]=React.useState(null)
     
      
     
-    <div className="bg-white">
+    <div className="bg-blue-400">
     <Horz/>
 <Vert roomid={roomId} />
 <SpeakerOption roomid={roomId} />
+
+
     <div className={styles.rooms}>
 
+{/* <div className={styles.iframe} dangerouslySetInnerHTML={iframe()} />  */}
+
+
 <div className={styles.iframe} dangerouslySetInnerHTML={iframe()} /> 
+
+<div className="bg-red-400">{userid==creator ? (<NoSSR_Search searchtype={"invite"} roomid={roomId}/>):(console.log('unmatched',creator,userid) )}
+</div>
 
 
     </div>
