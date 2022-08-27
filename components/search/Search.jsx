@@ -119,13 +119,15 @@ const invite=(event,ui)=>{
         <link rel="stylesheet" href="/resources/demos/style.css" />
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-        <div className="ui-widget">
-          <label for="usersearch">User Search</label>
+        <div className="ui-widget border-gray-100 rounded-3xl bg-gray-100 w-auto h-auto p-4">
+          <label for="usersearch " className="font-black ">User Search</label>
           <br />
-          <input id="usersearch" />
+          <input id="usersearch" className="mb-3 mt-3 rounded-3xl text-center bg-gray-400 w-[80%] text-white" />
+          <br/>
+          <button type="submit"  className="text-base mr-3" id="addbutton">Add Peer</button>
+        <button type="submit" className="" id="deletebutton">Delete Peer</button>
         </div>
-        <button type="submit" id="addbutton">Add Peer</button>
-        <button type="submit" id="deletebutton">Delete Peer</button>
+     
 
         {action()}
       </body>

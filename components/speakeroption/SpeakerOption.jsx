@@ -78,6 +78,7 @@ setUsers((response?.data?.users))
   
  
 
+  let count=0
 
 
 
@@ -86,10 +87,8 @@ setUsers((response?.data?.users))
 
 
   return (
-<div className={styles.speaker_option}>
+<div className='bg-gray-100 rounded-3xl mt-4 overflow-y-scroll flex  p-4 max-w-full max-h-[30%] w-full h-full '>
 
-
-    <div className={styles.profile_card}>
 
 
 
@@ -97,11 +96,12 @@ setUsers((response?.data?.users))
 
 
 {userData?.map(r=>{
-
+count=count+1
+console.log(count)
   return(
     //you cant do onClick={function} inside a component. You need to first put that component inside a div and use the onClick or eventListener function on the div.
     //e.target.textContext should be replaced with the user ID. the text context returns the name field, Alex costa or mike tyson
-    <div  className={styles.container} onClick={ (e)=>{ 
+    <div  className='w-full mb-2 ml-2 ' onClick={ (e)=>{ 
       e.preventDefault()
 
       setSpeaker(e.target.id)
@@ -109,8 +109,9 @@ setUsers((response?.data?.users))
       
 
       }> 
+     
+     <ProfileCard id={r?.userid} name={r?.username} img={r?.userPhoto} />
 
-<ProfileCard id={r?.userid} className="individual-card" name={r?.username} img={r?.userPhoto} />
 </div>
         )
 
@@ -129,9 +130,8 @@ setUsers((response?.data?.users))
 
 
 
-
     
-    </div>
+
     
 
 
