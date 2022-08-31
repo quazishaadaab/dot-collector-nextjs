@@ -27,6 +27,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { SessionProvider } from "next-auth/react";
 import {payload} from "./home/[home]"
+import Landing from './Landing';
 
 const App: NextPage = () => {
 
@@ -50,8 +51,7 @@ const App: NextPage = () => {
     <>
 
          {!userid ? (
-         
-          <Login/>
+         <Landing/>
     
          ) : ( 
           <>

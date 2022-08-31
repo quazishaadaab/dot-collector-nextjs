@@ -10,6 +10,7 @@ import React, { useEffect } from "react";
     import { getSession, signIn, signOut, useSession } from "next-auth/react";
     import { registerStyles } from "@emotion/utils";
     import { useSelector } from "react-redux";
+import { FRONT_END } from "../../utils/deployments";
 
      
     type user_data = {
@@ -73,7 +74,7 @@ function Login() {
     
       const register = () => {
         signIn("google", {
-          callbackUrl: `http://localhost:3000/home/${sha(
+          callbackUrl: `${FRONT_END}/home/${sha(
             `${session?.user?.email}`
           )}`,
         }).then(async (result) => {

@@ -24,7 +24,7 @@ function Landing() {
 
 <div className=" h-[15%] w-full p-8 rounded-3x;">
 
-<div className="ml-[90%]"> <Button shadow size="lg" color="gradient" auto onClick={()=>{location.href = "./";}}>
+<div className="ml-[90%]"> <Button shadow size="lg" color="gradient" auto onClick={()=>{location.href = "/login/Login";}}>
           Get Started
         </Button></div>
 
