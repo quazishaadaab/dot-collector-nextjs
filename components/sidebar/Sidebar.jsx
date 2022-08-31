@@ -25,7 +25,8 @@ import {payload} from "../../pages/home/[home]"
 
 const Sidebar = () => {
 
-const [Rooms,setRooms]= React.useState([{}]);
+const [Rooms,setRooms]= React.useState([]);
+const [room_ids,setRoom_Ids]=React.useState([])
 // const [userid,setUserid]=React.useState()
 
 
@@ -34,23 +35,46 @@ const [user,setUser] = React.useState({})
 React.useEffect(() => {
 
 // setUserid(uid)
-retriveRooms()
 DataService2.launch()
 
-const data_unparsed = window.localStorage.getItem('persist:root')
-const data_parsed = JSON.parse(data_unparsed)
-const user_data = JSON.parse(data_parsed?.user)
-setUser(user_data)
-}, [Rooms])
+// its best practice to put all your code in one function/method because useEffect only runs everything once. inside a method,
+// code gets run from top to bottom. In useEffect, it gets run at the same time.
+retriveRooms()
+
+}, [room_ids.length,user?.userid])
 
 
 // const uid=useParams()
 
 const retriveRooms=()=>{
 
-  DataService.getAllRooms().then((response)=>{
-        // console.log(response.data)
-        setRooms(response.data)
+  //important to put it here since itll be quicker and will not leave an empty state in startup
+  const data_unparsed = window.localStorage.getItem('persist:root')
+const data_parsed = JSON.parse(data_unparsed)
+const user_data = JSON.parse(data_parsed?.user)
+
+//set the USER. user is now automatically updated/filled after this line
+setUser(user_data)
+
+//user array state is filled/populated
+  DataService.getAllRoomsByUserId({userid:user?.userid}).then((response)=>{
+
+setRoom_Ids(response.data)
+
+
+room_ids?.map(id=>{
+  DataService.getRoomData({roomid:id})?.then((response)=>{
+  
+    console.log('rooms json',response)
+  
+  
+    setRooms(current => [...current, response?.data?.roomdata]);
+  
+  
+  
+  })
+  })
+// setRooms(response?.data)
 
   })
 
@@ -68,7 +92,7 @@ dispatch(logout())
 
   return (
 
-    <div className={styles.sidebar}>
+    <div className={styles.sidebar} >
       <div className={styles.top}>
         <span className={styles.logo}>DotCollector</span>
       </div>
@@ -108,8 +132,8 @@ dispatch(logout())
           {/* <li><HealthAndSafetyIcon className="icon"/><span>Create Room</span></li> */}
           
           
-          {Rooms.map((r)=>(
-          <SidebarOption className='icon' title={r.roomname} roomid={r.roomid}/>
+          {Rooms?.map((r)=>(
+          <SidebarOption className='icon' title={r?.roomname} roomid={r?.roomid}/>
 
           ))}
           

@@ -60,6 +60,11 @@ getUsersInRoom(data){
     return http.post("/getUsersInRoom",data)
 }
 
+
+getAllRoomsByUserId(data){
+return http.post("/getAllRoomsByUserId",data)
+}
+
 deleteUsersInRoom(data){
 
     return http.put("/deleteUsersInRoom",data)
