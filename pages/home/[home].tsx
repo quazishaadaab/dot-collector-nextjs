@@ -110,7 +110,7 @@ const NoSSR_Search = dynamic(
       <div className={styles.homeContainer}>
         <Navbar />
 
-<NoSSR_Search searchtype={'peer'}/>
+<NoSSR_Search searchtype={'peer'} roomid={null}/>
         <div className={styles.widgets}>
           <Widget type="user" />
           <Widget type="order" />
