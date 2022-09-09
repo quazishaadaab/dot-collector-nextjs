@@ -20,6 +20,7 @@ import DataService2 from "../../services/dot-services";
 
 import retriveUserState from "../../utils/userPersist"
 import dynamic from "next/dynamic";
+import { CANVAS_BACKEND } from "../../utils/deployments"
 
 
 const Rooms = (unique_id) => {
@@ -40,7 +41,8 @@ const Rooms = (unique_id) => {
   console.log(router.query?.room)
   const roomId = router.query?.room
   console.log("this is room id " + roomId)
-  const url = `https://sleepy-dawn-45361.herokuapp.com/rooms/${roomId}/home.html`
+
+  const url = `${CANVAS_BACKEND}/rooms/${roomId}/home.html`
 
   const NoSSR_Search = dynamic(
     () => import('../../components/search/Search'), { ssr: false }
@@ -127,7 +129,7 @@ const Rooms = (unique_id) => {
     <div className="w-full h-full flex">
 
 
-      <div className="h-full w-[60%] rounded-3xl  ml-4 mt-5 ">
+      <div className="h-full w-[60%] rounded-3xl bg-white ml-4 mt-5 ">
 
         <Horz />
 

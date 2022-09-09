@@ -8,18 +8,41 @@ import styles from "../../styles/SidebarOption.module.scss"
 
 
 import DataService from "../../services/service.js"
+import DataService2 from "../../services/dot-services.js"
 import { useRouter } from "next/router";
 import { ConstructionOutlined } from "@mui/icons-material";
 
 import retriveUserState from "../../utils/userPersist"
+import { FRONT_END } from "../../utils/deployments";
 export const SidebarOption = ({ title, roomid, addChannel, Icon }) => {
 
   const router = useRouter()
 
-  const { userid } = retriveUserState()
+  const { userid, userPhoto, username } = retriveUserState()
 
+  //temporary solution to the populate intial array problem
+  let rows= 6
+  let cols =4
+  
+  //this is just a temporary solution, our future solution wont need this so this may be deleted .
+  const generateInitialEmptyDotArray= () => {
+
+    let grid = new Array(rows)
+
+    for (let i = 0; i < rows; i++) {
+      for (let j = 0; j < cols; j++) {
+        grid[i] = new Array(j)
+      }
+    }
+
+    return grid 
+}
+
+
+
+  const result = retriveUserState()
   // need to update this so we record the user that created the room
-  const addRoom = () => {
+  const addRoom = async () => {
     const roomName = prompt("Add room name");
     const type = prompt("Is this room public or private?")
     let unique_id = uuid();
@@ -28,9 +51,20 @@ export const SidebarOption = ({ title, roomid, addChannel, Icon }) => {
       const data = { roomid: unique_id, roomname: roomName, roomType: type }
 
 
-      DataService.createRoom(data)
+      await DataService.createRoom(data)
       //post creator in the room
-      DataService.postCreatorInRoom({ roomid: unique_id, creator: userid })
+      await DataService.postCreatorInRoom({ roomid: unique_id, creator: userid })
+
+
+
+
+
+
+      await DataService.postUsersInRoom({ userid: userid, userPhoto: userPhoto, username: username, roomid: unique_id })
+
+      const initialGridArray = generateInitialEmptyDotArray()
+
+      await DataService.updateDotInRoom({ roomid: unique_id , dot: initialGridArray })
 
 
 
@@ -40,7 +74,10 @@ export const SidebarOption = ({ title, roomid, addChannel, Icon }) => {
 
 
 
-
+  // const userid= await req.body.userid
+  // const username=await req.body.username
+  // const userPhoto=await req.body.userPhoto
+  // const roomid=await req.body.roomid
 
 
 
@@ -48,7 +85,7 @@ export const SidebarOption = ({ title, roomid, addChannel, Icon }) => {
   const selectRoom = () => {
 
     // change this upon deployment
-    router.push(`http://localhost:3000/rooms/${roomid}`)
+    router.push(`${FRONT_END}/rooms/${roomid}`)
 
 
   }

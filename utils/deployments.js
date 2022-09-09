@@ -2,15 +2,17 @@
 
 //https://salty-tor-00815.herokuapp.com
 // http://localhost:8000
-const BASE_BACKEND = "https://salty-tor-00815.herokuapp.com"
+const BASE_BACKEND = "http://localhost:8000"
 
 
 
 //https://sleepy-dawn-45361.herokuapp.com
 // http://localhost:2000
-const CANVAS_BACKEND = "https://sleepy-dawn-45361.herokuapp.com"
+const CANVAS_BACKEND = "http://localhost:2000"
 
-const FRONT_END = "https://dot-collector-nextjs.vercel.app/"
+
+// http://localhost:3000
+const FRONT_END = "http://localhost:3000"
 export {BASE_BACKEND}
 export {CANVAS_BACKEND}
 export {FRONT_END}

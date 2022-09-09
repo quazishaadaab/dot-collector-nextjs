@@ -37,6 +37,7 @@ type Payload ={
 }
 let payload :Payload;
 
+
 const Home = ({userid}:id ) => {
 
 const data_unparsed : any = window.localStorage.getItem('persist:root')
@@ -105,7 +106,7 @@ const NoSSR_Search = dynamic(
     <div className={styles.home}>
 
 <CalculateAvgDot/>
-      <Sidebar />
+      <Sidebar/>
       
       <div className={styles.homeContainer}>
         <Navbar />

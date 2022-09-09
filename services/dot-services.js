@@ -1,6 +1,6 @@
 import http from "./http-common-2.js" ;
 
-class DataService{
+class DataService2{
 
 
 
@@ -17,6 +17,7 @@ return http.get("/launch")
 
 }
 
+//we do not use this in our app, delete
 postDotInUser(data){
 
     return http.put("/postDotInUser",data)
@@ -43,4 +44,4 @@ getDotCollection(data){
 
 }
 
-export default new DataService();
+export default new DataService2();

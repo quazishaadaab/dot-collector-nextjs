@@ -92,8 +92,8 @@ calculateAvgDot()
 
    await DataService.getUserById({userid:payload?.userid}).then(response=>{
     
-    console.log(response.data.dotCollection)
-    var dotCollection=response?.data?.dotCollection;
+    console.log('ddcoll',response.data.dotCollection)
+    var dotCollection= response?.data?.dotCollection;
     let count =0
 
     let buffer = []
@@ -110,12 +110,13 @@ let vals = []
 
 
 console.log('room',roomid)
+console.log('dotcoll',dotCollection[roomid])
 
 
-      dotCollection[roomid].map(dot=>{
+      dotCollection[roomid]?.map(dot=>{
 
             console.log('dot',dot)
-            dot.map(attribute=>{
+            dot?.map(attribute=>{
               
               if(attribute?.value==null){
                 vals.push(0)

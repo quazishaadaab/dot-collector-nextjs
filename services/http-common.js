@@ -1,6 +1,8 @@
 import axios from "axios";
+import { BASE_BACKEND, CANVAS_BACKEND } from "../utils/deployments";
+
 export default axios.create({
-baseURL : "http://localhost:8000", // this links to our server.js file and in it we set this api call. this is the base URL
+baseURL : `${BASE_BACKEND}`, // this links to our server.js file and in it we set this api call. this is the base URL
 
 //"https://salty-tor-00815.herokuapp.com"
 
