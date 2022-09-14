@@ -17,7 +17,7 @@ import Login from "./login/Login"
 // import './components/src/sketch.js';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import List from "./list/List";
+import Attributes from "./attributes/Attributes";
 
 import Rooms from "./rooms/[room]";
 import { v4 as uuid } from "uuid";

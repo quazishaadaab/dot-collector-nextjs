@@ -20,7 +20,8 @@ import DataService2 from "../../services/dot-services";
 
 import retriveUserState from "../../utils/userPersist"
 import dynamic from "next/dynamic";
-import { CANVAS_BACKEND } from "../../utils/deployments"
+import { BASE_BACKEND, CANVAS_BACKEND } from "../../utils/deployments"
+import axios from "axios"
 
 
 const Rooms = (unique_id) => {
@@ -31,8 +32,12 @@ const Rooms = (unique_id) => {
   const [canvas, setCanvas] = React.useState('')
   const [creator, setCreator] = React.useState('')
 
-  const { userid } = retriveUserState()
+  //this is the chosen attribute id by user( not array of attributes)
+const [attributes,setAttribute]= React.useState({})
 
+  const [attributeOptions,setAttributeOptions]= React.useState([])
+
+  const { userid } = retriveUserState()
 
 
 
@@ -52,19 +57,24 @@ const Rooms = (unique_id) => {
   console.log(roomId)
 
 
+  const selectAttributeOptions=async()=>{
+        const attributeOptions =await axios.post(`${BASE_BACKEND}/getAttributeByUserId`,{userid:userid})
+        setAttributeOptions(attributeOptions)
+
+  }
+
+//useEffect for all functions( no dependency)
   React.useEffect(() => {
     DataService2.launch()
     DataService.sendRoomId(roomId)
     insertPeersInRoom(usersDoc)
 
-
-
-
+    selectAttributeOptions()
 
   }, [])
 
 
-
+//secondary useEffect for roomData only,dependency is on creator of room
   React.useEffect(() => {
     DataService.getRoomData({ roomid: roomId }).then(async (res) => {
 
@@ -111,6 +121,8 @@ const Rooms = (unique_id) => {
 
   const [dot, setDot] = React.useState(null)
 
+
+  
 
 
 
