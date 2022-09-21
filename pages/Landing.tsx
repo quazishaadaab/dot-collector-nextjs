@@ -11,7 +11,6 @@ import { Text } from "@nextui-org/react";
 function Landing() {
 
 
-    let hello ; 
 
     return (
 
