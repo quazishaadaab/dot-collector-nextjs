@@ -39,6 +39,7 @@ function Landing() {
 <div className="mt-4 ml-3"><Text  size={20}>pricing</Text></div>
 <div className="mt-4 ml-3"><Text  size={20}>demo</Text></div>
 
+ {/* landing page */}
 
 
 <div className="ml-[80%] mt-5  absolute "> 
