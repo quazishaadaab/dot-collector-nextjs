@@ -33,9 +33,9 @@ const Rooms = (unique_id) => {
   const [creator, setCreator] = React.useState('')
 
   //this is the chosen attribute id by user( not array of attributes)
-const [attributes,setAttribute]= React.useState({})
+const [attributes,setAttribute]= React.useState([])
+const [attribute_id,setAttributeId]= React.useState('')
 
-  const [attributeOptions,setAttributeOptions]= React.useState([])
 
   const { userid } = retriveUserState()
 
@@ -57,11 +57,7 @@ const [attributes,setAttribute]= React.useState({})
   console.log(roomId)
 
 
-  const selectAttributeOptions=async()=>{
-        const attributeOptions =await axios.post(`${BASE_BACKEND}/getAttributeByUserId`,{userid:userid})
-        setAttributeOptions(attributeOptions)
-
-  }
+ 
 
 //useEffect for all functions( no dependency)
   React.useEffect(() => {
@@ -69,9 +65,25 @@ const [attributes,setAttribute]= React.useState({})
     DataService.sendRoomId(roomId)
     insertPeersInRoom(usersDoc)
 
-    selectAttributeOptions()
+    //dependent on roomId
+    getAttributeIdByRoomId()
 
-  }, [])
+  }, [roomId])
+
+
+//dependant on roomId
+  const getAttributeIdByRoomId=async()=>{
+    const {data}=await axios.post(`${BASE_BACKEND}/getRoomById`,{roomid:roomId})
+   
+   
+  setAttributeId(data?.roomdata?.attributeid)
+
+
+
+
+  }
+
+
 
 
 //secondary useEffect for roomData only,dependency is on creator of room
@@ -143,7 +155,7 @@ const [attributes,setAttribute]= React.useState({})
 
       <div className="h-full w-[60%] rounded-3xl bg-white ml-4 mt-5 ">
 
-        <Horz />
+        <Horz attributeid={attribute_id}/>
 
         <div className="flex h-auto w-auto rounded-3xl bg-gray-100 mt-3 ">
         <Vert roomid={roomId} />
