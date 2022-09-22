@@ -10,6 +10,9 @@ import {payload} from "../../pages/home/[home]"
 
 import {BASE_BACKEND,CANVAS_BACKEND} from "../../utils/deployments"
 import { Photo } from "@mui/icons-material";
+
+import { Input, Grid } from "@nextui-org/react";
+
 //roomid is used for invites
 function Search({searchtype,roomid}) {
 
@@ -119,6 +122,8 @@ const invite=(event,ui)=>{
         <link rel="stylesheet" href="/resources/demos/style.css" />
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+{/*         
         <div className="ui-widget border-gray-100 rounded-3xl bg-gray-100 w-auto h-auto p-4">
           <label for="usersearch " className="font-black ">User Search</label>
           <br />
@@ -127,7 +132,22 @@ const invite=(event,ui)=>{
           <button type="submit"  className="text-base mr-3" id="addbutton">Add Peer</button>
         <button type="submit" className="" id="deletebutton">Delete Peer</button>
         </div>
-     
+      */}
+
+        <Grid>
+        <Input
+        id="usersearch"
+          bordered
+          labelLeft="search:"
+          labelRight=""
+          placeholder="any user"
+          size="sm"
+          width="700px"
+          color="warning"
+
+        />
+      </Grid>
+
 
         {action()}
       </body>

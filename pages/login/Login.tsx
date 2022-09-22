@@ -85,6 +85,7 @@ function Login() {
               userid: sha(`${session?.user?.email}`),
               username: session?.user?.name as String,
               userPhoto: session?.user?.image as String,
+              email : session?.user?.email as String,
               loggedIn: true,
             })
           );
@@ -94,6 +95,8 @@ function Login() {
             userid: sha(`${session?.user?.email}`),
             username: session?.user?.name as String,
             userPhoto: session?.user?.image as String,
+            email : session?.user?.email as String,
+
           };
     
           DataService.postUsersInUsers(authDoc);

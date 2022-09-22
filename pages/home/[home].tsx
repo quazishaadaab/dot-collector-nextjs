@@ -1,6 +1,8 @@
 import * as React from "react";
 import styles from "../../styles/home.module.scss"
 import Sidebar from "../../components/sidebar/Sidebar";
+import SlimSidebar from "../../components/sidebar/SlimSidebar";
+
 import Navbar from "../../components/navbar/Navbar";
 import Widget from "../../components/widget/Widget";
 import Featured from "../../components/featured/Featured";
@@ -8,6 +10,8 @@ import Chart from "../../components/chart/Chart";
 import { useRouter } from "next/router";
 
 import Table from "../../components/table/Table";
+import NewTable from "../../components/table/NewTable";
+
 import DataService2 from "../../services/dot-services.js"
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../services/redux/userSlice";
@@ -16,7 +20,7 @@ import {mainReducer} from "../../services/redux/store"
 
 import {store_two} from "../../services/redux/store"
 
-import Search from "../../components/search/Search"; 
+// import Search from "../../components/search/Search"; 
 import dynamic from "next/dynamic";
 
 import CalculateAvgDot from "../../services/calculateAvgDot"
@@ -95,9 +99,11 @@ const {query:{homeid}} = useRouter()
 // ....
 console.log(router.query?.home)
 
-const NoSSR_Search = dynamic(
-  ()=> import('../../components/search/Search'),{ssr:false}
-)
+
+
+// const NoSSR_Search = dynamic(
+//   ()=> import('../../components/search/Search'),{ssr:false}
+// )
 
 
 
@@ -106,36 +112,56 @@ const NoSSR_Search = dynamic(
     <div className={styles.home}>
 
 <CalculateAvgDot/>
-      <Sidebar/>
+
+
+<SlimSidebar/>
+
       
       <div className={styles.homeContainer}>
         <Navbar />
 
-<NoSSR_Search searchtype={'peer'} roomid={null}/>
+{/* <NoSSR_Search searchtype={'peer'} roomid={null}/> */}
+
+
+<div className="px-2">
         <div className={styles.widgets}>
           <Widget type="user" />
           <Widget type="order" />
           <Widget type="earnings" />
           <Widget type="balance" />
         </div>
+        </div>
+
+
+
+        {/* encloses everything except for widjet,sidebar,and navbar */}
+        <div className="px-14">
+
 
         <div className={styles.charts}>
           <Featured />
           <Chart title={'Last 6 months'} aspect={2/1}/>
         </div>
 
-        <div className="bg-white">
+        <div className="bg-white rounded-[15px] ">
         <div className={styles.listContainer}>
         
           <div className={styles.listTitle}>Friends</div>
         
-        <Table/>
+        {/* <Table/> */}
+<NewTable/>
 
         </div>
         </div>
 
+
+
+</div> 
+{/* above div contains featured,charts,and friends list */}
 
       </div>
+
+
     </div>
   );
 };

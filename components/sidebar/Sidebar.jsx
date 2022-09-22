@@ -120,6 +120,8 @@ dispatch(logout())
     <div className={styles.sidebar} >
       <div className={styles.top}>
         <span className={styles.logo}>DotCollector</span>
+        {/* <img className={styles.logo}>DotCollector</img> */}
+   
       </div>
 
 <hr/>

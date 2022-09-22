@@ -10,10 +10,15 @@ import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 
 import { useDispatch, useSelector } from "react-redux";
 import {payload} from "../../pages/home/[home]"
+// import Search from '../../components/search/Search';
+import dynamic from 'next/dynamic';
 
 const Navbar = () => {
 
-
+  const NoSSR_Search = dynamic(
+    ()=> import('../../components/search/Search'),{ssr:false}
+  )
+  
 
 
 
@@ -23,15 +28,15 @@ const Navbar = () => {
 
 
 <div className={styles.wrapper}>
-<div className={styles.search}>
 
-<input type="text" placeholder='Search..' />
 
-<SearchIcon/>
+<div className="mb-3 ml-[20%] items-center  pt-4 flex">
+<NoSSR_Search  searchtype={'peer'} roomid={null}/>
+{/* <SearchIcon/> */}
 
 </div>
 
-<div className={styles.items}>
+{/* <div className={styles.items}>
 
     <div className={styles.item}>
     <LanguageIcon className={styles.icon}/>
@@ -67,7 +72,7 @@ const Navbar = () => {
     <div className={styles.item}>
 <img src={`${payload?.userPhoto}`} alt="" className={styles.avatar} />  
     </div>
-</div>
+</div> */}
 
 </div>
 

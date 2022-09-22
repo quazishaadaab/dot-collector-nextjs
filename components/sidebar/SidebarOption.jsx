@@ -16,6 +16,9 @@ import { ConstructionOutlined } from "@mui/icons-material";
 import retriveUserState from "../../utils/userPersist"
 import { FRONT_END ,BASE_BACKEND} from "../../utils/deployments";
 import { Card, Grid, Row, Text,Button } from "@nextui-org/react";
+import { Tooltip } from '@nextui-org/react'
+
+import QueryStatsIcon from '@mui/icons-material/QueryStats';
 
 export const SidebarOption = ({ title, roomid, addChannel, Icon }) => {
 
@@ -26,6 +29,8 @@ export const SidebarOption = ({ title, roomid, addChannel, Icon }) => {
   const { userid, userPhoto, username } = retriveUserState()
   const [roomName,setRoomName]=React.useState('')
   const [type,setRoomType]=React.useState('')
+
+  const [email,setEmail]= React.useState('')
 
   //use below for actual attribute values
   // const [attributes,setAttributeArray]= React.useState({})
@@ -55,9 +60,17 @@ export const SidebarOption = ({ title, roomid, addChannel, Icon }) => {
 
 
 const [visible, setVisible] = React.useState(false);
+const [visible2, setVisible2] = React.useState(false);
+
 const handler = () => setVisible(true);
+const handler2 = () => {setVisible2(true); closeHandler};
+
 const closeHandler = () => {
   setVisible(false);
+  console.log("closed");
+};
+const closeHandler2 = () => {
+  setVisible2(false);
   console.log("closed");
 };
 
@@ -96,6 +109,7 @@ const closeHandler = () => {
 
       await axios.put(`${BASE_BACKEND}/postAttributeIdInRoom`,{roomid:unique_id,attributeid:attributeid})
 
+      axios.post(`${BASE_BACKEND}/sendEmailInvite`,{email:email, roomlink:`${FRONT_END}/rooms/${unique_id}`})  
 
     }
   }
@@ -166,17 +180,22 @@ console.log('alpha',Event.target.value)
 
   return (
     <>
-    <div className={styles.sidebarOption} onClick={addChannel ? handler: selectRoom}>
-      {Icon}
+    {/* will set visibility of modal to true if add channel exists(opening the modal),
+    ? other wise select room */}
+    <div className='w-full items-center  mb-9 px-1.5 py-1 cursor-pointer' onClick={addChannel ? handler: selectRoom}>
+      {/* {Icon}
 
-      <span>{title}</span>
+      <span>{title}</span> */}
 
+    <Tooltip placement="right" content={title} color='invert' rounded >
+{Icon}
+                      </Tooltip>
 
 
     </div>
 
 
-
+{/* Step 1 : Create Room */}
 <div>
 <Modal
     closeButton
@@ -267,13 +286,78 @@ console.log('alpha',Event.target.value)
       <Button auto flat color="error" onClick={closeHandler}>
         Close
       </Button>
-      <Button auto onClick={addRoom}>
+      <Button auto onClick={ ()=>{handler2(); closeHandler()}}>
         Create
       </Button>
     </Modal.Footer>
   </Modal>
 </div>
 
+
+
+
+{/* Step 2: Invite members by email */}
+<div>
+<Modal
+    closeButton
+    blur
+    aria-labelledby="modal-title"
+    open={visible2}
+    onClose={closeHandler2}
+  >
+    <Modal.Header>
+      <Text id="modal-title" size={18}>
+        Invite members by {``}
+        <Text b size={18}>
+        email
+        </Text>
+      </Text>
+    </Modal.Header>
+    <Modal.Body>
+      <Input
+        id='emailinput'
+        clearable
+        bordered
+        fullWidth
+        color="primary"
+        size="xl"
+        className='text-sm'
+        placeholder="example@gmail.com"
+        contentLeft={'Email'}
+        onChange={(Event)=>{ if(Event.target.value.length>2) { setEmail(Event.target.value) ;}}}
+      />
+      
+
+<Text  size={15} color='purple'>
+        Enter a valid email
+        </Text>
+
+        <Text id='invitation_sent' hidden={true} size={15} color='purple'>
+Invitation sent       
+ </Text>
+
+
+    </Modal.Body>
+    <Modal.Footer>
+      <Button auto flat color="error" onClick={closeHandler2}>
+        Close
+      </Button>
+      <Button auto onClick={ ()=>{
+        addRoom();
+        setEmail('');
+         const emailInput = document.getElementById('emailinput');
+         emailInput.value='';
+         document.getElementById('invitation_sent').hidden=false
+         
+         setTimeout(()=>{document.getElementById('invitation_sent').hidden=true
+        },1000)
+
+         }}>
+        Create
+      </Button>
+    </Modal.Footer>
+  </Modal>
+</div>
 </>
 
 
