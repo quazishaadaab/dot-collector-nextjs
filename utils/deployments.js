@@ -12,7 +12,8 @@ const CANVAS_BACKEND = "http://localhost:2000"
 
 
 // http://localhost:3000
-const FRONT_END = "http://localhost:3000"
+//https://dot-collector-nextjs.vercel.app/
+const FRONT_END = "https://dot-collector-nextjs.vercel.app"
 export {BASE_BACKEND}
 export {CANVAS_BACKEND}
 export {FRONT_END}

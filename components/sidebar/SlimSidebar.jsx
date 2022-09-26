@@ -48,7 +48,11 @@ const [room_ids,setRoom_Ids]=React.useState('')
 // const [userid,setUserid]=React.useState()
 
 
+
 const [user,setUser] = React.useState({})
+
+
+const router= useRouter() ;
 
 React.useEffect(() => {
   //important to put it here since itll be quicker and will not leave an empty state in startup
