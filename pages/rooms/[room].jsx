@@ -132,12 +132,7 @@ const [attribute_id,setAttributeId]= React.useState('')
   }
 
 
-  function iframe() {
-    
-    return {
-      __html: `<iframe src=${url} width="700" height="650" border="0" frameborder="0"  ></iframe>`
-    }
-  }
+
 
 
 
@@ -162,12 +157,13 @@ const [attribute_id,setAttributeId]= React.useState('')
 
     <div className="w-full h-full flex">
 
-      <div className="h-[90%] w-[90%] rounded-3xl bg-white ml-4 mt-2 mb-3 ">
+      <div className="h-[100%] w-[90%] rounded-3xl bg-white ml-4 mt-2 mb-3 ">
 
-        <Horz attributeid={attribute_id} />
+   
+        <Horz attributeid={attribute_id} roomid={roomId} />
 
-        <div className="flex h-[90%]  w-[100%] rounded-3xl bg-gray-100 mt-1 mb-5 ">
-        <Vert roomid={roomId} />
+        <div className="flex h-[100%]  w-[100%] rounded-3xl bg-gray-100 mt-1 mb-5 ">
+        <Vert roomid={roomId}  attributeid={attribute_id} />
 
         {/* <div id='dangerousHtml' className=' w-auto' dangerouslySetInnerHTML={ iframe()} /> */}
 

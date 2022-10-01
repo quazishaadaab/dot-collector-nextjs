@@ -20,7 +20,7 @@ import DataService from "../../services/service";
 
 //note: things like constant /variables being passed as props are INSTANT and no waiting is required.So they dont need this
 
-const  Horz=({attributeid}) =>{
+const  Horz=({attributeid,roomid}) =>{
 
 
 const [attribute,setAttributes]=useState([])
@@ -28,11 +28,9 @@ const [number_of_users,setNumber_of_users]=useState()
 
 const router=useRouter()
 
-
+//this is false
 //get the roomId from the url. This is different from passing a prop because a prop will only exist if its parent component is rendered.
 //in our case , users are clicking the link to this room from their email, therefore 
-const { asPath, pathname } = useRouter();
-const roomId = asPath.substring(7,44)
 
 
 useEffect(() => {
@@ -40,7 +38,8 @@ useEffect(() => {
   retriveAttributes()
   retriveUsers()
 
-}, [attributeid])
+  //attributeid is here because of the await/asynchros lag/wait time of 1 sec
+}, [attributeid,attribute,number_of_users])
 
 
 
@@ -59,7 +58,7 @@ const retriveUsers=async()=>{
 // const { data: { roomdata: {users} } } = await axios.post(`${BASE_BACKEND}/getRoomById`,{roomid:roomid})
 
 
-const response = await DataService.getUsersInRoom({roomid:roomId})
+const response = await DataService.getUsersInRoom({roomid:roomid})
 
 
 //bug here. If user goes into this room from the dashboard all is fine
@@ -78,12 +77,13 @@ const response = await DataService.getUsersInRoom({roomid:roomId})
 
 
 
+
 let text_font ='w-[80px] h-[50px] mr-[20px] text-sm '
-let text_gap=' pl-[100px]'
+let text_gap=' pl-[120px]'
 
 if(attribute?.length>13 || number_of_users>8){
   text_font='w-[50px] h-[50px] mr-[7px] text-[13px] '
-  text_gap='pl-[100px]'
+  text_gap='pl-[80px]'
 }
 
 {/* <Tooltip placement="bottom"  content={attributes} color='invert' rounded >
@@ -109,7 +109,7 @@ if(attribute?.length>13 || number_of_users>8){
 return(
 
 <Tooltip placement="bottom" content={attributes} color='invert' rounded >
-<div className={` ${text_font} rounded  text-center text-clip font-light  bg-clip-text text-transparent   bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 tracking-tighter`}>{attributes}</div>
+<div className={` ${text_font} rounded  text-center text-clip font-light  bg-clip-text  text-transparent   bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 tracking-tighter`}>{attributes}</div>
 
     </Tooltip>
 
