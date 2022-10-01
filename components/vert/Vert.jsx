@@ -17,7 +17,6 @@ useEffect(() => {
 
 
 
-
 const retriveUsersInRoom=async (roomid)=> {
   await DataService.getUsersInRoom(roomid).then(response=>{
 

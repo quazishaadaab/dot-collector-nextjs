@@ -164,7 +164,7 @@ const [attribute_id,setAttributeId]= React.useState('')
 
       <div className="h-[90%] w-[90%] rounded-3xl bg-white ml-4 mt-2 mb-3 ">
 
-        <Horz attributeid={attribute_id}/>
+        <Horz attributeid={attribute_id} />
 
         <div className="flex h-[90%]  w-[100%] rounded-3xl bg-gray-100 mt-1 mb-5 ">
         <Vert roomid={roomId} />
