@@ -12,6 +12,7 @@
     ...props
   }) {
     return (
+      <>
       <svg
       width={size || width || 24}
       height={size || height || 24}
@@ -27,7 +28,10 @@
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-    </svg>    )
+    </svg>
+    </>
+        )
   }
   
   export default HeartIcon
+

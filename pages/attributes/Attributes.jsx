@@ -1,11 +1,10 @@
 import React from "react";
 import styles from "../../styles/list.module.scss"
-import Datatable from "../../components/datatable/Datatable";
-import Sidebar from "../../components/sidebar/Sidebar";
+import SlimSidebar from "../../components/sidebar/SlimSidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { Input, KeyCode } from "@nextui-org/react";
 import { Card, Grid, Row, Text,Button } from "@nextui-org/react";
-import { HeartIcon } from './HeartIcon';
+import HeartIcon from './HeartIcon';
 import axios from "axios";
 
 
@@ -54,7 +53,7 @@ const Attributes = () => {
 
   return (
     <div className={styles.list}>
-      <Sidebar />
+      <SlimSidebar />
       <div className={styles.listContainer}>
         <Navbar />
 

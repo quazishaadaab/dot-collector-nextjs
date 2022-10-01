@@ -41,8 +41,8 @@ export const SidebarOption = ({ title, roomid, addChannel, Icon }) => {
   const [attributeOptions,setAttributeOptions]= React.useState([])
 
   //temporary solution to the populate intial array problem
-  let rows= 6
-  let cols =4
+  let rows= 7
+  let cols =7
   
   //this is just a temporary solution, our future solution wont need this so this may be deleted .
   const generateInitialEmptyDotArray= () => {
@@ -128,7 +128,7 @@ const closeHandler2 = () => {
   const selectRoom = () => {
 
     // change this upon deployment
-    router.push(`${FRONT_END}/rooms/${roomid}`)
+    router.push(`/rooms/${roomid}`)
 
 
   }

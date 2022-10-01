@@ -13,6 +13,9 @@ import { useDispatch, useSelector } from "react-redux";
 import DataService from "../../services/service";
 
 import SpeakerOption from "../../components/speakeroption/SpeakerOption"
+
+import Canvas from "../../components/canvas/Canvas"
+
 import { payload } from "../home/[home]"
 import { useRouter } from "next/router";
 import DataService2 from "../../services/dot-services";
@@ -22,11 +25,15 @@ import retriveUserState from "../../utils/userPersist"
 import dynamic from "next/dynamic";
 import { BASE_BACKEND, CANVAS_BACKEND } from "../../utils/deployments"
 import axios from "axios"
+import * as ReactDOM from 'react-dom';
 
 
 const Rooms = (unique_id) => {
 
   // const [data,setData]=React.useState(null)
+
+
+
 
 
   const [canvas, setCanvas] = React.useState('')
@@ -69,6 +76,9 @@ const [attribute_id,setAttributeId]= React.useState('')
     getAttributeIdByRoomId()
 
   }, [roomId])
+
+
+
 
 
 //dependant on roomId
@@ -123,6 +133,7 @@ const [attribute_id,setAttributeId]= React.useState('')
 
 
   function iframe() {
+    
     return {
       __html: `<iframe src=${url} width="700" height="650" border="0" frameborder="0"  ></iframe>`
     }
@@ -132,7 +143,6 @@ const [attribute_id,setAttributeId]= React.useState('')
 
 
   const [dot, setDot] = React.useState(null)
-
 
   
 
@@ -152,26 +162,37 @@ const [attribute_id,setAttributeId]= React.useState('')
 
     <div className="w-full h-full flex">
 
-
-      <div className="h-full w-[60%] rounded-3xl bg-white ml-4 mt-5 ">
+      <div className="h-[90%] w-[90%] rounded-3xl bg-white ml-4 mt-2 mb-3 ">
 
         <Horz attributeid={attribute_id}/>
 
-        <div className="flex h-auto w-auto rounded-3xl bg-gray-100 mt-3 ">
+        <div className="flex h-[90%]  w-[100%] rounded-3xl bg-gray-100 mt-1 mb-5 ">
         <Vert roomid={roomId} />
-        <div className=' w-auto' dangerouslySetInnerHTML={iframe()} />
+
+        {/* <div id='dangerousHtml' className=' w-auto' dangerouslySetInnerHTML={ iframe()} /> */}
+
+{/* {()=>{setInterval(()=>{setHtml(url)},2000)}} */}
+
+{/* {setHtml(url)} */}
+
+<Canvas url={url} />
+
+
         </div>
+
+
+
       </div>
 
 
-      <div className="h-full w-[40%] h-full  max-w-full ">
+      {/* <div className="h-full w-[40%] h-full  max-w-full ">
       <div className="p-4 mt-2 mb-4">{userid == creator ? (<NoSSR_Search searchtype={"invite"} roomid={roomId} />) : (console.log('unmatched', creator, userid))}
 
 
 
       <SpeakerOption  roomid={roomId} />
       </div>
-      </div>
+      </div> */}
 
 
       

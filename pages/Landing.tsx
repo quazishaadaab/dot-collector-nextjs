@@ -71,7 +71,6 @@ function Landing() {
                 </div>
 
 
-
                 <div className='h-[80%] w-[70%]  mt-30 ml-8 mr-8 '>
                     <Image src={room} layout='responsive' objectFit='contain' className='rounded-3xl' />
 

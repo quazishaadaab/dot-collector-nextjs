@@ -170,8 +170,8 @@ dispatch(logout())
 
 
 
-<Tooltip placement="right" content={'Chat'} color='invert' rounded >
-     <div onClick={()=>{router.push("/Chat/0")}} className='  w-full items-center mt-5 mb-9 px-1.5 py-1 cursor-pointer'>
+<Tooltip placement="right" content={'Create Attribute Package'} color='invert' rounded >
+     <div onClick={()=>{router.push("/attributes/Attributes")}} className='  w-full items-center mt-5 mb-9 px-1.5 py-1 cursor-pointer'>
             <ProductionQuantityLimitsOutlinedIcon sx={{ color: '#C00B00' , fontSize:"30px"}}   />
           </div>
           </Tooltip>

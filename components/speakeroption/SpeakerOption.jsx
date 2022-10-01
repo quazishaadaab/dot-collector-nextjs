@@ -97,7 +97,6 @@ setUsers((response?.data?.users))
 
 {userData?.map(r=>{
 count=count+1
-console.log(count)
   return(
     //you cant do onClick={function} inside a component. You need to first put that component inside a div and use the onClick or eventListener function on the div.
     //e.target.textContext should be replaced with the user ID. the text context returns the name field, Alex costa or mike tyson
