@@ -108,7 +108,7 @@ if(attribute?.length>13 || number_of_users>8){
 
 return(
 
-<Tooltip placement="bottom" content={attribute} color='invert' rounded >
+<Tooltip placement="bottom" content={attributes} color='invert' rounded >
 <div className={` ${text_font} rounded  text-center text-clip font-light  bg-clip-text text-transparent   bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 tracking-tighter`}>{attributes}</div>
 
     </Tooltip>
