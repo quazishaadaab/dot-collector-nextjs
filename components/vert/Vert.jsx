@@ -1,3 +1,4 @@
+import { Grid,Badge,Avatar } from '@nextui-org/react';
 import axios from 'axios';
 import * as React from 'react'
 import { useState } from 'react'
@@ -71,6 +72,7 @@ const Vert = ({ roomid, attributeid }) => {
   let margin_top ='mt-3'
   let gap='pb-5'
   let width_height='w-20 h-20'
+  let badge_size = '2xl'
 
 
   //scaled down dimensions for avatar if load is high
@@ -78,6 +80,7 @@ const Vert = ({ roomid, attributeid }) => {
     margin_top ='mt-3'
     gap='pb-[1.1rem]'
     width_height='w-10 h-10 '
+    badge_size='md'
 
   }
 
@@ -92,9 +95,34 @@ const Vert = ({ roomid, attributeid }) => {
 
 
           return (
-            <div className={`pl-28 pr-3 ${gap}`}>
-              <img src={images.userPhoto} alt="" className={`${width_height} rounded-3xl`} />
+
+            <Grid>
+      
+          
+
+
+            <div className={` xl:pl-[5.5rem] xl:pr-1 2xl:pl-28 2xl:pr-3 ${gap}`}>
+
+              <div className={styles.overlap}>
+
+              {/* <img src={images.userPhoto} alt="" className={`${width_height} rounded-3xl`} /> */}
+
+
+              <Badge content="speaker" color="error" placement="top-right" className={`${width_height} rounded-3xl`}>
+              <Avatar
+                bordered
+                squared
+                size={badge_size}
+                color="error"
+                src={images.userPhoto} 
+              />
+            </Badge>
+
             </div>
+            
+            </div>
+            </Grid>
+
 
 
           )

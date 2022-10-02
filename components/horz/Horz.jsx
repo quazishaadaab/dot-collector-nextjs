@@ -79,11 +79,11 @@ const response = await DataService.getUsersInRoom({roomid:roomid})
 
 
 let text_font ='w-[80px] h-[50px] mr-[20px] text-sm '
-let text_gap=' pl-[120px]'
+let text_gap='xl:pl-[100px]  2xl:pl-[125px]'
 
 if(attribute?.length>13 || number_of_users>8){
-  text_font='w-[50px] h-[50px] mr-[7px] text-[13px] '
-  text_gap='pl-[80px]'
+  text_font='xl w-[50px] xl: h-[50px] xl:mr-[7px]    2xl:w-[50px] 2xl: h-[50px] 2xl:mr-[7px] text-[13px] '
+  text_gap='xl:pl-[50px] 2xl:pl-[80px]'
 }
 
 {/* <Tooltip placement="bottom"  content={attributes} color='invert' rounded >

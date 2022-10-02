@@ -1,21 +1,27 @@
 
 
-.vert{
-    margin-left: -95px;
-    margin-top: 38px;
 
-.vert_container{
-    gap: 35px;
-    padding-left: 116px;
-    padding-bottom: 27px;
+.overlap{
 
-.avatar{
-    width: 67px;
-    height: 68px;
     border-radius: 50%;
+    box-shadow: 0px 0px 1px 1px #0000001a;
+  
 
-}
-    
-}
 
+
+
+    animation: pulse-animation 2s infinite;
+  
+  @keyframes pulse-animation {
+    0% {
+      box-shadow: 0 0 0 0px rgba(255, 0, 0, 0.709);
+    }
+    100% {
+      box-shadow: 0 0 0 20px rgba(255, 0, 0, 0);
+    }
+  }
 }
+  
+
+
+

@@ -27,6 +27,8 @@ import { BASE_BACKEND, CANVAS_BACKEND } from "../../utils/deployments"
 import axios from "axios"
 import * as ReactDOM from 'react-dom';
 
+import { Button, Collapse, Text } from "@nextui-org/react";
+import SlimSidebar from "../../components/sidebar/SlimSidebar"
 
 const Rooms = (unique_id) => {
 
@@ -40,8 +42,8 @@ const Rooms = (unique_id) => {
   const [creator, setCreator] = React.useState('')
 
   //this is the chosen attribute id by user( not array of attributes)
-const [attributes,setAttribute]= React.useState([])
-const [attribute_id,setAttributeId]= React.useState('')
+  const [attributes, setAttribute] = React.useState([])
+  const [attribute_id, setAttributeId] = React.useState('')
 
 
   const { userid } = retriveUserState()
@@ -64,9 +66,9 @@ const [attribute_id,setAttributeId]= React.useState('')
   console.log(roomId)
 
 
- 
 
-//useEffect for all functions( no dependency)
+
+  //useEffect for all functions( no dependency)
   React.useEffect(() => {
     DataService2.launch()
     DataService.sendRoomId(roomId)
@@ -81,12 +83,12 @@ const [attribute_id,setAttributeId]= React.useState('')
 
 
 
-//dependant on roomId
-  const getAttributeIdByRoomId=async()=>{
-    const {data}=await axios.post(`${BASE_BACKEND}/getRoomById`,{roomid:roomId})
-   
-   
-  setAttributeId(data?.roomdata?.attributeid)
+  //dependant on roomId
+  const getAttributeIdByRoomId = async () => {
+    const { data } = await axios.post(`${BASE_BACKEND}/getRoomById`, { roomid: roomId })
+
+
+    setAttributeId(data?.roomdata?.attributeid)
 
 
 
@@ -96,7 +98,7 @@ const [attribute_id,setAttributeId]= React.useState('')
 
 
 
-//secondary useEffect for roomData only,dependency is on creator of room
+  //secondary useEffect for roomData only,dependency is on creator of room
   React.useEffect(() => {
     DataService.getRoomData({ roomid: roomId }).then(async (res) => {
 
@@ -139,12 +141,14 @@ const [attribute_id,setAttributeId]= React.useState('')
 
   const [dot, setDot] = React.useState(null)
 
-  
 
 
 
 
 
+
+
+  const [visible,setVisible] = React.useState(false)
 
 
 
@@ -157,21 +161,25 @@ const [attribute_id,setAttributeId]= React.useState('')
 
     <div className="w-full h-full flex">
 
+
+
+
+
       <div className="h-[100%] w-[90%] rounded-3xl bg-white ml-4 mt-2 mb-3 ">
 
-   
+
         <Horz attributeid={attribute_id} roomid={roomId} />
 
         <div className="flex h-[100%]  w-[100%] rounded-3xl bg-gray-100 mt-1 mb-5 ">
-        <Vert roomid={roomId}  attributeid={attribute_id} />
+          <Vert roomid={roomId} attributeid={attribute_id} />
 
-        {/* <div id='dangerousHtml' className=' w-auto' dangerouslySetInnerHTML={ iframe()} /> */}
+          {/* <div id='dangerousHtml' className=' w-auto' dangerouslySetInnerHTML={ iframe()} /> */}
 
-{/* {()=>{setInterval(()=>{setHtml(url)},2000)}} */}
+          {/* {()=>{setInterval(()=>{setHtml(url)},2000)}} */}
 
-{/* {setHtml(url)} */}
+          {/* {setHtml(url)} */}
 
-<Canvas url={url} />
+          <Canvas url={url} />
 
 
         </div>
@@ -189,9 +197,10 @@ const [attribute_id,setAttributeId]= React.useState('')
       <SpeakerOption  roomid={roomId} />
       </div>
       </div> */}
+      {/* <SlimSidebar/> */}
 
 
-      
+
 
 
 
