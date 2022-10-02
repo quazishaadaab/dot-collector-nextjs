@@ -12,15 +12,55 @@ let number_of_users = 0
 
 const Vert = ({ roomid, attributeid }) => {
 
+
+
+
+
+//we need to initalize the speaker variable to null, or else our setSpeakerOnLoad will not work.
+//
+  const [speaker, setSpeaker] = React.useState(null)
+
   const [users, setUsers] = useState([])
   const [NumberofAttributes, setNumberofAttributes] = useState()
 
 
+
+
+     
   useEffect(() => {
+
+
+    //everytime speaker changes these also get executed(may be redundant)
     retriveUsersInRoom(roomid)
     retriveAttributes()
+
     //we need to pass in attributeid due to it depending on/waiting on an api/async promise. This means it has to wait before it gets the data, so our component wont render properly at first
   }, [users, attributeid, NumberofAttributes])
+
+
+
+
+useEffect(()=>{
+  setSpeakerOnLoad()
+  insertSpeakerInRooms(speakerDoc)
+
+},[speaker])
+
+
+  const setSpeakerOnLoad=async()=>{
+
+    //we tried this with speaker==undefined speaker='' , but the best case is nULL. null worked
+    if(speaker==null){
+      const {data:{roomdata}} = await axios.post('http://localhost:8000/getRoomById',{roomid:roomid})
+      setSpeaker(roomdata?.speakerid)
+
+    }
+
+
+    // DataService.getRoomData({roomid:roomid}).then((res)=>{
+    //   setSpeaker(res?.data?.roomdata?.speakerid)  
+    //     })}
+  }
 
 
 
@@ -85,36 +125,60 @@ const Vert = ({ roomid, attributeid }) => {
   }
 
 
+  // we want to click on a user/member and then set them as the speaker of the room
+
+  const insertSpeakerInRooms = async (data) => {
+
+    // extremely important to ask if speaker or user exists for post requests(injections), and then submit data. Otherwise, null will be submitted
+    // we could also do speaker?.() but for some reason it return an uncaught error?
+    if (speaker != null) {
+      (await DataService.postSpeakerInRoom(data))
+    }
+  }
+
+  const speakerDoc = {
+    roomid: roomid,
+
+    speakerid: speaker,
+
+  }
+
+
+
     return (
       <div className={`ml-[-95px] ${margin_top}`}>
 
 
 
 
-        {userData?.map(images => {
+        {userData?.map(data => {
 
 
           return (
 
-            <Grid>
+            //if the userid is equal to the speakerid of the room(from the database not from the component state)
+            //, then make the badge red and pulsing with speaker label. Else, just give it a basic label 
+             speaker==data?.userid? (
+              <Grid>
       
           
 
 
-            <div className={` xl:pl-[5.5rem] xl:pr-1 2xl:pl-28 2xl:pr-3 ${gap}`}>
+            <div className={` xl:pl-[5.5rem] xl:pr-1 2xl:pl-28 2xl:pr-3  ${gap}`} onClick={()=>{setSpeaker(data?.userid)}}>
 
               <div className={styles.overlap}>
 
-              {/* <img src={images.userPhoto} alt="" className={`${width_height} rounded-3xl`} /> */}
+              {/* <img src={data.userPhoto} alt="" className={`${width_height} rounded-3xl`} /> */}
 
 
-              <Badge content="speaker" color="error" placement="top-right" className={`${width_height} rounded-3xl`}>
+              <Badge content="speaker" color="error"  placement="top-right" className={`${width_height} rounded-3xl `} onClick={()=>{setSpeaker(data?.userid)}}>
               <Avatar
                 bordered
                 squared
                 size={badge_size}
                 color="error"
-                src={images.userPhoto} 
+                src={data.userPhoto} 
+                pointer
               />
             </Badge>
 
@@ -122,6 +186,37 @@ const Vert = ({ roomid, attributeid }) => {
             
             </div>
             </Grid>
+            ):(
+              <Grid>
+      
+          
+
+
+              <div className={` cursor-pointer xl:pl-[5.5rem] xl:pr-1 2xl:pl-28 2xl:pr-3 ${gap}`} onClick={()=>{setSpeaker(data?.userid)}}>
+  
+  
+                {/* <img src={data.userPhoto} alt="" className={`${width_height} rounded-3xl`} /> */}
+  
+  
+                <Badge  content="+" variant="points" color="success" placement="top-right" className={` ${width_height} rounded-3xl`} >
+
+                <Avatar
+                  bordered
+                  squared
+                  size={badge_size}
+                  color="success"
+                  src={data.userPhoto}
+                  pointer
+                />
+
+              </Badge>
+              
+              </div>
+              </Grid>
+            ) 
+
+
+            
 
 
 

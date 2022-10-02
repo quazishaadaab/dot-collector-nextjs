@@ -22,6 +22,8 @@ getAllRooms(){
     return http.get("/getAllRooms");
 }
 
+//useless
+
 sendRoomId(data){
 return http.post("/getRoomId",data)
 
