@@ -27,6 +27,7 @@ import {logout} from "../../services/redux/userSlice.js"
 
 import {payload} from "../../pages/home/[home]"
 
+import { signOut } from "next-auth/react"
 
 
 import { Tooltip } from '@nextui-org/react'
@@ -130,16 +131,20 @@ const dispatch=useDispatch()
 
 
 
-const signOut=()=>{
+const logOut=()=>{
+// note that calling the logout reducer will automatically reset/clear the local storage
 dispatch(logout())
+signOut({callbackUrl:'http://localhost:3000/login/Login'})
+
 }
 
 
   return (
 <>
+{/* for the hamburger menu to display sidebar, we change the width to toggle */}
 
 
-    <div className="bg-white h-full w-[5%] items-center space-y-5 px-3 cursor-pointer overflow-y-scroll pt-3">
+    <div className={`bg-gray-50  border-gray-300 border-solid border h-full w-[5%] items-center space-y-5 px-3 cursor-pointer overflow-y-scroll pt-3`}>
 
 {/* <span className='text-[20px] font-200 text-red-500 '>Dots</span> */}
 
@@ -199,12 +204,17 @@ dispatch(logout())
 
 
 
+{/* router.replace */}
     
     <Tooltip placement="right" content={'Logout'} color='invert' rounded >
-     <div  onClick={()=>{router.push("/")}}  className='  w-full items-center mt-5 mb-9 px-1.5 py-1 cursor-pointer'>
+     <div  onClick={()=>{logOut()}}  className='  w-full items-center mt-5 mb-9 px-1.5 py-1 cursor-pointer'>
             <FaceIcon sx={{ color: '#C00B00', fontSize:"30px" }}  />
           </div>
           </Tooltip>
+
+
+
+
     
     <Tooltip placement="right" content={'Financials'} color='invert' rounded >
      <div className='  w-full items-center mt-5 mb-9 px-1.5 py-1 cursor-pointer'>

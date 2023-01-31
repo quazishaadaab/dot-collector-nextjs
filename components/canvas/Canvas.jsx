@@ -4,7 +4,7 @@ function Canvas({url}) {
   const iframe =()=> {
     
     return {
-      __html: `<iframe src=${url} width="1400px" height="850px" border="0" frameborder="0"  ></iframe>`
+      __html: `<iframe src=${url} width="1400px" height="1400" border="0" frameborder="0"  ></iframe>`
     }
   }
 

@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {payload} from "../../pages/home/[home]"
 // import Search from '../../components/search/Search';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
 const Navbar = () => {
 
@@ -20,6 +21,7 @@ const Navbar = () => {
   )
   
 
+  console.log('hare rama ', payload)
 
 
 
@@ -30,11 +32,19 @@ const Navbar = () => {
 <div className={styles.wrapper}>
 
 
-<div className="mb-3 ml-[20%] items-center  pt-4 flex">
+<div className="mb-3 ml-[20%] items-center   pt-4 flex">
 <NoSSR_Search  searchtype={'peer'} roomid={null}/>
 {/* <SearchIcon/> */}
-
 </div>
+<Image 
+layout='fixed'
+width={50}
+height={50}
+className="rounded-xl"
+src={`${payload?.userPhoto}`}
+/>
+
+
 
 {/* <div className={styles.items}>
 

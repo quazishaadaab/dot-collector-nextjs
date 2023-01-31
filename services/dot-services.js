@@ -17,14 +17,7 @@ return http.get("/launch")
 
 }
 
-//we do not use this in our app, delete
-postDotInUser(data){
-
-    return http.put("/postDotInUser",data)
-
-}
-
-
+//useless
 getAvgDot(data){
 
     return http.post('/getAvgDot',data)
@@ -40,6 +33,18 @@ getDotCollection(data){
     return http.post("/getDotCollection",data)
 
 }
+
+updateRatings(data){
+
+    return http.put("/updateRatings",data)
+}
+
+getRatings(data){
+
+    return http.post("/getRatings",data)
+}
+
+
 
 
 }

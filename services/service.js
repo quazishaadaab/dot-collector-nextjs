@@ -98,6 +98,18 @@ updateDotInRoom(data){
 }
 
 
+//made mistake of naming this wrong. Below api call should have this name
+getAttributes(data){
+
+return http.post("/getAttributeByAuthorId",data)
+
+}
+
+getAttributeByAttributeId(data){
+
+return http.post("/getAttribute",data)
+
+}
 
 
 

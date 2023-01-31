@@ -28,6 +28,8 @@ export const SidebarOption = ({ title, roomid, addChannel, Icon }) => {
 
   const { userid, userPhoto, username } = retriveUserState()
   const [roomName,setRoomName]=React.useState('')
+
+  const [uniqueid,setUniqueid] = React.useState('')
   const [type,setRoomType]=React.useState('')
 
   const [email,setEmail]= React.useState('')
@@ -41,6 +43,7 @@ export const SidebarOption = ({ title, roomid, addChannel, Icon }) => {
   const [attributeOptions,setAttributeOptions]= React.useState([])
 
   //temporary solution to the populate intial array problem
+  //delete this , not needed
   let rows= 7
   let cols =7
   
@@ -86,6 +89,7 @@ const closeHandler2 = () => {
 
    //this is the new room id generated everytime new room is created. this is different from the roomid being passed as a prop
   let unique_id = uuid();
+  setUniqueid(unique_id)
 
     if (roomName && unique_id && type) {
 
@@ -105,11 +109,10 @@ const closeHandler2 = () => {
 
       const initialGridArray = generateInitialEmptyDotArray()
 
-      await DataService.updateDotInRoom({ roomid: unique_id , dot: initialGridArray })
+      // await DataService.updateDotInRoom({ roomid: unique_id , dot: initialGridArray })
 
       await axios.put(`${BASE_BACKEND}/postAttributeIdInRoom`,{roomid:unique_id,attributeid:attributeid})
 
-      axios.post(`${BASE_BACKEND}/sendEmailInvite`,{email:email, roomlink:`${FRONT_END}/rooms/${unique_id}`})  
 
     }
   }
@@ -149,7 +152,7 @@ function handleRoomType(Event){
 
 
 const selectAttributeOptions=async()=>{
-  const attributeOptions =await axios.post(`${BASE_BACKEND}/getAttributeByUserId`,{userid:userid})
+  const attributeOptions =await DataService.getAttributes({userid:userid})
   setAttributeOptions(attributeOptions?.data)
 }
 
@@ -286,7 +289,7 @@ console.log('alpha',Event.target.value)
       <Button auto flat color="error" onClick={closeHandler}>
         Close
       </Button>
-      <Button auto onClick={ ()=>{handler2(); closeHandler()}}>
+      <Button auto onClick={ ()=>{handler2(); closeHandler(); addRoom()}}>
         Create
       </Button>
     </Modal.Footer>
@@ -343,8 +346,8 @@ Invitation sent
         Close
       </Button>
       <Button auto onClick={ ()=>{
-        addRoom();
-        setEmail('');
+      axios.post(`${BASE_BACKEND}/sendEmailInvite`,{email:email, roomlink:`${FRONT_END}/rooms/${uniqueid}`})  
+      setEmail('');
          const emailInput = document.getElementById('emailinput');
          emailInput.value='';
          document.getElementById('invitation_sent').hidden=false

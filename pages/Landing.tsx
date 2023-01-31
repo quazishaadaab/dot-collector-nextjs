@@ -7,6 +7,7 @@ import dot from "../public/dot.png"
 import Slider from '../components/Slider'
 import { Button, Grid } from "@nextui-org/react";
 import { Text } from "@nextui-org/react";
+import Login from './login/Login'
 
 function Landing() {
 
@@ -23,7 +24,6 @@ function Landing() {
 
 
         <div className='h-full w-full '>
-
 <div className=" h-[15%] w-full p-3 rounded-3x flex relative ml-20">
 
 {/* header */}
@@ -68,7 +68,7 @@ function Landing() {
                 </div> */}
                                  <div className="text-2xl  text-left font-[200]">A people analytics tool that measures peer skills, makes capabilities transparent, and ranks strengths/weaknessses.</div>
 
-                </div>
+                </div> 
 
 
                 <div className='h-[80%] w-[70%]  mt-30 ml-8 mr-8 '>

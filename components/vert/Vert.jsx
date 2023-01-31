@@ -86,7 +86,7 @@ useEffect(()=>{
   const retriveAttributes = async () => {
     if (attributeid) {
       const { data } = await axios.post(`${BASE_BACKEND}/getAttribute`, { attributeid: attributeid })
-      setNumberofAttributes(data[0]?.attributes?.length)
+      setNumberofAttributes(data?.attributes?.length)
     }
   }
 
@@ -164,7 +164,7 @@ useEffect(()=>{
           
 
 
-            <div className={` xl:pl-[5.5rem] xl:pr-1 2xl:pl-28 2xl:pr-3  ${gap}`} onClick={()=>{setSpeaker(data?.userid)}}>
+            <div className={` xl:pl-[5.5rem]  xl:pr-1 2xl:pl-28 2xl:pr-3  ${gap}`} onClick={()=>{setSpeaker(data?.userid)}}>
 
               <div className={styles.overlap}>
 
@@ -173,11 +173,12 @@ useEffect(()=>{
 
               <Badge content="speaker" color="error"  placement="top-right" className={`${width_height} rounded-3xl `} onClick={()=>{setSpeaker(data?.userid)}}>
               <Avatar
+                              src={data?.userPhoto} 
+
                 bordered
                 squared
                 size={badge_size}
                 color="error"
-                src={data.userPhoto} 
                 pointer
               />
             </Badge>

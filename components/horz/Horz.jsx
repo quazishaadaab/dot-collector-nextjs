@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 
 import styles from "../../styles/horz.module.scss"
 import { BASE_BACKEND } from '../../utils/deployments'
-import { Tooltip } from '@nextui-org/react'
+import { Avatar, Badge, Tooltip } from '@nextui-org/react'
 import { useRouter } from "next/router";
 import DataService from "../../services/service";
 
@@ -47,7 +47,7 @@ useEffect(() => {
 const retriveAttributes=async()=>{
   if(attributeid){
     const {data} =await axios.post(`${BASE_BACKEND}/getAttribute`,{attributeid:attributeid}) 
-      setAttributes(data[0]?.attributes)
+      setAttributes(data?.attributes)
   }
 }
 
@@ -83,16 +83,33 @@ let text_gap='xl:pl-[100px]  2xl:pl-[125px]'
 
 if(attribute?.length>13 || number_of_users>8){
   text_font='xl w-[50px] xl: h-[50px] xl:mr-[7px]    2xl:w-[50px] 2xl: h-[50px] 2xl:mr-[7px] text-[13px] '
-  text_gap='xl:pl-[50px] 2xl:pl-[80px]'
+  text_gap='xl:pl-[45px] 2xl:pl-[80px]'
 }
 
 {/* <Tooltip placement="bottom"  content={attributes} color='invert' rounded >
 
 </Tooltip> */}
 
+  //default dimensions for avatars if load is small
+  let margin_top ='mt-3'
+  let gap='pb-5'
+  let width_height='w-20 h-20'
+  let badge_size = 'xl'
+  let badge_text_size = 'md'
+
+  //scaled down dimensions for avatar if load is high
+  if (number_of_users>8 || attribute?.length >13 ){
+    margin_top ='mt-3'
+    gap='pb-[1.1rem]'
+    width_height='w-10 h-10 '
+    badge_size='lg'
+    badge_text_size = 'xs'
+
+
+  }
 
   return (
-    <div className={`bg-white flex ${text_gap} pt-2 mb-2`}>
+    <div className={`flex ${text_gap} pt-2 mb-4 bg-gray-100`}>
 {/* 
 <Tooltip placement="bottom" content={'Dashboard'} color='invert' rounded >
 <div className="bg-red-300 w-[80px] h-[30px] rounded ml-2 p-1 pl-4 text-sm truncate max-w-4 ">sdsdsdsd</div>
@@ -103,13 +120,30 @@ if(attribute?.length>13 || number_of_users>8){
 
 
 
+
 {attribute?.map(attributes=>{
 
 
 return(
 
 <Tooltip placement="bottom" content={attributes} color='invert' rounded >
-<div className={` ${text_font} rounded  text-center text-clip font-light  bg-clip-text  text-transparent   bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 tracking-tighter`}>{attributes}</div>
+<div className={` ${text_font} rounded  text-center text-clip font-light  bg-clip-text  text-transparent   bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 tracking-tighter`}>
+
+
+<Badge content={attributes} isSquared size={badge_text_size} color="secondary"  placement="top-right" className={`${width_height} rounded-3xl `} >
+              <Avatar
+                bordered
+                squared
+                size={badge_size}
+                text={400}
+                color="secondary"
+                src='https://api.time.com/wp-content/uploads/2019/08/better-smartphone-photos.jpg'
+                pointer
+              />
+            </Badge>
+
+
+</div>
 
     </Tooltip>
 

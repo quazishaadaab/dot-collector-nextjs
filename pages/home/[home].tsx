@@ -1,10 +1,11 @@
 import * as React from "react";
 import styles from "../../styles/home.module.scss"
-import Sidebar from "../../components/sidebar/Sidebar";
 import SlimSidebar from "../../components/sidebar/SlimSidebar";
 
 import Navbar from "../../components/navbar/Navbar";
 import Widget from "../../components/widget/Widget";
+import AttributeSelector from "../../components/widget/AttributeSelector";
+
 import Featured from "../../components/featured/Featured";
 import Chart from "../../components/chart/Chart";
 import { useRouter } from "next/router";
@@ -23,8 +24,10 @@ import {store_two} from "../../services/redux/store"
 // import Search from "../../components/search/Search"; 
 import dynamic from "next/dynamic";
 
-import CalculateAvgDot from "../../services/calculateAvgDot"
+// import CalculateAvgDot from "../../services/calculateAvgDot"
 
+import {calculateAvgDot} from "../testing/javascript.js" 
+import { getSession, useSession } from "next-auth/react";
 
 
 type id ={
@@ -39,9 +42,14 @@ type Payload ={
   userPhoto: String,
   loggedIn: boolean,
 }
+
+
+
+
 let payload :Payload;
 
 
+//I think we should remove userid below because we are not passing anything to it
 const Home = ({userid}:id ) => {
 
 const data_unparsed : any = window.localStorage.getItem('persist:root')
@@ -58,6 +66,11 @@ const router= useRouter()
   loggedIn: false,
 }
 
+//this sets the current select attribute for the widget to show
+const [selectedAttribute,setSelectedAttribute] = React.useState("")
+
+
+
 React.useEffect(() => {
 
   // router.push( `/home/${userid}`)
@@ -67,6 +80,9 @@ React.useEffect(() => {
   const data_parsed = JSON.parse(data_unparsed)
   const user_data = JSON.parse(data_parsed?.user)
 
+  //update the widgets/ratings everytime home page renders
+
+// calculateAvgDot(userid)
 
 
  
@@ -80,24 +96,20 @@ const e=()=>{
 
 console.log(store_two.getState())
 
-
-
-
-
-
-
-
  //     userid: user_data?.userid,
 // username: user_data?.username as String,
 // userPhoto: user_data?.userPhoto as String,
 // loggedIn: true,
 // console.log(userid)
 
+//i dont think we are using this.maybe useless
 const {query:{homeid}} = useRouter()
 
 // add query verification logic to make sure the query id is a valid userid in the database.
 // ....
-console.log(router.query?.home)
+console.log(router.query?.home) 
+
+
 
 
 
@@ -106,12 +118,20 @@ console.log(router.query?.home)
 // )
 
 
+const childToParent=(selected:string)=>{
+setSelectedAttribute(selected)
+}
+
+
+
+
+
 
   return (
 
     <div className={styles.home}>
 
-<CalculateAvgDot/>
+{/* <CalculateAvgDot/> */}
 
 
 <SlimSidebar/>
@@ -123,12 +143,17 @@ console.log(router.query?.home)
 {/* <NoSSR_Search searchtype={'peer'} roomid={null}/> */}
 
 
-<div className="px-2">
+        <div className="px-2">
+
+
+
+        <AttributeSelector userid={user_data?.userid} childToParent={childToParent}/>
+
         <div className={styles.widgets}>
-          <Widget type="user" />
-          <Widget type="order" />
+          <Widget type="user" selectedAttribute={selectedAttribute} />
+          {/* <Widget type="order" />
           <Widget type="earnings" />
-          <Widget type="balance" />
+          <Widget type="balance" /> */}
         </div>
         </div>
 
