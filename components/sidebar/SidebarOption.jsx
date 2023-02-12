@@ -6,7 +6,7 @@ import { useParams } from 'react-router'
 import axios from "axios"
 import styles from "../../styles/SidebarOption.module.scss"
 
-import { Modal, Input, Checkbox} from "@nextui-org/react";
+import { Modal, Input, Checkbox, Badge, Avatar} from "@nextui-org/react";
 
 import DataService from "../../services/service.js"
 import DataService2 from "../../services/dot-services.js"
@@ -156,10 +156,6 @@ const selectAttributeOptions=async()=>{
   setAttributeOptions(attributeOptions?.data)
 }
 
-const meta=(Event)=>{
-console.log('alpha',Event.target.value)
-
-}
 
 
 
@@ -185,14 +181,23 @@ console.log('alpha',Event.target.value)
     <>
     {/* will set visibility of modal to true if add channel exists(opening the modal),
     ? other wise select room */}
-    <div className='w-full items-center  mb-9 px-1.5 py-1 cursor-pointer' onClick={addChannel ? handler: selectRoom}>
+    <div className='w-full items-center  mb-9 px-0 py-1 cursor-pointer' onClick={addChannel ? handler: selectRoom}>
       {/* {Icon}
 
       <span>{title}</span> */}
 
     <Tooltip placement="right" content={title} color='invert' rounded >
-{Icon}
-                      </Tooltip>
+    <Badge content={title} color="success" placement="bottom-right" size="sm"  horizontalOffset="45%"
+            verticalOffset="0%">
+          <Avatar
+            bordered
+            squared
+            size="lg"
+            color="success"   
+           
+            src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+          />
+        </Badge>                      </Tooltip>
 
 
     </div>

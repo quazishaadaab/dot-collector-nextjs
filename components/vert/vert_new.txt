@@ -146,7 +146,7 @@ useEffect(()=>{
 
 
     return (
-      <div className={`ml-[-95px] ${margin_top}`}>
+      <div  className={`ml-[-95px] flex`}>
 
 
 
@@ -164,7 +164,7 @@ useEffect(()=>{
           
 
 
-            <div className={` xl:pl-[5.5rem]  xl:pr-1 2xl:pl-28 2xl:pr-3  ${gap}`} onClick={()=>{setSpeaker(data?.userid)}}>
+            <div className={` xl:pl-[5.5rem]  xl:pr-1 2xl:pl-28 2xl:pr-3 bg-red-300  ${gap}`} onClick={()=>{setSpeaker(data?.userid)}}>
 
               <div className={styles.overlap}>
 
@@ -189,11 +189,8 @@ useEffect(()=>{
             </Grid>
             ):(
               <Grid>
-      
-          
-
-
-              <div className={` cursor-pointer xl:pl-[5.5rem] xl:pr-1 2xl:pl-28 2xl:pr-3 ${gap}`} onClick={()=>{setSpeaker(data?.userid)}}>
+  
+              <div className={` cursor-pointer xl:pl-[5.5rem] xl:pr-1 2xl:pl-28 2xl:pr-3 ${gap} bg-red-300 `} onClick={()=>{setSpeaker(data?.userid)}}>
   
   
                 {/* <img src={data.userPhoto} alt="" className={`${width_height} rounded-3xl`} /> */}
@@ -238,3 +235,5 @@ useEffect(()=>{
 }
 
 export default Vert
+
+

@@ -170,7 +170,7 @@ const elements={
 
 <div className='flex-col flex justify-between w-[100px]'>
    <span className='font-bold text-[14px] text-[#a0a0a0]'>thinking</span>
-   <span className='text-[28px] font-[300]'>{res.toFixed(2)}</span>
+   <span className='text-[28px] font-[300]'>{res?.toFixed(2)}</span>
    <span className={styles.link}></span>
  </div>
 <div className='flex-col flex justify-between'>

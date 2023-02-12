@@ -87,7 +87,6 @@ if(attribute?.length>13 || number_of_users>8){
 }
 
 {/* <Tooltip placement="bottom"  content={attributes} color='invert' rounded >
-
 </Tooltip> */}
 
   //default dimensions for avatars if load is small
@@ -113,7 +112,6 @@ if(attribute?.length>13 || number_of_users>8){
 {/* 
 <Tooltip placement="bottom" content={'Dashboard'} color='invert' rounded >
 <div className="bg-red-300 w-[80px] h-[30px] rounded ml-2 p-1 pl-4 text-sm truncate max-w-4 ">sdsdsdsd</div>
-
     </Tooltip>
  <div className="bg-red-300 w-[80px] h-[30px] rounded ml-2 p-1 pl-4 text-sm  truncate max-w-4 ">Helsdsdsdslo</div>
  <div className="bg-red-300 w-[80px] h-[30px] rounded ml-2 p-1 pl-4 text-sm truncate max-w-4 ">Helsdsdsdlo</div> */}
@@ -167,5 +165,3 @@ console.log(attributes)
 }
 
 export default Horz
-
-

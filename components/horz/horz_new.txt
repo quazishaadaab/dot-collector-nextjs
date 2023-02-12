@@ -211,12 +211,12 @@ const user_data = JSON.parse(data_parsed?.user)
 {/* margin top used to be 14 but we changed due to the buttons */}
 
 <div className=" h-[100%] w-[90%]  rounded-3xl ml-4 mt-16 mb-3 ">
-<Horz attributeid={attribute_id} roomid={roomId} />
 
+<Vert roomid={roomId} attributeid={attribute_id} />
 
 
   <div className=" bg-gray-100 border  flex h-[100%] w-[100%] rounded-3xl   mt-1 mb-5 ">
-  <Vert roomid={roomId} attributeid={attribute_id} />
+  <Horz attributeid={attribute_id} roomid={roomId} />
 
     {/* <div id='dangerousHtml' className=' w-auto' dangerouslySetInnerHTML={ iframe()} /> */}
 
