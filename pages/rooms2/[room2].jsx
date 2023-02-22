@@ -1,5 +1,7 @@
+import { useRouter } from 'next/router';
 import React from 'react'
 import SlimSidebar from "../../components/sidebar/SlimSidebar";
+import { FRONT_END} from "../../utils/deployments";
 
 function Rooms2({url}) {
 
@@ -11,13 +13,15 @@ React.useEffect(() => {
 }, [sidebar])
 
 // if toggle is true, then display sidebar. Else , dont display
+const router = useRouter()
 
+const roomId = router.query?.room2
 
 
   const iframe =()=> {
     
     return {
-      __html: `<iframe src=${"http://localhost:3000/rooms/13916c5c-aab3-4ae0-a292-a3ff6fe780f1"} width="100%" overflow="scroll" height="100%" border="0" frameborder="0" position="absolute"  ></iframe>`
+      __html: `<iframe src="${FRONT_END}/rooms/${roomId}"} width="100%" overflow="scroll" height="100%" border="0" frameborder="0" position="absolute"  ></iframe>`
     }
   }
 

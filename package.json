@@ -8,6 +8,8 @@
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "@apollo/react-hooks": "^4.0.0",
+    "@dicebear/collection": "^5.3.4",
+    "@dicebear/core": "^5.3.4",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^5.8.4",
@@ -55,6 +57,6 @@
   },
   "browser": {
     "child_process": false,
-    "fs":false
+    "fs": false
   }
 }

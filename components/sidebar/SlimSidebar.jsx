@@ -40,7 +40,7 @@ import MarkUnreadChatAltIcon from '@mui/icons-material/MarkUnreadChatAlt';
 import PersonIcon from '@mui/icons-material/Person';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 import DescriptionIcon from '@mui/icons-material/Description';
-import { PlusOne } from "@mui/icons-material";
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
 const SlimSidebar = () => {
 
@@ -183,7 +183,7 @@ signOut({callbackUrl:'http://localhost:3000/login/Login'})
     
           <hr></hr>
 
-          <SidebarOption  addChannel title='Add Room' Icon={<PlusOne sx={{ color: '#EA1E0A', fontSize:"30px" }}  />} />
+          <SidebarOption  addChannel title='Add Room' Icon={<AddBoxIcon sx={{ color: '#EA1E0A', fontSize:"40px" }}  />} />
           <hr></hr>
 
 {Rooms?.map((r)=>(

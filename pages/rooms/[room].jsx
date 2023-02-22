@@ -203,7 +203,7 @@ const user_data = JSON.parse(data_parsed?.user)
     <>
 
 
-{loggedIn?( <div className="w-full h-full flex ">
+{loggedIn?( <div className="w-full h-full flex   ">
 
 
 {/* width used to be 90 here, be decreased to accomodate for the post button */}
@@ -215,7 +215,7 @@ const user_data = JSON.parse(data_parsed?.user)
 
 
 
-  <div className=" bg-gray-100 border  flex h-[100%] w-[100%] rounded-3xl   mt-1 mb-5 ">
+  <div className=" bg-gray-100 border  flex h-[auto] w-[auto] rounded-3xl   mt-1 mb-5 ">
   <Vert roomid={roomId} attributeid={attribute_id} />
 
     {/* <div id='dangerousHtml' className=' w-auto' dangerouslySetInnerHTML={ iframe()} /> */}
@@ -223,6 +223,7 @@ const user_data = JSON.parse(data_parsed?.user)
     {/* {()=>{setInterval(()=>{setHtml(url)},2000)}} */}
 
     {/* {setHtml(url)} */}
+
 
     <Canvas url={url} />
 

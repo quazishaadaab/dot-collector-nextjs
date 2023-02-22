@@ -4,15 +4,16 @@ function Canvas({url}) {
   const iframe =()=> {
     
     return {
-      __html: `<iframe src=${url} width="1400px" height="1400" border="0" frameborder="0"  ></iframe>`
+      __html: `<iframe src=${url} width="2000px" height="2000px" border="0" frameborder="0"  ></iframe>`
     }
   }
 
-    
+
   
 return(
 <>
-<div id='dangerousHtml' className=' w-auto ' dangerouslySetInnerHTML={ iframe()} />
+
+<div id='dangerousHtml' className=' w-auto h-auto' dangerouslySetInnerHTML={ iframe() }   />
 </>
 )
 

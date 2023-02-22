@@ -4,13 +4,13 @@ import * as React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import DataService from "../../services/service";
-import styles from "../../styles/horz.module.scss"
+import styles from "../../styles/vert.module.scss"
 import { BASE_BACKEND } from '../../utils/deployments';
 
 
 let number_of_users = 0
 
-const Horz = ({ roomid, attributeid }) => {
+const Vert = ({ roomid, attributeid }) => {
 
 
 
@@ -109,19 +109,20 @@ useEffect(()=>{
 
 
   //default dimensions for avatars if load is small
-  // let margin_top ='mt-3'
-  // let gap='pr-5'
-  // let width_height='w-20 h-20'
-  // let badge_size = '2xl'
+  let margin_top ='mt-3'
+  let gap='pb-5'
+  let width_height='w-20 h-20'
+  let badge_size = '2xl'
 
 
   //scaled down dimensions for avatar if load is high
-    let margin_top ='mt-3'
-    let gap='pr-[1.1rem]'
-    let width_height='w-10 h-10 '
-    let badge_size='md'
+  if (number_of_users>8 || NumberofAttributes >13 ){
+    margin_top ='mt-3'
+    gap='pb-[1.1rem]'
+    width_height='w-10 h-10 '
+    badge_size='md'
 
-
+  }
 
 
   // we want to click on a user/member and then set them as the speaker of the room
@@ -143,16 +144,9 @@ useEffect(()=>{
   }
 
 
-  // let text_font ='w-[80px] h-[50px] mr-[20px] text-sm '
-  // let text_gap='xl:pl-[100px]  2xl:pl-[125px]'
-  
-    let text_font='xl w-[50px] xl: h-[50px] xl:mr-[7px]    2xl:w-[50px] 2xl: h-[50px] 2xl:mr-[7px] text-[13px] '
-    let text_gap='pl-5 2xl:pl-[80px]'
-
-  
 
     return (
-      <div className={`ml-[6.5rem] 2xl:ml-[7.5rem] flex  `}>
+      <div className={`ml-8 flex ${margin_top}`}>
 
 
 
@@ -170,7 +164,7 @@ useEffect(()=>{
           
 
 
-            <div className={` cursor-pointer xl:pl-[.7rem] xl:pr-1 2xl:pl-[.7rem] 2xl:pr-2 ${text_gap}`} onClick={()=>{setSpeaker(data?.userid)}}>
+            <div className={` xl:pl-[5.5rem]  xl:pr-1 2xl:pl-28 2xl:pr-3  ${gap}`} onClick={()=>{setSpeaker(data?.userid)}}>
 
               <div className={styles.overlap}>
 
@@ -188,7 +182,6 @@ useEffect(()=>{
                 pointer
               />
             </Badge>
-            
 
             </div>
             
@@ -200,7 +193,7 @@ useEffect(()=>{
           
 
 
-              <div className={` cursor-pointer xl:pl-[.7rem] xl:pr-1 2xl:pl-[.7rem] 2xl:pr-2 ${text_gap}`} onClick={()=>{setSpeaker(data?.userid)}}>
+              <div className={` cursor-pointer xl:pl-[5.5rem] xl:pr-1 2xl:pl-28 2xl:pr-3 ${gap}`} onClick={()=>{setSpeaker(data?.userid)}}>
   
   
                 {/* <img src={data.userPhoto} alt="" className={`${width_height} rounded-3xl`} /> */}
@@ -218,7 +211,6 @@ useEffect(()=>{
                 />
 
               </Badge>
-         
               
               </div>
               </Grid>
@@ -245,4 +237,4 @@ useEffect(()=>{
 
 }
 
-export default Horz
+export default Vert

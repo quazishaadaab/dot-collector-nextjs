@@ -20,6 +20,9 @@ import { Tooltip } from '@nextui-org/react'
 
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 
+import { createAvatar } from '@dicebear/core';
+import { botttsNeutral } from '@dicebear/collection';
+
 export const SidebarOption = ({ title, roomid, addChannel, Icon }) => {
 
   const router = useRouter()
@@ -42,24 +45,7 @@ export const SidebarOption = ({ title, roomid, addChannel, Icon }) => {
 
   const [attributeOptions,setAttributeOptions]= React.useState([])
 
-  //temporary solution to the populate intial array problem
-  //delete this , not needed
-  let rows= 7
-  let cols =7
-  
-  //this is just a temporary solution, our future solution wont need this so this may be deleted .
-  const generateInitialEmptyDotArray= () => {
 
-    let grid = new Array(rows)
-
-    for (let i = 0; i < rows; i++) {
-      for (let j = 0; j < cols; j++) {
-        grid[i] = new Array(j)
-      }
-    }
-
-    return grid 
-}
 
 
 const [visible, setVisible] = React.useState(false);
@@ -107,7 +93,6 @@ const closeHandler2 = () => {
 
       await DataService.postUsersInRoom({ userid: userid, userPhoto: userPhoto, username: username, roomid: unique_id })
 
-      const initialGridArray = generateInitialEmptyDotArray()
 
       // await DataService.updateDotInRoom({ roomid: unique_id , dot: initialGridArray })
 
@@ -131,7 +116,7 @@ const closeHandler2 = () => {
   const selectRoom = () => {
 
     // change this upon deployment
-    router.push(`/rooms/${roomid}`)
+    router.push(`/rooms2/${roomid}`)
 
 
   }
@@ -159,13 +144,21 @@ const selectAttributeOptions=async()=>{
 
 
 
-
-
   React.useEffect(() => {
 
     // insert post peers api
     selectAttributeOptions()
-
+    const avatar = createAvatar(botttsNeutral, {
+      "seed": "FEB12",
+      "backgroundType": [
+        "solid",
+        "gradientLinear"
+      ],
+      "backgroundRotation": []
+    });
+    const svg = avatar.toString();
+    
+    
    
 
   }, [])
@@ -187,19 +180,26 @@ const selectAttributeOptions=async()=>{
       <span>{title}</span> */}
 
     <Tooltip placement="right" content={title} color='invert' rounded >
-    <Badge content={title} color="success" placement="bottom-right" size="sm"  horizontalOffset="45%"
+
+      {addChannel ?(  <Badge content={title} color="warning" placement="bottom-right" size="xs"  horizontalOffset="45%"
+            verticalOffset="0%">
+          {Icon}
+
+        </Badge> ):(  <Badge content={title} color="success" placement="bottom-right" size="xs"  horizontalOffset="45%"
             verticalOffset="0%">
           <Avatar
             bordered
             squared
             size="lg"
             color="success"   
-           
-            src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+            src={`https://api.dicebear.com/5.x/bottts-neutral/svg?seed=${roomid}&backgroundType=solid,gradientLinear&backgroundRotation[]`}
+            
           />
-        </Badge>                      </Tooltip>
 
-
+        </Badge> ) 
+}
+         </Tooltip>
+      
     </div>
 
 

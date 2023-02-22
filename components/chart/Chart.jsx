@@ -1,71 +1,107 @@
 import styles from "../../styles/chart.module.scss"
 import React, { PureComponent } from 'react';
 import { Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
-import { useDispatch, useSelector } from "react-redux";
 
 import DataService2 from "../../services/dot-services";
+
+import DataService from "../../services/service";
 import {payload} from "../../pages/home/[home]"
 
-import {widget_payload} from "../../services/calculateAvgDot"
 
-const Chart = ({title,aspect}) => {
+const Chart = ({title,aspect,selectedAttribute}) => {
 
 
 
   
 
-
-const [avgDot,setAvgDot] = React.useState([1,2,3,4,5])
-
+  const [ratings, setRatings] = React.useState([])
+  const [avgDot, setAvgDot] = React.useState([])
+  const [names,setNames] = React.useState([])
+  const [data,setData]=React.useState([])
 
 
 React.useEffect(() => {
- retriveAvgDot(userDoc)
-}, [avgDot,payload?.userid])
+
+  //no need to update ratings, the update has been called by widget
+  // retriveRatings({ userid: payload?.userid })
+  // // setAvgDot(widget_payload)
+  //  getName()
+
+   execute({ userid: payload?.userid })
+
+  }, [payload?.userid,selectedAttribute])
 
 
-const userDoc={
-  userid:payload?.userid
+const execute=async(userdoc)=>{
+  let namelist=[]
+  let avgDotList=[]
+
+  const attributeNames= await DataService.getAttributeByAttributeId({"attributeid":selectedAttribute})
+  setNames(attributeNames.data.attributes) 
+
+  namelist=attributeNames.data.attributes
+
+  await DataService2.getRatings(userdoc).then(result => {
+    setRatings(result?.data)
+    const rat =  result?.data
+    //we need a search engine to match the selectedAttribute with the attributes in ratings
+    //something like elastic search. we are now using a brute force method which is only ok for a small sample size
+    //if/once selectedAttribute is chosen/appears, then run the search.
+    selectedAttribute && (
+    rat?.map(res=>{
+      if(selectedAttribute && res?.attribute_id==selectedAttribute){
+        // setAvgDot(res?.attribute_id)
+        avgDotList=res?.dot
+        setAvgDot(res?.dot)
+      }
+    })
+    )
+     //data is an array of each attribute_id
+})
+
+let temp_data=[]
+
+if(selectedAttribute){
+for (let i=0;i<namelist.length;i++){
+  const doc = {
+    "subject": namelist[i],
+    "A":avgDotList[i]
+  }
+  temp_data.push(doc)
 }
 
-
-const retriveAvgDot=async (userdoc)=>{
-  await DataService2.getAvgDot(userdoc).then(r=>{
-    setAvgDot(r.data)
-
-  })
-setAvgDot(widget_payload)
+setData(temp_data)
 }
 
-
+}
 
     
-  const data = [
-    {
-      "subject": "Thinking ",
-      "A": avgDot[0],
-      // "B": 110,
-      "fullMark": 10
-    },
-    {
-      "subject": "Creativity",
-      "A": avgDot[1],
-      // "B": 130,
-      "fullMark": 10
-    },
-    {
-      "subject": "Assertiveness",
-      "A": avgDot[2],
-      // "B": 130,
-      "fullMark": 10
-    },
-    {
-      "subject": "Empathy",
-      "A": avgDot[3],
-      // "B": 100,
-      "fullMark": 10
-    }
-  ]
+  // const data = [
+  //   {
+  //     "subject": "Thinking ",
+  //     "A": avgDot[0],
+  //     // "B": 110,
+  //     "fullMark": 10
+  //   },
+  //   {
+  //     "subject": "Creativity",
+  //     "A": avgDot[1],
+  //     // "B": 130,
+  //     "fullMark": 10
+  //   },
+  //   {
+  //     "subject": "Assertiveness",
+  //     "A": avgDot[2],
+  //     // "B": 130,
+  //     "fullMark": 10
+  //   },
+  //   {
+  //     "subject": "Empathy",
+  //     "A": avgDot[3],
+  //     // "B": 100,
+  //     "fullMark": 10
+  //   }
+  // ]
   return (
     <div className={styles.chart}>
 
