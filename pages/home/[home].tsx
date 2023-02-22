@@ -26,7 +26,6 @@ import dynamic from "next/dynamic";
 
 // import CalculateAvgDot from "../../services/calculateAvgDot"
 
-import {calculateAvgDot} from "../testing/javascript.js" 
 import { getSession, useSession } from "next-auth/react";
 
 
