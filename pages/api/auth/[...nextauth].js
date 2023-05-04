@@ -7,8 +7,8 @@ export default NextAuth({
 //   problem with the .env.local file
   providers: [
     GoogleProvider({
-      clientId: `176309719056-rr2qb5ifakhgcs8eqbtc11fiqph82mn9.apps.googleusercontent.com` ,
-      clientSecret: `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`
+      clientId: `345433280881-t1blvfjsg7rjsq7corcbevgu0eplbg5r.apps.googleusercontent.com` ,
+      clientSecret: `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`
     })
   ],
       secret: 'IamVeryHandsome' 
