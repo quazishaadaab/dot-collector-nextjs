@@ -180,7 +180,6 @@ const user_data = JSON.parse(data_parsed?.user)
       DataService2.updateDotInUser({userid:speakerid,roomid:roomId,dot:retrivedDotArray,attribute_id:attribute_id})
 
     })
-
   }
 
 

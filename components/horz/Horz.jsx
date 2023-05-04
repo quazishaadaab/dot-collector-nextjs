@@ -152,7 +152,7 @@ useEffect(()=>{
   
 
     return (
-      <div className={`ml-[6.5rem] 2xl:ml-[7.5rem] flex  `}>
+      <div className={`ml-[7rem] 2xl:ml-[8rem] flex  `}>
 
 
 
@@ -170,7 +170,7 @@ useEffect(()=>{
           
 
 
-            <div className={` cursor-pointer xl:pl-[.7rem] xl:pr-1 2xl:pl-[.7rem] 2xl:pr-2 ${text_gap}`} onClick={()=>{setSpeaker(data?.userid)}}>
+            <div className={` cursor-pointer xl:pl-[.8rem] xl:pr-1 2xl:pl-[.8rem] ${text_gap}`} onClick={()=>{setSpeaker(data?.userid)}}>
 
               <div className={styles.overlap}>
 
@@ -200,7 +200,7 @@ useEffect(()=>{
           
 
 
-              <div className={` cursor-pointer xl:pl-[.7rem] xl:pr-1 2xl:pl-[.7rem] 2xl:pr-2 ${text_gap}`} onClick={()=>{setSpeaker(data?.userid)}}>
+              <div className={` cursor-pointer xl:pl-[.8rem] xl:pr-1 2xl:pl-[.8rem]  ${text_gap}`} onClick={()=>{setSpeaker(data?.userid)}}>
   
   
                 {/* <img src={data.userPhoto} alt="" className={`${width_height} rounded-3xl`} /> */}
