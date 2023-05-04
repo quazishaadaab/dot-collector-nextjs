@@ -1,14 +1,14 @@
 
 
 //https://salty-tor-00815.herokuapp.com
-// http://localhost:8000
-const BASE_BACKEND = "http://localhost:8001"
+// http://localhost:8001
+const BASE_BACKEND = "https://base-backend.fly.dev"
 
 
 
 //https://sleepy-dawn-45361.herokuapp.com
 // http://localhost:2000
-const CANVAS_BACKEND = "http://localhost:2000"
+const CANVAS_BACKEND = "https://backend-static-canvas.fly.dev"
 
 
 // http://localhost:3000
