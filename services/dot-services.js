@@ -1,6 +1,6 @@
 import http from "./http-common-2.js" ;
 
-class DataService{
+class DataService2{
 
 
 
@@ -17,13 +17,7 @@ return http.get("/launch")
 
 }
 
-postDotInUser(data){
-
-    return http.put("/postDotInUser",data)
-
-}
-
-
+//useless
 getAvgDot(data){
 
     return http.post('/getAvgDot',data)
@@ -40,7 +34,19 @@ getDotCollection(data){
 
 }
 
+updateRatings(data){
+
+    return http.put("/updateRatings",data)
+}
+
+getRatings(data){
+
+    return http.post("/getRatings",data)
+}
+
+
+
 
 }
 
-export default new DataService();
+export default new DataService2();

@@ -4,6 +4,14 @@ class DataService{
 
 
     // room api
+
+getRoomData(data){
+    return http.post("/getRoomById",data)
+}
+
+
+
+
 createRoom(data){
 return http.post("/postRooms",data);
 
@@ -13,6 +21,8 @@ getAllRooms(){
 
     return http.get("/getAllRooms");
 }
+
+//useless
 
 sendRoomId(data){
 return http.post("/getRoomId",data)
@@ -53,10 +63,20 @@ getUsersInRoom(data){
 }
 
 
+getAllRoomsByUserId(data){
+return http.post("/getAllRoomsByUserId",data)
+}
+
+deleteUsersInRoom(data){
+
+    return http.put("/deleteUsersInRoom",data)
+}
+
+
 postUsersInRoom(data){
 
     return http.put("/postUsersInRoom",data)
-
+    
 }
 
 postCreatorInRoom(data){
@@ -78,6 +98,18 @@ updateDotInRoom(data){
 }
 
 
+//made mistake of naming this wrong. Below api call should have this name
+getAttributes(data){
+
+return http.post("/getAttributeByAuthorId",data)
+
+}
+
+getAttributeByAttributeId(data){
+
+return http.post("/getAttribute",data)
+
+}
 
 
 

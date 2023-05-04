@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: any) {
 <PersistGate loading ={null} persistor={persistor}>
       <SessionProvider session={session}>
              {/* makes whole app scrollable and grey */}
-        <div className="h-screen overflow-y-scroll bg-white">
+        <div className="h-screen overflow-y-scroll ">
 
           <Component {...pageProps} />
         </div>

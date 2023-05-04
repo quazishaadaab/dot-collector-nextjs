@@ -11,6 +11,19 @@ import React, { useEffect } from "react";
     import { registerStyles } from "@emotion/utils";
     import { useSelector } from "react-redux";
 
+    import {logout} from "../../services/redux/userSlice.js"
+
+    import { Modal, Input, Row, Checkbox, Button, Text } from "@nextui-org/react";
+
+
+
+
+import { FRONT_END } from "../../utils/deployments";
+import { useRouter } from "next/router";
+import Image from "next/image";
+
+
+
      
     type user_data = {
         name: String;
@@ -25,14 +38,34 @@ import React, { useEffect } from "react";
         loggedIn: boolean;
       };
       
-function Login() {
+function Login({secondLogin}:any) {
 
 
       const dispatch = useDispatch();
       // const  {user}  = useSelector((state: any) => state?.user);
       const { data: session } = useSession();
+
+      // const [currentUser,setCurrentUser] = React.useState<string>()
+
+
+
       let sessionDoc: sessionDoc;
-    
+      const {asPath}= useRouter()
+      const router = useRouter()
+
+      // useEffect(() => {
+      //   let redirectLink = `${FRONT_END}/home/${sha(`${currentUser}`)}`
+         
+      //   if(secondLogin){
+      //    redirectLink =`${FRONT_END}${asPath}`
+      //   }
+      //   window.location.href = redirectLink;
+
+
+      // }, [currentUser])
+      
+
+
       useEffect(() => {
         if (session) {
           sessionDoc = {
@@ -41,6 +74,12 @@ function Login() {
             userPhoto: session?.user?.image as String,
             loggedIn: true,
           };
+
+          //this will register authenticated user into Redux, create a user document in mongo(if already exists, then it wont), and it 
+          //will redirect user to customized hompage
+
+          //the only bug here is that it goes back to the login page, and then redirects for a short 1s interval.
+          register()
         }
         console.log(sessionDoc);
       }, [session?.user?.email]);
@@ -70,33 +109,54 @@ function Login() {
       //   })
     
       // }
-    
-      const register = () => {
-        signIn("google", {
-          callbackUrl: `https://dot-collector-nextjs.vercel.app/home/${sha(
-            `${session?.user?.email}`
-          )}`,
-        }).then(async (result) => {
-          const session = await getSession();
+
+      
+     
+
+
+      const register = async() => {
+  // console.log('useSession',session?.user?.email)
+
+  //if first main login, we execute( the one in homepage)
+    let redirectLink = `${FRONT_END}/home/${sha(`${session?.user?.email}`)}`
          
+
+    //if its a login through email or unauthenticated screen, we use second html/css style login setup
+    if(secondLogin){
+     redirectLink =`${FRONT_END}${asPath}`
+    }
+
+// Update Redux and fill it with user data. Rest of app depends on this
           dispatch(
             login({
-              userid: sha(`${session?.user?.email}`),
-              username: session?.user?.name as String,
-              userPhoto: session?.user?.image as String,
+              userid:  sha(`${session?.user?. email}`),
+              username:  session?.user?.name as String,
+              userPhoto:  session?.user?.image as String,
+              email : session?.user?.email as String,
               loggedIn: true,
             })
           );
     
-    
+          //Create a new user and post to mongoDB. If user already exists, mongodb wont create a new document
           const authDoc = {
             userid: sha(`${session?.user?.email}`),
             username: session?.user?.name as String,
             userPhoto: session?.user?.image as String,
+            email : session?.user?.email as String,
+
           };
+
+
+
+          console.log("authdoc",authDoc)
     
           DataService.postUsersInUsers(authDoc);
-        });
+
+          //redirect the user to their customized home page. This may be a 
+          //bug , we may instead use next router
+          window.location.href = redirectLink;
+
+
       };
     
 
@@ -105,6 +165,85 @@ function Login() {
 
 
   return (
+
+<>
+
+{/* if second login is true in the prop,then we show the second login( the special login for users that have clicked a link in their email) */}
+{/* otherwise, if secondlogin is empty or false, then we just show the normal login upon startup */}
+{secondLogin?(
+
+<div >
+ 
+
+      <Modal
+        width="700px"
+        closeButton
+        blur
+        open={true}
+        preventClose
+        aria-labelledby="modal-title"
+      >
+        <Modal.Header>
+          <Text id="modal-title" size={25}>
+            Login with any account to  {``}
+            <Text b size={25}>
+            access this room
+            </Text>
+          </Text>
+        </Modal.Header>
+
+
+        <Modal.Body>
+
+        <div className='w-[30%] h-[95%]  items-center ml-56 '>
+<img  className='h-full w-full cursor-pointer' onClick={(e)=>{signIn("google")}} src="https://icones.pro/wp-content/uploads/2021/02/google-icone-symbole-logo-png.png"></img>
+</div>
+          {/* <Input
+            clearable
+            bordered
+            fullWidth
+            color="primary"
+            size="lg"
+            placeholder="Email"
+            // contentLeft={<Mail fill="currentColor" />}
+          />
+          <Input
+            clearable
+            bordered
+            fullWidth
+            color="primary"
+            size="lg"
+            placeholder="Password"
+            // contentLeft={<Password fill="currentColor" />}
+          /> */}
+
+          <Row justify="space-between">
+          </Row>
+
+          <Row justify="space-between">
+          </Row>
+          <Row justify="space-between">
+          </Row>
+      
+        </Modal.Body>
+
+
+        <Modal.Footer>
+          {/* <Button auto flat color="error" >
+            Close
+          </Button>
+          <Button auto >
+            Sign in
+          </Button> */}
+        </Modal.Footer>
+
+
+      </Modal>
+    </div>
+
+):(
+
+
     <div className='flex h-full w-full max-h-full rounded '>
 
 <div className='md:flex-[67%] 2xl:flex-[74%] bg-slate-100 h-full rounded pl-7  '> <img className='h-full w-[90%]  p-32 md:p-16' src="https://demos.themeselection.com/marketplace/materio-mui-react-nextjs-admin-template/demo-1/images/pages/auth-v2-login-illustration-light.png"></img> </div>
@@ -126,7 +265,17 @@ function Login() {
 
 
 <div className='w-[30%] h-[95%]  items-center  '>
-<img  className='h-full w-full cursor-pointer' onClick={register} src="https://icones.pro/wp-content/uploads/2021/02/google-icone-symbole-logo-png.png"></img>
+
+  
+  <img  className='h-full w-full cursor-pointer' 
+
+
+onClick={(e)=>{
+signIn("google") ;
+}}
+
+src="https://icones.pro/wp-content/uploads/2021/02/google-icone-symbole-logo-png.png"></img>
+
 </div>
 
 
@@ -148,13 +297,11 @@ function Login() {
   <button type="submit"  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
 </form>
 
-
-
 </div>
-
-
-
     </div>
+
+)}
+</>
   )
 }
 
