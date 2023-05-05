@@ -17,7 +17,7 @@ import Image from 'next/image';
 const Navbar = () => {
 
   const NoSSR_Search = dynamic(
-    ()=> import('../../components/search/Search'),{ssr:false}
+    ()=> import('../search/Search'),{ssr:false}
   )
   
 
