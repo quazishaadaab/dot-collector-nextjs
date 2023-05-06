@@ -51,7 +51,7 @@ function Landing() {
           Get Started
         </Button></div> */}
 
-        <Button shadow size="lg" color="gradient" auto onClick={()=>{signIn("google")}}>
+        <Button shadow size="lg" color="gradient" auto onClick={()=>{signIn()}}>
           Get Started
         </Button></div>
         
