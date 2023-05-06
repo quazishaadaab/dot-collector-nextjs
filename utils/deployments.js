@@ -17,3 +17,5 @@ const FRONT_END = "https://dotcollector.ca"
 export {BASE_BACKEND}
 export {CANVAS_BACKEND}
 export {FRONT_END}
+
+// "next": "^12.2.4",
