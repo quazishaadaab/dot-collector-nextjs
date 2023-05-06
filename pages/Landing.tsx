@@ -47,6 +47,7 @@ function Landing() {
 
 <div className="ml-[80%] mt-5  absolute "> 
 
+console.log(process.env.NEXTAUTH_URL)
 
 {/* <Button shadow size="lg" color="gradient" auto onClick={()=>{location.href = "/login/Login";}}>
           Get Started
