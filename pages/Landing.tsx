@@ -37,7 +37,8 @@ function Landing() {
       width={150}
       height={250}
       className=''
-      objectFit='contain'
+      style={{objectFit:"contain"}}
+
     />
 
 <div className="mt-4 ml-3 "><Text  size={20}>features</Text></div>
@@ -93,8 +94,15 @@ function Landing() {
 
 
                 <div className='h-[80%] w-[70%]  mt-30 ml-8 mr-8 '>
-                    <Image src={room} layout='responsive' objectFit='contain' className='rounded-3xl' />
+                    <Image
+      src={room}
+      alt="Picture of the author"
+      width={150}
+      height={250}
+      className='rounded-3xl'
+      style={{objectFit:"contain"}}
 
+    />
                 </div>
                
 
