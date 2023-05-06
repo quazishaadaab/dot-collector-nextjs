@@ -51,9 +51,11 @@ function Landing() {
           Get Started
         </Button></div> */}
 
-        <Button shadow size="lg" color="gradient" auto onClick={()=>{signIn()}}>
+        <Button shadow size="lg" color="gradient" auto href={`/api/auth/signin`} onClick={(e)=>{ e.preventDefault();signIn()}}>
           Get Started
         </Button></div>
+
+    
         
 
 
