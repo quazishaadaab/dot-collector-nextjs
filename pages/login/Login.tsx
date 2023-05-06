@@ -15,8 +15,7 @@ import React, { useEffect } from "react";
 
     import { Modal, Input, Row, Checkbox, Button, Text } from "@nextui-org/react";
 
-
-
+ 
 
 import { FRONT_END } from "../../utils/deployments";
 import { useRouter } from "next/router";

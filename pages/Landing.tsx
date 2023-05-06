@@ -8,6 +8,7 @@ import Slider from '../components/Slider'
 import { Button, Grid } from "@nextui-org/react";
 import { Text } from "@nextui-org/react";
 import Login from './login/Login'
+import { getSession, signIn, signOut, useSession } from "next-auth/react";
 
 function Landing() {
 
@@ -46,9 +47,16 @@ function Landing() {
 <div className="ml-[80%] mt-5  absolute "> 
 
 
-<Button shadow size="lg" color="gradient" auto onClick={()=>{location.href = "/login/Login";}}>
+{/* <Button shadow size="lg" color="gradient" auto onClick={()=>{location.href = "/login/Login";}}>
+          Get Started
+        </Button></div> */}
+
+        <Button shadow size="lg" color="gradient" auto onClick={()=>{signIn("google")}}>
           Get Started
         </Button></div>
+        
+
+
 
 </div>
 
