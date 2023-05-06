@@ -11,6 +11,13 @@ export default NextAuth({
       clientSecret: `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`
     })
   ],
-      secret: process.env.NEXTAUTH_SECRET
+      // secret: process.env.NEXTAUTH_SECRET
+
+      callbacks: {
+        async jwt({ token }) {
+          token.userRole = "admin"
+          return token
+        },
+      },
 
 })
