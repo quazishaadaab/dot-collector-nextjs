@@ -59,6 +59,46 @@ const App: NextPage = () => {
               >
                 Sign in
               </a>
+         {!userid ? (
+          
+         <Landing/>
+    
+         ) : ( 
+          <>
+          <Home userid={userData} /> 
+
+         
+      {/* <Home userid={userid}/> */}
+          {/* <Home userid={userid} /> */}
+            {/* <Routes> */}
+              {/* <Route path="/">
+                <Route index element={<Home userid={userid} />}/>
+                <Route path="login" element={<Login />} />
+                <Route path=":id" element={<Home userid={userid} />} /> */}
+
+                {/* <Route path="users">
+                  <Route index element={<List />} />
+                  <Route path=":userId" element={<List />} />
+                </Route> */}
+
+                {/* <Route path="products">
+                  <Route index element={<List />} /> */}
+                  {/* <Route path="new" element={<Search />} /> */}
+                {/* </Route> */}
+
+                {/* <Route path="rooms">
+                  <Route path=":roomId" element={<Rooms unique_id={uid} />} />
+                </Route>
+              </Route>
+            </Routes> */}
+
+
+
+
+          </>
+        )} 
+
+
 
 
     </>
