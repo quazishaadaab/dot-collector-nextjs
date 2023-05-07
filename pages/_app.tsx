@@ -13,27 +13,20 @@ let persistor = persistStore(store)
 function MyApp({ Component, pageProps: { session, ...pageProps } }: any) {
   return (
     // need to wrap apollo for graphql to work( apollo connect our graphql endpoint)
-
-
-<SessionProvider session={session}>
+<Provider store={store}>
+<PersistGate loading ={null} persistor={persistor}>
+      <SessionProvider session={session}>
              {/* makes whole app scrollable and grey */}
         <div className="h-screen overflow-y-scroll ">
 
           <Component {...pageProps} />
         </div>
       </SessionProvider>
+      </PersistGate>
+      </Provider>
+
   );
 }
 
 export default MyApp;
 
-{/* <Provider store={store}>
-<PersistGate loading ={null} persistor={persistor}>
-<SessionProvider session={session}> */}
-{/* makes whole app scrollable and grey */}
-{/* <div className="h-screen overflow-y-scroll "> */}
-{/* <Component {...pageProps} />
-        </div>
-      </SessionProvider>
-      </PersistGate>
-      </Provider> */}
