@@ -36,7 +36,7 @@ export const authOptions = {
       clientSecret: `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`,
     })
   ],
-  secret:"Hello"
+  secret:process.env.NEXT_PUBLIC_SECRET
   // callbacks: {
   //   async jwt({ token }) {
   //     token.userRole = "admin"
