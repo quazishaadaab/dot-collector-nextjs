@@ -37,8 +37,8 @@ function Landing() {
       width={150}
       height={250}
       className=''
-      style={{objectFit:"contain"}}
-
+      layout='responsive' 
+      objectFit='contain'
     />
 
 <div className="mt-4 ml-3 "><Text  size={20}>features</Text></div>
@@ -100,8 +100,8 @@ function Landing() {
       width={150}
       height={250}
       className='rounded-3xl'
-      style={{objectFit:"contain"}}
-
+      layout='responsive' 
+      objectFit='contain'
     />
                 </div>
                
