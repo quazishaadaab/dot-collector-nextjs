@@ -28,6 +28,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { SessionProvider } from "next-auth/react";
 import {payload} from "./home/[home]"
 import Landing from './Landing';
+import { getSession, signIn, signOut, useSession } from "next-auth/react";
 
 const App: NextPage = () => {
 
@@ -49,8 +50,17 @@ const App: NextPage = () => {
   // }, []);
   return (
     <>
-
+<a
+                href={`/api/auth/signin`}
+                onClick={(e) => {
+                  e.preventDefault()
+                  signIn()
+                }}
+              >
+                Sign in
+              </a>
          {!userid ? (
+          
          <Landing/>
     
          ) : ( 
