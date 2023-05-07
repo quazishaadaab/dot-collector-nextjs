@@ -14,6 +14,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: any) {
   return (
     // need to wrap apollo for graphql to work( apollo connect our graphql endpoint)
 <Provider store={store}>
+<PersistGate loading ={null} persistor={persistor}>
       <SessionProvider session={session}>
              {/* makes whole app scrollable and grey */}
         <div className="h-screen overflow-y-scroll ">
@@ -21,6 +22,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: any) {
           <Component {...pageProps} />
         </div>
       </SessionProvider>
+      </PersistGate>
       </Provider>
 
   );
