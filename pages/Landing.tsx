@@ -7,7 +7,7 @@ import dot from "../public/dot.png"
 import Slider from '../components/Slider'
 import { Button, Grid } from "@nextui-org/react";
 import { Text } from "@nextui-org/react";
-import Login from './login/Login'
+//import Login from './login/Login'
 import { getSession, signIn, signOut, useSession } from "next-auth/react";
 
 function Landing() {
