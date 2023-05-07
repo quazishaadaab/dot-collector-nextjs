@@ -16,6 +16,6 @@
     "incremental": true,
     "typeRoots": [ "nptypings", "node_modules/@types"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "services/redux/store.js", "services/redux/userSlice.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "services/redux/store.js", "services/redux/userSlice.js", "pages/attributes/Attributes.js", "pages/rooms2/[room2].js"],
   "exclude": ["node_modules","node_modules","typings"]
 }
