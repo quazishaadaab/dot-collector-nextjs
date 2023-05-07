@@ -36,12 +36,13 @@ export const authOptions = {
       clientSecret: `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`,
     })
   ],
-  callbacks: {
-    async jwt({ token }) {
-      token.userRole = "admin"
-      return token
-    },
-  },
+  secret:"Hello"
+  // callbacks: {
+  //   async jwt({ token }) {
+  //     token.userRole = "admin"
+  //     return token
+  //   },
+  // },
 }
 
 export default NextAuth(authOptions)
