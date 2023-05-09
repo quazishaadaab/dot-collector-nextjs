@@ -23,14 +23,27 @@ import Rooms from "./rooms/[room]";
 import { v4 as uuid } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 // import Search from "../components/search/Search"
+import {gapi} from 'gapi-script'
 
 
 import { SessionProvider } from "next-auth/react";
 import {payload} from "./home/[home]"
 import Landing from './Landing';
 import { getSession, signIn, signOut, useSession } from "next-auth/react";
-
+import {GoogleLogin} from "react-google-login"
 const App: NextPage = () => {
+
+
+    React.useEffect(() => {
+  
+        const start=()=>{
+          gapi.client.init({
+            clientId: '345433280881-t1blvfjsg7rjsq7corcbevgu0eplbg5r.apps.googleusercontent.com',
+            scope:""
+          })
+        }
+        gapi.load('client:auth2',start)
+      }, [])
 
 
   const uid = uuid();
@@ -50,7 +63,7 @@ const App: NextPage = () => {
   // }, []);
   return (
     <>
-<a
+{/* <a
                 href={`/api/auth/signin`}
                 onClick={(e) => {
                   e.preventDefault()
@@ -58,7 +71,16 @@ const App: NextPage = () => {
                 }}
               >
                 Sign in
-              </a>
+              </a> */}
+            
+
+<GoogleLogin
+  clientId='345433280881-t1blvfjsg7rjsq7corcbevgu0eplbg5r.apps.googleusercontent.com'
+  buttonText='login'
+  cookiePolicy={'single_host_origin'}
+  isSignedIn={true}
+  onSuccess={(res)=>{console.log(res)}}
+/>;
          {!userid ? (
           
          <Landing/>

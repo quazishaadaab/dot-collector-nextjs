@@ -21,9 +21,10 @@ import { FRONT_END } from "../../utils/deployments";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
+import {gapi} from "gapi-script"
 
-
-     
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import {GoogleLogin} from "react-google-login"
     type user_data = {
         name: String;
         image: String;
@@ -66,11 +67,12 @@ function Login({secondLogin}:any) {
 
 
       useEffect(() => {
+
         if (session) {
           sessionDoc = {
             userid: sha(`${session?.user?.email}`),
             username: session?.user?.name as String,
-            userPhoto: session?.user?.image as String,
+            userPhoto: session?.user?.image as String, //need to change this to imageUrl 
             loggedIn: true,
           };
 
@@ -196,6 +198,8 @@ function Login({secondLogin}:any) {
 
         <div className='w-[30%] h-[95%]  items-center ml-56 '>
 <img  className='h-full w-full cursor-pointer' onClick={(e)=>{signIn("google")}} src="https://icones.pro/wp-content/uploads/2021/02/google-icone-symbole-logo-png.png"></img>
+
+
 </div>
           {/* <Input
             clearable
@@ -265,7 +269,8 @@ function Login({secondLogin}:any) {
 
 <div className='w-[30%] h-[95%]  items-center  '>
 
-  
+
+
   <img  className='h-full w-full cursor-pointer' 
 
 

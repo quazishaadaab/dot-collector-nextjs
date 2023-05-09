@@ -12,7 +12,7 @@ import { getSession, signIn, signOut, useSession } from "next-auth/react";
 
 function Landing() {
 
-    const { data: session, status } = useSession()
+   // const { data: session, status } = useSession()
 
     let hello ; 
     console.log(process.env.NEXTAUTH_URL)
