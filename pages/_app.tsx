@@ -5,7 +5,6 @@ import {Provider} from "react-redux"
 import {store} from "../services/redux/store"; 
 import {PersistGate} from 'redux-persist/integration/react'
 import {persistStore} from "redux-persist"
-import { GoogleOAuthProvider } from '@react-oauth/google';
 import React from "react";
 
 
