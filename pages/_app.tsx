@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: any) {
 
 
 
-
+//hey
 
   return (
     // need to wrap apollo for graphql to work( apollo connect our graphql endpoint)
