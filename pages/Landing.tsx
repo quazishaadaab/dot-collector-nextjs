@@ -10,13 +10,22 @@ import { Text } from "@nextui-org/react";
 //import Login from './login/Login'
 import { getSession, signIn, signOut, useSession } from "next-auth/react";
 
+import { createClient } from '@supabase/supabase-js'
+import { Auth } from '@supabase/auth-ui-react'
+import { ThemeSupa } from '@supabase/auth-ui-shared'
+
 function Landing() {
 
    // const { data: session, status } = useSession()
-
-    let hello ; 
-    console.log(process.env.NEXTAUTH_URL)
-
+   const supabase = createClient('https://ncejgpigjoseupkyrswi.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5jZWpncGlnam9zZXVwa3lyc3dpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODI3OTMzNzgsImV4cCI6MTk5ODM2OTM3OH0.EzCN2SJQxHhL6JwwoiHoCWoTqHsT_NvRA7WfK60sJyM')
+const[session,setSession]=React.useState('')
+   const signIn=async()=>{
+    const {data,error} = await supabase.auth.signInWithOAuth({
+        provider:'google'
+        
+      })
+      
+  }
     return (
 
 
@@ -50,24 +59,15 @@ function Landing() {
 <div className="ml-[80%] mt-5  absolute "> 
 
 
-{/* <Button shadow size="lg" color="gradient" auto onClick={()=>{location.href = "/login/Login";}}>
-          Get Started
-        </Button></div> */}
-
-        <Button shadow size="lg" color="gradient" auto href={`/api/auth/signin`} onClick={(e)=>{signIn()}}>
+<Button shadow size="lg" color="gradient" auto onClick={()=>{location.href = "/login/Login";}}>
           Get Started
         </Button></div>
 
-        <a
-                href={`/api/auth/signin`}
-                onClick={(e) => {
-                  e.preventDefault()
-                  signIn()
-                }}
-              >
-                Sign in
-              </a>
-    
+        
+{/*     
+<Button shadow size="lg" color="gradient" auto onClick={()=>{signIn()}}>
+          Get Started
+        </Button></div> */}
         
 
 

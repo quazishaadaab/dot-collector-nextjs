@@ -23,7 +23,8 @@ import Rooms from "./rooms/[room]";
 import { v4 as uuid } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 // import Search from "../components/search/Search"
-import {gapi} from 'gapi-script'
+//import { gapi } from 'gapi-cjs'
+import { gapi, loadAuth2 } from 'gapi-script'
 
 
 import { SessionProvider } from "next-auth/react";
@@ -31,21 +32,16 @@ import {payload} from "./home/[home]"
 import Landing from './Landing';
 import { getSession, signIn, signOut, useSession } from "next-auth/react";
 import {GoogleLogin} from "react-google-login"
+import dynamic from 'next/dynamic';
+
+import { createClient } from '@supabase/supabase-js'
+import { Auth } from '@supabase/auth-ui-react'
+import { ThemeSupa } from '@supabase/auth-ui-shared'
+
 const App: NextPage = () => {
 
 
-    React.useEffect(() => {
-  
-        const start=()=>{
-          gapi.client.init({
-            clientId: '345433280881-t1blvfjsg7rjsq7corcbevgu0eplbg5r.apps.googleusercontent.com',
-            scope:""
-          })
-        }
-        gapi.load('client:auth2',start)
-      }, [])
-
-
+    
   const uid = uuid();
 
   //specify the name of the slice( in this case it is user)
@@ -57,6 +53,8 @@ const App: NextPage = () => {
   //very important to add the question mark here. if we dont, then a bug will occur since the question mark verifies if the user object exits or not before accessing the userid label
 
   let userid = payload?.userid;
+
+
 
   // useEffect(() => {
   //  setUserData(userid);
@@ -74,16 +72,9 @@ const App: NextPage = () => {
               </a> */}
             
 
-<GoogleLogin
-  clientId='345433280881-t1blvfjsg7rjsq7corcbevgu0eplbg5r.apps.googleusercontent.com'
-  buttonText='login'
-  cookiePolicy={'single_host_origin'}
-  isSignedIn={true}
-  onSuccess={(res)=>{console.log(res)}}
-/>;
          {!userid ? (
-          
-         <Landing/>
+
+        <Landing/>
     
          ) : ( 
           <>

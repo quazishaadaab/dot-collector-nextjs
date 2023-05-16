@@ -25,141 +25,113 @@ import {gapi} from "gapi-script"
 
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import {GoogleLogin} from "react-google-login"
-    type user_data = {
-        name: String;
-        image: String;
-        email: String;
-      };
-      
-      type sessionDoc = {
-        userid: String;
-        username: String;
-        userPhoto: String;
-        loggedIn: boolean;
-      };
+
+
+import { createClient } from '@supabase/supabase-js'
+import { Auth } from '@supabase/auth-ui-react'
+import { ThemeSupa } from '@supabase/auth-ui-shared'
+
+
+
+type user_data = {
+  name: String;
+  image: String;
+  email: String;
+};
+
+type sessionDoc = {
+  userid: String;
+  username: String;
+  userPhoto: String;
+  loggedIn: boolean;
+};
+interface session{
+ user_metadata:{name:String,email:String,picture:String}
+}
+
       
 function Login({secondLogin}:any) {
+  const supabase = createClient('https://ncejgpigjoseupkyrswi.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5jZWpncGlnam9zZXVwa3lyc3dpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODI3OTMzNzgsImV4cCI6MTk5ODM2OTM3OH0.EzCN2SJQxHhL6JwwoiHoCWoTqHsT_NvRA7WfK60sJyM')
+
+  const [session,setSession] = React.useState<session>()
+  const [token,setToken] = React.useState('')
+  const dispatch = useDispatch();
+  let sessionDoc: sessionDoc;
+  const {asPath}= useRouter()
 
 
-      const dispatch = useDispatch();
-      // const  {user}  = useSelector((state: any) => state?.user);
-      const { data: session } = useSession();
+  useEffect(() => {
 
-      // const [currentUser,setCurrentUser] = React.useState<string>()
+    //const rawSession :any = localStorage.getItem('sb-ncejgpigjoseupkyrswi-auth-token')
+    //const session : session = JSON.parse(rawSession)
+          setToken(window.location.hash.substr(14))
+
+     // alert(JSON.parse(sesh)?.user?.id)
+     if (token) {
+       const decodeToken = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
+       setSession(decodeToken)
+
+       sessionDoc = {
+         userid: sha(`${decodeToken?.user_metadata?.email}`),
+         username: decodeToken?.user_metadata?.name as String,
+         userPhoto: decodeToken?.user_metadata?.picture as String, //need to change this to imageUrl 
+         loggedIn: true,
+       };
+       //this will register authenticated user into Redux, create a user document in mongo(if already exists, then it wont), and it 
+       //will redirect user to customized hompage
+
+       //the only bug here is that it goes back to the login page, and then redirects for a short 1s interval.
+       register(decodeToken)
+     }
+     console.log(sessionDoc);
+   }, [token]);
+ 
 
 
-
-      let sessionDoc: sessionDoc;
-      const {asPath}= useRouter()
-      const router = useRouter()
-
-      // useEffect(() => {
-      //   let redirectLink = `${FRONT_END}/home/${sha(`${currentUser}`)}`
-         
-      //   if(secondLogin){
-      //    redirectLink =`${FRONT_END}${asPath}`
-      //   }
-      //   window.location.href = redirectLink;
-
-
-      // }, [currentUser])
+   const register = async(decodeToken:session) => {
+    // console.log('useSession',session?.user?.email)
+  
+    //if first main login, we execute( the one in homepage)
+      let redirectLink = `${FRONT_END}/home/${sha(`${decodeToken?.user_metadata?.email}`)}`
+           
+  
+       //if its a login through email or unauthenticated screen, we use second html/css style login setup
+       if(secondLogin){
+        redirectLink =`${FRONT_END}${asPath}`
+       }
+  
+  // Update Redux and fill it with user data. Rest of app depends on this
+            dispatch(
+              login({
+                userid:  sha(`${decodeToken?.user_metadata?.email}`),
+                username:  decodeToken?.user_metadata?.name as String,
+                userPhoto:  decodeToken?.user_metadata?.picture as String,
+                email : decodeToken?.user_metadata?.email as String,
+                loggedIn: true,
+              })
+            );
       
-
-
-      useEffect(() => {
-
-        if (session) {
-          sessionDoc = {
-            userid: sha(`${session?.user?.email}`),
-            username: session?.user?.name as String,
-            userPhoto: session?.user?.image as String, //need to change this to imageUrl 
-            loggedIn: true,
-          };
-
-          //this will register authenticated user into Redux, create a user document in mongo(if already exists, then it wont), and it 
-          //will redirect user to customized hompage
-
-          //the only bug here is that it goes back to the login page, and then redirects for a short 1s interval.
-          register()
-        }
-        console.log(sessionDoc);
-      }, [session?.user?.email]);
-    
-      // const signIn =()=>{
-      //   auth.signInWithPopup(provider).then(result=>{
-    
-      //     console.log(result)
-      // dispatch(login({
-    
-      //   userid:result.user.uid,
-      //   username:result.user.displayName,
-      //   userPhoto:result.user.photoURL,
-      //   loggedIn:true,
-    
-      // }))
-    
-      // const authDoc={
-      // userid:result.user.uid,
-      // username:result.user.displayName,
-      // userPhoto:result.user.photoURL,
-    
-      // }
-    
-      // DataService.postUsersInUsers(authDoc)
-    
-      //   })
-    
-      // }
-
+            //Create a new user and post to mongoDB. If user already exists, mongodb wont create a new document
+            const authDoc = {
+              userid: sha(`${decodeToken?.user_metadata?.email}`),
+              username: decodeToken?.user_metadata?.name as String,
+              userPhoto: decodeToken?.user_metadata?.picture as String,
+              email : decodeToken?.user_metadata?.email as String,
+  
+            };
+  
+  
+  
+            console.log("authdoc",authDoc)
       
-     
-
-
-      const register = async() => {
-  // console.log('useSession',session?.user?.email)
-
-  //if first main login, we execute( the one in homepage)
-    let redirectLink = `${FRONT_END}/home/${sha(`${session?.user?.email}`)}`
-         
-
-    //if its a login through email or unauthenticated screen, we use second html/css style login setup
-    if(secondLogin){
-     redirectLink =`${FRONT_END}${asPath}`
-    }
-
-// Update Redux and fill it with user data. Rest of app depends on this
-          dispatch(
-            login({
-              userid:  sha(`${session?.user?. email}`),
-              username:  session?.user?.name as String,
-              userPhoto:  session?.user?.image as String,
-              email : session?.user?.email as String,
-              loggedIn: true,
-            })
-          );
-    
-          //Create a new user and post to mongoDB. If user already exists, mongodb wont create a new document
-          const authDoc = {
-            userid: sha(`${session?.user?.email}`),
-            username: session?.user?.name as String,
-            userPhoto: session?.user?.image as String,
-            email : session?.user?.email as String,
-
-          };
-
-
-
-          console.log("authdoc",authDoc)
-    
-          DataService.postUsersInUsers(authDoc);
-
-          //redirect the user to their customized home page. This may be a 
-          //bug , we may instead use next router
-          window.location.href = redirectLink;
-
-
-      };
-    
+            DataService.postUsersInUsers(authDoc);
+  
+            //redirect the user to their customized home page. This may be a 
+            //bug , we may instead use next router
+            window.location.href = redirectLink;
+  
+  
+        };
 
 
 
@@ -168,7 +140,6 @@ function Login({secondLogin}:any) {
   return (
 
 <>
-
 {/* if second login is true in the prop,then we show the second login( the special login for users that have clicked a link in their email) */}
 {/* otherwise, if secondlogin is empty or false, then we just show the normal login upon startup */}
 {secondLogin?(
@@ -274,10 +245,18 @@ function Login({secondLogin}:any) {
   <img  className='h-full w-full cursor-pointer' 
 
 
-onClick={(e)=>{
-signIn("google") ;
-}}
+onClick={async(event)=>{
+  const {data:d1,error:e1} = await supabase.auth.signInWithOAuth({
+    provider:'google',
+    options: {
+      redirectTo: `http://localhost:3000/login/Login/`
+    }
+  })
 
+
+  //window.location.href = `http://localhost3002/home/${data?.session}`;
+
+}}
 src="https://icones.pro/wp-content/uploads/2021/02/google-icone-symbole-logo-png.png"></img>
 
 </div>

@@ -13,7 +13,8 @@ const CANVAS_BACKEND = "https://backend-static-canvas.fly.dev"
 
 // http://localhost:3000
 //https://dot-collector-nextjs.vercel.app/
-const FRONT_END = "https://dotcollector.ca"
+// const FRONT_END = "https://dotcollector.ca"
+const FRONT_END = "http://localhost:3000"
 export {BASE_BACKEND}
 export {CANVAS_BACKEND}
 export {FRONT_END}
