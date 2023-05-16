@@ -249,7 +249,7 @@ onClick={async(event)=>{
   const {data:d1,error:e1} = await supabase.auth.signInWithOAuth({
     provider:'google',
     options: {
-      redirectTo: `http://localhost:3000/login/Login/`
+      redirectTo: `${FRONT_END}/login/Login/`
     }
   })
 
