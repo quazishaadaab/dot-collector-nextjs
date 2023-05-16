@@ -249,7 +249,7 @@ onClick={async(event)=>{
   const {data:d1,error:e1} = await supabase.auth.signInWithOAuth({
     provider:'google',
     options: {
-      redirectTo: `https://AHdots-prod-tau.vercel.app/login/Login`
+      redirectTo: `${FRONT_END}/login/Login/`
     }
   })
 
