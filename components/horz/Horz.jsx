@@ -51,7 +51,7 @@ useEffect(()=>{
 
     //we tried this with speaker==undefined speaker='' , but the best case is nULL. null worked
     if(speaker==null){
-      const {data:{roomdata}} = await axios.post('http://localhost:8000/getRoomById',{roomid:roomid})
+      const {data:{roomdata}} = await axios.post(`${BASE_BACKEND}/getRoomById`,{roomid:roomid})
       setSpeaker(roomdata?.speakerid)
 
     }
