@@ -168,7 +168,18 @@ function Login({secondLogin}:any) {
         <Modal.Body>
 
         <div className='w-[30%] h-[95%]  items-center ml-56 '>
-<img  className='h-full w-full cursor-pointer' onClick={(e)=>{signIn("google")}} src="https://icones.pro/wp-content/uploads/2021/02/google-icone-symbole-logo-png.png"></img>
+<img  className='h-full w-full cursor-pointer' onClick={async(event)=>{
+  const {data:d1,error:e1} = await supabase.auth.signInWithOAuth({
+    provider:'google',
+    options: {
+      redirectTo: `${FRONT_END}/login/Login`
+    }
+  })
+
+
+  //window.location.href = `http://localhost3002/home/${data?.session}`;
+
+}} src="https://icones.pro/wp-content/uploads/2021/02/google-icone-symbole-logo-png.png"></img>
 
 
 </div>

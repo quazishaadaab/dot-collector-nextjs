@@ -29,8 +29,6 @@ const Widget = ({ type ,selectedAttribute}) => {
   const [avgDot, setAvgDot] = React.useState([])
   const [names,setNames] = React.useState([])
 
-
-
   console.log(widget_payload)
 
   React.useEffect(() => {
@@ -88,6 +86,7 @@ const Widget = ({ type ,selectedAttribute}) => {
 
   }
 
+  console.log('melo',names)
 
 
   return (
@@ -125,7 +124,7 @@ for (var i=0;i++;i<4){
 <div className='mr-[20px] flex h-full  p-5 justify-between rounded-3xl bg-white'>
 
 <div className='flex-col flex justify-between w-[100px]'>
-   <span className='font-regular text-[10px] antialiased tracking-tight text-purple-500'>{names[index]}</span>
+   <span className='font-regular text-[10px] antialiased tracking-tight text-purple-500'>{names&& names[index]}</span>
    <span className='text-[28px] font-[300]'>{res}</span>
    <span className={styles.link}></span>
  </div>
