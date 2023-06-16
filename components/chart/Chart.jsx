@@ -13,7 +13,6 @@ const Chart = ({title,aspect,selectedAttribute}) => {
 
 
   
-
   const [ratings, setRatings] = React.useState([])
   const [avgDot, setAvgDot] = React.useState([])
   const [names,setNames] = React.useState([])
@@ -72,7 +71,7 @@ for (let i=0;i<namelist.length;i++){
 
 setData(temp_data)
 }
-
+  
 }
 
     
