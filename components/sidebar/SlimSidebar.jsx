@@ -41,6 +41,14 @@ import PersonIcon from '@mui/icons-material/Person';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 import DescriptionIcon from '@mui/icons-material/Description';
 import AddBoxIcon from '@mui/icons-material/AddBox';
+import { FRONT_END } from '../../utils/deployments';
+
+
+import { createClient } from '@supabase/supabase-js'
+
+import { Auth } from '@supabase/auth-ui-react'
+
+
 
 const SlimSidebar = () => {
 
@@ -131,10 +139,17 @@ const dispatch=useDispatch()
 
 
 
-const logOut=()=>{
+const logOut=async()=>{
 // note that calling the logout reducer will automatically reset/clear the local storage
+
+const supabase = createClient('https://ncejgpigjoseupkyrswi.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5jZWpncGlnam9zZXVwa3lyc3dpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODI3OTMzNzgsImV4cCI6MTk5ODM2OTM3OH0.EzCN2SJQxHhL6JwwoiHoCWoTqHsT_NvRA7WfK60sJyM')
+
 dispatch(logout())
-signOut({callbackUrl:'http://localhost:3000/login/Login'})
+const { error } = await supabase.auth.signOut()
+window.location.href = `${FRONT_END}/login/Login`;
+
+
+// signOut({callbackUrl:`${FRONT_END}/login/Login`})
 
 }
 

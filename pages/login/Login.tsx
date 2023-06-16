@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-    import styles from "../../styles/login.module.scss";
     
     import * as sha from "sha-1";
     
@@ -7,11 +6,7 @@ import React, { useEffect } from "react";
     import { login } from "../../services/redux/userSlice.js";
     import DataService from "../../services/service";
     
-    import { getSession, signIn, signOut, useSession } from "next-auth/react";
-    import { registerStyles } from "@emotion/utils";
-    import { useSelector } from "react-redux";
 
-    import {logout} from "../../services/redux/userSlice.js"
 
     import { Modal, Input, Row, Checkbox, Button, Text } from "@nextui-org/react";
 
@@ -23,14 +18,9 @@ import Image from "next/image";
 
 import {gapi} from "gapi-script"
 
-import { GoogleOAuthProvider } from '@react-oauth/google';
-import {GoogleLogin} from "react-google-login"
-
-
 import { createClient } from '@supabase/supabase-js'
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
-
 
 
 type user_data = {
