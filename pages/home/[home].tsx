@@ -145,7 +145,6 @@ setSelectedAttribute(selected)
         <div className="px-2">
 
 
-
         <AttributeSelector userid={user_data?.userid} childToParent={childToParent}/>
 
         <div className={styles.widgets}>
