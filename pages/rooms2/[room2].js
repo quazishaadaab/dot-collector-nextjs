@@ -2,11 +2,15 @@ import { useRouter } from 'next/router';
 import React from 'react'
 import SlimSidebar from "../../components/sidebar/SlimSidebar";
 import { FRONT_END} from "../../utils/deployments";
+import retriveUserState from "../../utils/userPersist"
+import SecondLogin from "../login/SecondLogin"
 
 function Rooms2({url}) {
 
   //display sidebar true initially
 const [sidebar,setSidebar] = React.useState(true)
+//get login status. if not logged in , secondLogin component will be execute
+const { userid,loggedIn } = retriveUserState()
 
 React.useEffect(() => {
   
@@ -25,7 +29,7 @@ const roomId = router.query?.room2
     }
   }
 
-
+  localStorage.setItem('roomid',roomId)
 
   
   
@@ -33,7 +37,7 @@ return(
 <>
 
 
-
+{loggedIn?(
 <div className="flex w-[100%] h-screen    ">
 
 
@@ -53,9 +57,18 @@ return(
 
 
 <div id='dangerousHtml' className='bg-gray-100 w-[100%] h-screen' dangerouslySetInnerHTML={ iframe()} />
-</div>
+</div>)
+:(
+  //Send the true flag to login to activate teh secondLogin component
+  //Send the roomid to login so secondLogin component can redirect back to our unique room.
+<>
+{()=>{  localStorage.setItem('roomid',roomId)}}
+<SecondLogin roomid={roomId}/></>
 
+)
+}
 </>
+
 )
 
 }
