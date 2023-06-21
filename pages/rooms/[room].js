@@ -62,8 +62,7 @@ const Rooms = (unique_id) => {
   };
   
 
-  const { userid,loggedIn } = retriveUserState()
-console.log(retriveUserState())
+
 
 
   const router = useRouter()
@@ -202,7 +201,7 @@ const user_data = JSON.parse(data_parsed?.user)
     <>
 
 
-{loggedIn?( <div className="w-full h-full flex   ">
+<div className="w-full h-full flex   ">
 
 
 {/* width used to be 90 here, be decreased to accomodate for the post button */}
@@ -299,7 +298,7 @@ Invitation sent
         Close
       </Button>
       <Button auto onClick={ ()=>{
-      axios.post(`${BASE_BACKEND}/sendEmailInvite`,{email:email, roomlink:`${FRONT_END}/rooms/${roomId}`})  
+      axios.post(`${BASE_BACKEND}/sendEmailInvite`,{email:email, roomlink:`${FRONT_END}/rooms2/${roomId}`})  
       setEmail('');
          const emailInput = document.getElementById('emailinput');
          emailInput.value='';
@@ -344,10 +343,7 @@ PostDot
 
 
 
-</div>):(
-
-<><Login secondLogin={true}/></>
-) }
+</div> 
 
    
     </>
