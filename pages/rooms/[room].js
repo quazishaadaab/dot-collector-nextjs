@@ -38,10 +38,15 @@ const Rooms = (unique_id) => {
   // const [data,setData]=React.useState(null)
 
 
+  const [speaker,setSpeakerForRoom]=React.useState(null)
+  const [res,setRes]=React.useState(null)
 
+  const [speaker2,setSpeaker]=React.useState(null)
 
+  var count = 0;
 
   const [canvas, setCanvas] = React.useState('')
+  //maybe useless 
   const [creator, setCreator] = React.useState('')
 
   //this is the chosen attribute id by user( not array of attributes)
@@ -56,12 +61,14 @@ const Rooms = (unique_id) => {
 
   const [visible2, setVisible2] = React.useState(false);
   const handler2 = () => {setVisible2(true); };
+
+
+
   const closeHandler2 = () => {
     setVisible2(false);
     console.log("closed");
   };
   
-
 
 
 
@@ -75,7 +82,7 @@ const Rooms = (unique_id) => {
   const NoSSR_Search = dynamic(
     () => import('../../components/search/Search'), { ssr: false }
   )
-
+// sdsds
 
   console.log(roomId)
 
@@ -108,7 +115,7 @@ const Rooms = (unique_id) => {
 
 
 
-
+//is this useless? what are we using the creator variable for??
   //secondary useEffect for roomData only,dependency is on creator of room
   React.useEffect(() => {
     DataService.getRoomData({ roomid: roomId }).then(async (res) => {
@@ -117,6 +124,19 @@ const Rooms = (unique_id) => {
       setCreator(creatorid)
     })
   }, [creator])
+
+
+  React.useEffect(() => {
+
+    DataService.getRoomData({ roomid: roomId }).then(async (res) => {
+
+      const speakerid = await res?.data?.roomdata?.speakerid
+      setSpeaker(speakerid)
+      setRes(res)
+    })
+
+  }, [roomId,speaker,speaker2,res])
+  
 
   // React.useEffect(()=>{
   //   DataService.getRoomData({roomid:roomId}).then(async(response)=>{
@@ -209,7 +229,7 @@ const user_data = JSON.parse(data_parsed?.user)
 {/* margin top used to be 14 but we changed due to the buttons */}
 
 <div className=" h-[100%] w-[90%]  rounded-3xl ml-4 mt-16 mb-3 ">
-<Horz attributeid={attribute_id} roomid={roomId} />
+<Horz attributeid={attribute_id} roomid={roomId}  setSpeakerForRoom={setSpeakerForRoom}/>
 
 
 
@@ -223,8 +243,8 @@ const user_data = JSON.parse(data_parsed?.user)
     {/* {setHtml(url)} */}
 
 
-    <Canvas url={url} />
-
+    {/* <Canvas key={speaker} url={url} /> */}
+  <Canvas key={speaker2} url={url} />
 
   </div>
 
@@ -298,6 +318,7 @@ Invitation sent
         Close
       </Button>
       <Button auto onClick={ ()=>{
+
       axios.post(`${BASE_BACKEND}/sendEmailInvite`,{email:email, roomlink:`${FRONT_END}/rooms2/${roomId}`})  
       setEmail('');
          const emailInput = document.getElementById('emailinput');
@@ -317,7 +338,7 @@ Invitation sent
         Invite Peers
       </Button>
 
-        <Button onClick={()=>{postDot()}} type="submit" id="addbutton" flat color="success" size={"xs"} auto>
+        <Button onClick={()=>{  count=count+1;      setSpeaker(count)}} type="submit" id="addbutton" flat color="success" size={"xs"} auto>
 PostDot
              </Button>            
           

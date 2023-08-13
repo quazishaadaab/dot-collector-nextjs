@@ -80,7 +80,7 @@ React.useEffect(() => {
   const user_data = JSON.parse(data_parsed?.user)
 
   //update the widgets/ratings everytime home page renders
-
+  DataService2.updateRatings({"userid":userid})
 // calculateAvgDot(userid)
 
 

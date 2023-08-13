@@ -8,9 +8,17 @@ import styles from "../../styles/horz.module.scss"
 import { BASE_BACKEND } from '../../utils/deployments';
 
 
+
+
+import { useRouter } from 'next/router'
+import Loading from '../../pages/loading';
+
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
 let number_of_users = 0
 
-const Horz = ({ roomid, attributeid }) => {
+const Horz = ({ roomid, attributeid, setSpeakerForRoom }) => {
 
 
 
@@ -18,15 +26,12 @@ const Horz = ({ roomid, attributeid }) => {
 
 //we need to initalize the speaker variable to null, or else our setSpeakerOnLoad will not work.
 //
-  const [speaker, setSpeaker] = React.useState(null)
+  const [speaker, setSpeaker] = useState()
 
   const [users, setUsers] = useState([])
   const [NumberofAttributes, setNumberofAttributes] = useState()
 
 
-
-
-     
   useEffect(() => {
 
 
@@ -38,28 +43,33 @@ const Horz = ({ roomid, attributeid }) => {
   }, [users, attributeid, NumberofAttributes])
 
 
+//strictly depends on these two dependencies. If there is no speaker dependency then the initial load of speaker will go away (so horz will not show a red badge). Will show red badge at first then it will go away
+//                                            If there is no roomid , then it will not even load the speaker from the mongo database. Since the api needs roomid as a parameter, it is dependant on roomid.
+useEffect(() => {
 
-
-useEffect(()=>{
   setSpeakerOnLoad()
-  insertSpeakerInRooms(speakerDoc)
+}, [speaker,roomid])
 
-},[speaker])
+
+//strictly depends on speaker and nothing but speaker. Since it needs the value of speaker for the api, it is a dependency. 
+//If you put roomid as a dependency then it will post a null speaker in mongodb database, causing a bug.
+useEffect(() => {
+  insertSpeakerInRooms()
+}, [speaker])
+
+
 
 
   const setSpeakerOnLoad=async()=>{
 
     //we tried this with speaker==undefined speaker='' , but the best case is nULL. null worked
-    if(speaker==null){
+      if(speaker==undefined || speaker==null){
       const {data:{roomdata}} = await axios.post(`${BASE_BACKEND}/getRoomById`,{roomid:roomid})
-      setSpeaker(roomdata?.speakerid)
-
-    }
-
-
-    // DataService.getRoomData({roomid:roomid}).then((res)=>{
-    //   setSpeaker(res?.data?.roomdata?.speakerid)  
-    //     })}
+      
+       setSpeaker(roomdata?.speakerid)
+       setSpeakerForRoom(roomdata?.speakerid)
+      }
+ 
   }
 
 
@@ -126,21 +136,22 @@ useEffect(()=>{
 
   // we want to click on a user/member and then set them as the speaker of the room
 
-  const insertSpeakerInRooms = async (data) => {
+  const insertSpeakerInRooms = async () => {
 
     // extremely important to ask if speaker or user exists for post requests(injections), and then submit data. Otherwise, null will be submitted
     // we could also do speaker?.() but for some reason it return an uncaught error?
-    if (speaker != null) {
-      (await DataService.postSpeakerInRoom(data))
+    const speakerDoc = {
+      roomid: roomid,
+  
+      speakerid: speaker,
+  
+    }
+    if (speaker != null || speaker != undefined || speaker!='') {
+      (await DataService.postSpeakerInRoom(speakerDoc))
     }
   }
 
-  const speakerDoc = {
-    roomid: roomid,
 
-    speakerid: speaker,
-
-  }
 
 
   // let text_font ='w-[80px] h-[50px] mr-[20px] text-sm '
@@ -154,8 +165,7 @@ useEffect(()=>{
     return (
       <div className={`ml-[7rem] 2xl:ml-[8rem] flex  `}>
 
-
-
+<Loading/>
 
         {userData?.map(data => {
 
@@ -170,14 +180,14 @@ useEffect(()=>{
           
 
 
-            <div className={` cursor-pointer xl:pl-[.8rem] xl:pr-1 2xl:pl-[.8rem] ${text_gap}`} onClick={()=>{setSpeaker(data?.userid)}}>
+            <div className={` cursor-pointer xl:pl-[.8rem] xl:pr-1 2xl:pl-[.8rem] ${text_gap}`} onClick={()=>{setSpeaker(data?.userid);setSpeakerForRoom(data?.userid)} }>
 
               <div className={styles.overlap}>
 
               {/* <img src={data.userPhoto} alt="" className={`${width_height} rounded-3xl`} /> */}
 
 
-              <Badge content="speaker" color="error"  placement="top-right" className={`${width_height} rounded-3xl `} onClick={()=>{setSpeaker(data?.userid)}}>
+              <Badge content="speaker" color="error"  placement="top-right" className={`${width_height} rounded-3xl `} onClick={()=>{setSpeaker(data?.userid); setSpeakerForRoom(data?.userid)}}>
               <Avatar
                               src={data?.userPhoto} 
 
@@ -200,7 +210,7 @@ useEffect(()=>{
           
 
 
-              <div className={` cursor-pointer xl:pl-[.8rem] xl:pr-1 2xl:pl-[.8rem]  ${text_gap}`} onClick={()=>{setSpeaker(data?.userid)}}>
+              <div className={` cursor-pointer xl:pl-[.8rem] xl:pr-1 2xl:pl-[.8rem]  ${text_gap}`} onClick={()=>{setSpeaker(data?.userid);setSpeakerForRoom(data?.userid)}}>
   
   
                 {/* <img src={data.userPhoto} alt="" className={`${width_height} rounded-3xl`} /> */}
@@ -232,7 +242,6 @@ useEffect(()=>{
           )
 
         })}
-
 
 
 

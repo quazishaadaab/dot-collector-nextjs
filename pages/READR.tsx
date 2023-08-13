@@ -17,6 +17,9 @@ import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { FRONT_END } from '../utils/deployments'
 
+import ReactAudioPlayer from 'react-audio-player';
+
+
 function Landing() {
 
     // const { data: session, status } = useSession()
@@ -78,24 +81,22 @@ function Landing() {
 
 
 
-                    <h1 className='text-7xl  text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-[700] tracking-tighter ml-[18%] mb-[3%] xl:ml-[20%] 2xl:ml-[25%]'> People analytics on demand</h1>
+                    <h1 className='text-7xl  text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-[700] tracking-tighter  mb-[3%] 2xl:ml-[45%]'> READr</h1>
 
-                    <div className="text-xl font-[200] text-gray-700  xl:ml-[30%] 2xl:ml-[35%] tracking-tight">The first Continous Feedback , Continous Improvement Platform</div>
-                    {/* Reactivate when iframe is ready and doesnt need authentication */}
+                    <div className="text-xl font-[200] text-gray-700  2xl:ml-[30%] tracking-tight">READr is the first audiobook platform that provides multi-voice actors for each character in a novel</div>
+
+{/* Reactivate when iframe is ready and doesnt need authentication */}
                     {/* <div id='dangerousHtml' className='  w-[70%] h-[61.8%] ml-[15%] overflow-hidden	' dangerouslySetInnerHTML={iframe()} /> */}
-                    <div className="w-[70%] h-[61.8%] ml-[15%] overflow-hidden mt-10">
-                    <Image
-                                    src="/demo.png"
-                                    alt="Picture of the author"
-                                    width={160}
-                                    height={100}
-                                    className='rounded-3xl'
-                                    layout='responsive'
-                                    objectFit='contain'
+                    <div id='dangerousHtml' className='  w-[70%] h-[61.8%] 2xl:ml-[42%] 2xl:mt-10 overflow-hidden	'>
+                    <ReactAudioPlayer
+  src="my_audio_file.ogg"
+  autoPlay
+  controls
+/>
 
-                                />
-                                </div>
-                    {/* <h1 className='text-7xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-[700] mb-8 tracking-tighter  '> People analytics on demand</h1> */}
+                    </div>
+               
+                    {/* <h1 className='text-7xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-[700] mb-8 tracking-tighter  '> READr</h1> */}
 
                     {/* <div className="text-lg text-left font-[200]">The DotCollector is the best people analytics tool designed for teams to get a clear,transparent measure of their peer's skills and abilities.
                         The DotCollector does this by leveraging a 2-D grid where teams place "dots" on an attribute/skill. The dots place a numerical value from 1-10 on a particular skill of the member.
@@ -122,11 +123,11 @@ function Landing() {
 
 
 
-                    <h1 className="text-4xl font-[700]  w-[50%] h-[10%] pt-9  ml-[25%] text-center text-transparent bg-clip-text bg-gradient-to-r	 from-indigo-500 via-purple-500 to-pink-500   tracking-tight">How Dots Works</h1>
+                    <h1 className="text-4xl font-[700] text-gray-700  w-[50%] h-[10%] pt-9  ml-[25%] text-center	 tracking-tight">How READr Works</h1>
 
                     <h1 className="text-lg font-[200] text-gray-700  w-[50%] h-[2%]  ml-[25%] text-center	 tracking-tight">Get Started in 4 Easy Steps</h1>
 
-                    <div className=" mt-5 flex w-full h-[80%] gap-x-[3%] px-8 py-[4%] pl-[10%] ">
+                    <div className=" mt-5 flex w-full h-[80%] gap-x-[12%] px-2 py-[4%] pl-[10%] ">
 
                         <div className=" w-[20%] h-[100%]  ">
 
@@ -146,7 +147,7 @@ function Landing() {
 
                             <div className=" w-full  text-center mt-16 px-2 racking-tight text-xl  text-gray-700 font-[700]">
 
-                                1 . Create custom skill set list
+                                1 . Visit library
 
                             </div>
 
@@ -154,8 +155,8 @@ function Landing() {
 
                             <div className=" w-full  text-center mt-2 px-2 racking-tight text-md  text-gray-700 font-[200]">
 
-Create your skill set package to use for your sessions/meetings. These skills are what's people are going to be measured on.
-                                 </div>
+                                Visit the READr library and choose which novel you want to listen to.
+                            </div>
                         </div>
                         <div className="w-[20%] h-[100%] ">
 
@@ -165,15 +166,15 @@ Create your skill set package to use for your sessions/meetings. These skills ar
 
                             </div>
 
-                            <div className=" w-full  text-center mt-20 px-2 racking-tight text-xl font-[700] text-gray-700">
+                            <div className=" w-full  text-center mt-16 px-2 racking-tight text-xl font-[700] text-gray-700">
 
-                                2 . Create session and invite teammembers
+                                2 . Easily swap in preferred voices
 
                             </div>
                             <div className=" w-full  text-center mt-2 px-2 racking-tight text-md  text-gray-700 font-[200]">
 
-Create your one-time session , choose which skill package you want, and invite your teammates through email.
-     </div>
+                                Next, select which voice actors you want to narrate certain characters or just accept the default.
+                            </div>
                         </div>
 
 
@@ -183,40 +184,21 @@ Create your one-time session , choose which skill package you want, and invite y
                                 <img className='rounded-3xl w-[90%] h-[80%] ml-4 mt-8   ' src='Step3.png'></img>
                             </div>
 
-                            <div className=" w-full  text-center mt-12 px-2 racking-tight text-xl font-[700] text-gray-700">
+                            <div className=" w-full  text-center mt-16 px-2 racking-tight text-xl font-[700] text-gray-700">
 
-                                3 . Collect dots
+                                3 . Download audiofile
+
+                            </div>
+                            <div className=" w-full  text-center mt-2 px-2 racking-tight text-md  text-gray-700 font-[200]">
+
+
+                                Once your are satisfied with your audio, simply click download and receive a high quality mp3 file.
 
                             </div>
                             <div className=" w-full  text-center mt-2 px-2 racking-tight text-md  text-gray-700 font-[200]">
 
 
-Once all teammates are joined, select the person to grade, and start measuring their skills by creating dots.
-     </div>
-                            <div className=" w-full  text-center mt-2 px-2 racking-tight text-md  text-gray-700 font-[200]">
-
-
-     </div>
-                        </div>
-
-
-                        <div className=" w-[20%] h-[100%]  ">
-
-                            <div className=" w-full h-[60%] pt-32">
-
-                                <Slider_2 />
-
                             </div>
-
-                            <div className=" w-full  text-center mt-12 px-2 racking-tight text-xl font-[700] text-gray-700">
-
-                                4 . View results
-
-                            </div>
-                            <div className=" w-full  text-center mt-2 px-2 racking-tight text-md  text-gray-700 font-[200]">
-
-Head over to the dashboard to see your results . View the powerful radar chart to see your strengths and weaknesses.
-     </div>
                         </div>
 
 
@@ -243,106 +225,51 @@ Head over to the dashboard to see your results . View the powerful radar chart t
 
 
 
-                <div className=" w-full h-[130%]  bg-gray-100 relative pt-4 px-24">
+                <div className=" w-full h-full  bg-gray-100 relative pt-4 ">
 
 
 
-                <h1 className="text-4xl font-[700]  w-[50%] h-[10%] pt-9  ml-[25%] text-center text-transparent bg-clip-text bg-gradient-to-r	 from-indigo-500 via-purple-500 to-pink-500  tracking-tight  mt-8 mb-5">Dots Top Features</h1>
+                    <h1 className="text-4xl font-[700] text-gray-700  w-[50%] h-[10%] pt-9  ml-[25%] text-center	 tracking-tight  mt-8 mb-5">Dots Top Features</h1>
 
-                    <div className="flex w-full h-full relative gap-x-24">
+                    <div className="bg-blue-300 flex w-full h-full relative ">
 
-                        <div className=" w-[50%] h-[100%]  ">
+                        <div className="bg-yellow-300 w-[50%] h-[100%]  ">
 
-                            <div className="h-[40%] w-full pt-3">
-                                <div className="w-[40%] h-[40%] ml-[30%] mb-3 pt-3">
+                            <div className="bg-red-300 h-[50%] w-full pt-3">
+                                <div className="bg-orange-100 w-[40%] h-[40%] ml-[30%] mb-3 pt-3">Picture</div>
+                                <div className="bg-red-300 text-center text-bold font-[700] text-xl mb-3">Detach From Yourself</div>
 
-                                <Image
-                                    src="/feat-1.png"
-                                    alt="Picture of the author"
-                                    width={120}
-                                    height={60}
-                                    className='rounded-3xl'
-                                    layout='responsive'
-                                    objectFit='fill'
-
-                                />
-
-                                </div>
-
-
-                               
-                                <div className=" text-center text-bold font-[700] text-xl mb-3">Detach From Yourself</div>
-
-                                <div className=" text-center text-lg font-[200] text-gray-500">Dots forces you to emphasize the impermanent nature of all skills and work. 
-                                Dots makes holding onto things impermanent by giving you an objective view of yourself and naturally kills your ego . 
-                               The feeling of detachment Dots culativates involves not identifying one's sense of self-worth, happiness, or identity with external conditions, like a bad grade/dot.</div>
+                                <div className="bg-green-300 text-center text-lg font-[200]">Dots forces you to emphasize the impermanent nature of all skills and work.
+                                    Dots makes holding onto things impermanent by giving you an objective view of yourself and naturally kills your ego .
+                                    The feeling of detachment Dots culativates involves not identifying one's sense of self-worth, happiness, or identity with external conditions, like a bad grade/dot.</div>
 
                             </div>
 
-                            <div className=" h-[40%] w-full pt-3">
-                                <div className=" w-[40%] h-[40%] ml-[30%] mb-3 pt-3">
-                                <Image
-                                    src="/feat-3.png"
-                                    alt="Picture of the author"
-                                    width={120}
-                                    height={50}
-                                    className='rounded-3xl'
-                                    layout='responsive'
-                                    objectFit='fill'
+                            <div className="bg-purple-200 h-[50%] w-full pt-3">
+                                <div className="bg-orange-100 w-[40%] h-[40%] ml-[30%] mb-3 pt-3">Picture</div>
+                                <div className="bg-red-300 text-center text-bold font-[700] text-xl mb-3">Know Yourself</div>
 
-                                />
-
-
-                                </div>
-                                <div className="text-center text-bold font-[700] text-xl mb-3">Know Yourself</div>
-
-                                <div className="text-center text-lg font-[200] text-gray-500">With all the quantitive feedback recieved from teammates, Dots provides a platform that you can use to analyze and diagnose your weaknesses so you know exactly where you need to improve.  </div>
+                                <div className="bg-green-300 text-center text-lg font-[200]">With all the quantitive feedback recieved from teammates, Dots provides a platform that you can use to analyze and diagnose your weaknesses so you know exactly where you need to improve.  </div>
 
                             </div>
                         </div>
 
 
-                        <div className="w-[50%] h-[100%]  ">
+                        <div className="bg-yellow-300 w-[50%] h-[100%]  ">
 
-                            <div className=" h-[40%] w-full pt-3">
-                                <div className=" w-[40%] h-[40%] ml-[30%] mb-3 pt-3">
+                            <div className="bg-red-300 h-[50%] w-full pt-3">
+                                <div className="bg-orange-100 w-[40%] h-[40%] ml-[30%] mb-3 pt-3">Picture</div>
+                                <div className="bg-red-300 text-center text-bold font-[700] text-xl mb-3">Proactively Observe</div>
 
-                                <Image
-                                    src="/feat-2.png"
-                                    alt="Picture of the author"
-                                    width={120}
-                                    height={50}
-                                    className='rounded-3xl'
-                                    layout='responsive'
-                                    objectFit='fill'
-
-                                />
-
-                                </div>
-                                <div className=" text-center text-bold font-[700] text-xl mb-3">Proactively Observe</div>
-
-                                <div className=" text-center text-lg font-[200] text-gray-500">Since the Dots platform facilitates an agile continous process of feedback and improvement (CF/CI), the way you operate becomes a beautiful proactive process instead of a painful reactive one.   </div>
+                                <div className="bg-green-300 text-center text-lg font-[200]">Since the Dots platform facilitates an agile continous process of feedback and improvement (CF/CI), the way you operate becomes a beautiful proactive process instead of a painful reactive one.   </div>
 
                             </div>
 
-                            <div className=" h-[40%] w-full pt-3">
-                                <div className=" w-[40%] h-[40%] ml-[30%] mb-3 pt-3">
+                            <div className="bg-purple-200 h-[50%] w-full pt-3">
+                                <div className="bg-orange-100 w-[40%] h-[40%] ml-[30%] mb-3 pt-3">Picture</div>
+                                <div className="bg-red-300 text-center text-bold font-[700] text-xl mb-3">Radical Transparency and Accountability</div>
 
-                                <Image
-                                    src="/feat-4.png"
-                                    alt="Picture of the author"
-                                    width={120}
-                                    height={50}
-                                    className='rounded-3xl'
-                                    layout='responsive'
-                                    objectFit='fill'
-
-                                />
-
-                                </div>
-                                <div className="text-center text-bold font-[700] text-xl mb-3">Radical Transparency and Accountability</div>
-
-                                <div className=" text-center text-lg font-[200] text-gray-500">Dots gives you a platform to be radically transparent with one another. If you have something to say about a person , express it with a dot ! This forces a team to hold each other accountable . </div>
+                                <div className="bg-green-300 text-center text-lg font-[200]">Dots gives you a platform to be radically transparent with one another. If you have something to say about a person , express it with a dot ! This forces a team to hold each other accountable . </div>
 
                             </div>
                         </div>
@@ -363,7 +290,7 @@ Head over to the dashboard to see your results . View the powerful radar chart t
                     <footer className=" text-white py-10 ml-[55%] mt-[5%]">
                         <div className="container mx-auto flex flex-wrap justify-between">
                             <div className="w-full md:w-1/4 mb-4 md:mb-0">
-                                <p className="text-gray-200 mt-2">People analytics on demand.</p>
+                                <p className="text-gray-200 mt-2">READr.</p>
                             </div>
                             <div className="w-full md:w-1/4 mb-4 md:mb-0">
                                 <h3 className="text-lg font-semibold mb-2">Quick Links</h3>

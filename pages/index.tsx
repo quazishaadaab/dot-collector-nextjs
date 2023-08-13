@@ -31,7 +31,6 @@ import { SessionProvider } from "next-auth/react";
 import {payload} from "./home/[home]"
 import Landing from './Landing';
 import { getSession, signIn, signOut, useSession } from "next-auth/react";
-import {GoogleLogin} from "react-google-login"
 import dynamic from 'next/dynamic';
 
 import { createClient } from '@supabase/supabase-js'

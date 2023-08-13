@@ -55,8 +55,8 @@ const Attributes = () => {
     <div className={styles.list}>
       <SlimSidebar />
       <div className={styles.listContainer}>
-        <Navbar />
 
+{/* Removed Navbar */}
 
 
 
@@ -163,6 +163,7 @@ const Attributes = () => {
         Submit
       </Button>
       </div>
+      
       
     </div>
     

@@ -168,9 +168,8 @@ const NewTable = () => {
      buffer.push(row)
     
     })
-    rows=buffer;
     
-    setRows(rows)
+    setRows(buffer)
     
     
     

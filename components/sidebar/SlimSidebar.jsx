@@ -73,7 +73,7 @@ React.useEffect(() => {
    setUser(user_data)
 
 // setUserid(uid)
-DataService2.launch()
+ DataService2.launch()
 
 // its best practice to put all your code in one function/method because useEffect only runs everything once. inside a method,
 // code gets run from top to bottom. In useEffect, it gets run at the same time.
@@ -83,7 +83,7 @@ DataService2.launch()
 //  when we add Rooms as a dependency, since it is an array, it will loop forever(this is a React sideeffect for array states).
 //therefore, it acts like infinite polling. this may consume resources. best thing to do is use long polling.
 
-}, [Rooms,user?.userid])
+}, [Rooms?.length,user?.userid])
 
 
 // const uid=useParams()

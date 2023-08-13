@@ -3,7 +3,7 @@ import { Pagination } from "@nextui-org/react";
 import { integerPropType } from '@mui/utils';
 import { Warning } from '@mui/icons-material';
 
-function Slider() {
+function Slider_2() {
 
 
     const [pageNumber,setPage] = useState(1)
@@ -13,11 +13,11 @@ const render=()=>{
 
         case 1 : 
             return <><div className=' items-center'>
-        <img className='rounded-3xl w-[97%] h-[100%] ml-2' src='Step2_a.png'></img>
+        <img className='rounded-3xl w-[97%] h-[100%] ml-2' src='Step4_a.png'></img>
         </div></>
         case 2 :
         return <><div className='rounded items-center'>
-        <img  className='rounded-3xl w-[97%] h-[100%] ml-2' src='Step2_b.png'></img>
+        <img  className='rounded-3xl w-[97%] h-[100%] ml-2' src='Step4_b.png'></img>
         </div></>
     
 
@@ -49,4 +49,4 @@ setPage(page)
   )
 }
 
-export default Slider
+export default Slider_2

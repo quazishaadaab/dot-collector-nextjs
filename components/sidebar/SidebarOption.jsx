@@ -214,7 +214,7 @@ const selectAttributeOptions=async()=>{
   >
     <Modal.Header>
       <Text id="modal-title" size={18}>
-        Create Room {``}
+        Create Session {``}
         <Text b size={18}>
         Credentials
         </Text>
