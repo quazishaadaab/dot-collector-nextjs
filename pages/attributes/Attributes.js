@@ -7,7 +7,6 @@ import { Card, Grid, Row, Text,Button } from "@nextui-org/react";
 import HeartIcon from './HeartIcon';
 import axios from "axios";
 
-import AttributeTable from "./AttributeTable"
 import retriveUserState from "../../utils/userPersist"
 import { BASE_BACKEND } from "../../utils/deployments";
 import { uuid } from "uuidv4";
