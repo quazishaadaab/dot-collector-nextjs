@@ -118,6 +118,7 @@ const Attributes = () => {
           label="Attribute"
           placeholder="Success"
           color="secondary"
+          onKeyPress={enterAttribute}
           type="text"
           size="lg"
           width="500px"

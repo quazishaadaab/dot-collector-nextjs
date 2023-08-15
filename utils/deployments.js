@@ -20,7 +20,7 @@ const CANVAS_BACKEND = "http://localhost:2000"
 // const FRONT_END = "https://dots-prod-tau.vercel.app"
 
 const FRONT_END = "https://dots-prod-tau.vercel.app"
-// const FRONT_END = "http://localhost:3000"
+ //const FRONT_END = "http://localhost:3000"
 
 export {BASE_BACKEND}
 export {CANVAS_BACKEND}
