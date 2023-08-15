@@ -7,18 +7,22 @@ import { Card, Grid, Row, Text,Button } from "@nextui-org/react";
 import HeartIcon from './HeartIcon';
 import axios from "axios";
 
-
+import AttributeTable from "./AttributeTable"
 import retriveUserState from "../../utils/userPersist"
 import { BASE_BACKEND } from "../../utils/deployments";
 import { uuid } from "uuidv4";
+import { Table, useAsyncList } from "@nextui-org/react";
 
 const Attributes = () => {
 
   const [attributes,setAttributes]=React.useState([])
   const [attributePackageName,setAttributePackageName]=React.useState('')
-
+  const columns = [
+    { name: "Attribute Name", uid: "name" }
+  ];
 
   const {userid}=retriveUserState()
+  const list = useAsyncList(attributes);
 
   const attributeid=uuid()
 
@@ -114,7 +118,6 @@ const Attributes = () => {
           label="Attribute"
           placeholder="Success"
           color="secondary"
-          onKeyPress={enterAttribute}
           type="text"
           size="lg"
           width="500px"
@@ -130,7 +133,42 @@ const Attributes = () => {
 
 {/* use this grid container for our rooms, (when adding peers) since it autoscales */}
 <Grid.Container gap={2} justify="flex-start" direction="row">
-      {attributes?.map((item, index) => (
+
+<Table
+     
+     bordered
+      shadow={false}
+      aria-label="Example table with dynamic content & infinity pagination"
+      css={{ minWidth: "100%", height: "calc($space$14 * 10)" }}
+      color="warning"
+     
+    >
+      <Table.Header columns={columns}>
+        {(column) => (
+          <Table.Column key={column.uid}>{column.name}</Table.Column>
+        )}
+      </Table.Header>
+      <Table.Body
+       
+        items={list}
+
+        loadingState={list.loadingState}
+        onLoadMore={list.loadMore}
+      >
+
+      {attributes?.map((item,index)=>(
+
+<Table.Row key={item}>
+            <Table.Cell>{item}</Table.Cell>
+          </Table.Row>
+        
+      ))}
+ 
+      </Table.Body>
+      
+    </Table>
+
+  {attributes?.map((item, index) => (
         <Grid xs={6} sm={3} md={2} key={index}>
           <Card isPressable>
             <Card.Body css={{ p: 0 }}>

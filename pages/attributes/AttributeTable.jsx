@@ -1,31 +1,23 @@
 import { Table, useAsyncList } from "@nextui-org/react";
 
-export default function App() {
+export default function AttributeTable({array}) {
   const columns = [
-    { name: "Name", uid: "name" },
-    { name: "Height", uid: "height" },
-    { name: "Mass", uid: "mass" },
-    { name: "Birth Year", uid: "birth_year" },
+    { name: "Attribute Name", uid: "name" }
   ];
+
+  
   async function load({ signal, cursor }) {
     // If no cursor is available, then we're loading the first page.
     // Otherwise, the cursor is the next URL to load, as returned from the previous page.
-    const res = await fetch(
-      cursor || "https://swapi.py4e.com/api/people/?search=",
-      { signal }
-    );
-    const json = await res.json();
     return {
-      items: json.results,
-      cursor: json.next,
-    };
+      items: array};
   }
   const list = useAsyncList({ load });
   return (
     <Table
       bordered
       shadow={false}
-      aria-label="Example table with dynamic content & infinity pagination"
+      aria-label="Example tgable with dyngamic content & infinity pagination"
       css={{ minWidth: "100%", height: "calc($space$14 * 10)" }}
       color="secondary"
     >
@@ -39,9 +31,10 @@ export default function App() {
         loadingState={list.loadingState}
         onLoadMore={list.loadMore}
       >
-        {(item) => (
-          <Table.Row key={item.name}>
-            {(key) => <Table.Cell>{item[key]}</Table.Cell>}
+        {(item,index) => (
+
+<Table.Row key={(item)}>
+            {(key) => <Table.Cell>{item}</Table.Cell>}
           </Table.Row>
         )}
       </Table.Body>
