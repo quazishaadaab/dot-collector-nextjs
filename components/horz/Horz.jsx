@@ -165,7 +165,6 @@ useEffect(() => {
     return (
       <div className={`ml-[7rem] 2xl:ml-[8rem] flex  `}>
 
-<Loading/>
 
         {userData?.map(data => {
 
