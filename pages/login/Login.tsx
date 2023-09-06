@@ -131,7 +131,23 @@ function Login() {
 
     <div className='flex h-full w-full max-h-full rounded '>
 
-<div className='md:flex-[67%] 2xl:flex-[74%] bg-slate-100 h-full rounded pl-7  '> <img className='h-full w-[90%]  p-32 md:p-16' src="https://demos.themeselection.com/marketplace/materio-mui-react-nextjs-admin-template/demo-1/images/pages/auth-v2-login-illustration-light.png"></img> </div>
+<div className='md:flex-[67%] 2xl:flex-[74%] bg-slate-100 h-full rounded  '> 
+{/* 
+<Image
+      
+
+                                    src="/login_gradient.jpg"
+                                    alt="Picture of the author"
+                                    width={100}
+                                    height={100}
+                                    
+                                    className=' '
+                                    layout='fill'
+                                    objectFit='contain'
+
+                                />  */}
+<img className='h-full w-full' src="https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80"></img> 
+</div>
 
 <div className='md:flex-[33%] 2xl:flex-[26%] bg-white md:py-28 md:px-10  2xl:py-44 2xl:px-12 text-slate-600 max-h-full rounded '>
 
@@ -139,12 +155,6 @@ function Login() {
 
 <div className=' font-[400] text-slate-400 text-base '>Please sign-in to your account using any of the login options</div>
 
-<div className='bg-purple-300 h-[18%] w-[full] rounded p-4 mt-5 2xl:p-4  2xl:h-[15%] items-center'>
-
-<div className='text-sm text-white mb-1 2xl:mb-2'>Admin:admin@dotcollector.ca / Pass:admin</div>
-<div className='text-sm text-white'>Admin:admin@dotcollector.ca / Pass:admin</div>
-
-</div>
 
 <div className='flex gap-10 items-center justify-center p-2 h-[20%] mt-6'>
 
@@ -153,7 +163,7 @@ function Login() {
 
 
 
-  <img  className='h-full w-full cursor-pointer' 
+  <img  className='h-full w-full cursor-pointer ' 
 
 
 onClick={async(event)=>{
@@ -177,7 +187,7 @@ src="https://icones.pro/wp-content/uploads/2021/02/google-icone-symbole-logo-png
 </div>
 
 
-<form className="h-[30%] p-2">
+{/* <form className="h-[30%] p-2">
   <div className="mb-3">
     <label form="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
     <input type="email"  id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" value='testuser@dotcollector.ca' required></input>
@@ -188,7 +198,7 @@ src="https://icones.pro/wp-content/uploads/2021/02/google-icone-symbole-logo-png
   </div>
 
   <button type="submit"  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-</form>
+</form> */}
 
 </div>
     </div>

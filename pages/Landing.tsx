@@ -49,19 +49,28 @@ function Landing() {
                 <div className=" bg-gradient-to-b from-purple-400 to-gray-100  h-[15%] w-full p-3 rounded-3x flex relative ">
 
                     {/* header */}
-
+                    {/* 
                     <div className="mt-4 ml-3 "><Text size={20}>features</Text></div>
                     <div className="mt-4 ml-3"><Text size={20}>pricing</Text></div>
-                    <div className="mt-4 ml-3"><Text size={20}>demo</Text></div>
+                    <div className="mt-4 ml-3"><Text size={20}>demo</Text></div> */}
 
                     {/* landing page */}
 
-                    <div className="ml-[80%] mt-5  absolute ">
-
+                    <div className="hidden md:block ml-[80%] mt-5  absolute ">
 
                         <Button shadow size="lg" color="gradient" auto onClick={() => { location.href = "/login/Login"; }}>
                             Get Started
-                        </Button></div>
+                        </Button>
+
+                    </div>
+
+                    <div className="visible md:hidden ml-[60%] mt-5  absolute ">
+
+                        <Button shadow size="sm" color="gradient" auto onClick={() => { location.href = "/login/Login"; }}>
+                            Get Started
+                        </Button>
+
+                    </div>
 
 
                     {/*     
@@ -74,27 +83,40 @@ function Landing() {
 
                 </div>
 
-                <div className="bg-gray-100 w-full h-[150%] pt-10 pb-8 ">
+                <div className="bg-gray-100  h-[100%] w-full md:h-[150%] pt-10 pb-8 ">
 
 
 
-                    <h1 className='text-7xl  text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-[700] tracking-tighter ml-[18%] mb-[3%] xl:ml-[20%] 2xl:ml-[25%]'> People analytics on demand</h1>
+                    <h1 className='text-2xl h-[8%] ml-12 bg-red-300  md:text-7xl  text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-[700] tracking-tighter md:ml-[18%] mb-[3%] xl:ml-[20%] 2xl:ml-[25%]  '> People analytics on demand</h1>
 
-                    <div className="text-xl font-[200] text-gray-700  xl:ml-[30%] 2xl:ml-[35%] tracking-tight">The first Continous Feedback , Continous Improvement Platform</div>
+                    <div className="text-center   text-lg md:text-xl font-[200] text-gray-700  tracking-tight">The first Continuous Feedback, Continuous Improvement Platform</div>
                     {/* Reactivate when iframe is ready and doesnt need authentication */}
                     {/* <div id='dangerousHtml' className='  w-[70%] h-[61.8%] ml-[15%] overflow-hidden	' dangerouslySetInnerHTML={iframe()} /> */}
-                    <div className="w-[70%] h-[61.8%] ml-[15%] overflow-hidden mt-10">
-                    <Image
-                                    src="/demo.png"
-                                    alt="Picture of the author"
-                                    width={160}
-                                    height={100}
-                                    className='rounded-3xl'
-                                    layout='responsive'
-                                    objectFit='contain'
+                    <div className=" hidden md:block w-[70%] h-[61.8%] ml-[15%] overflow-hidden mt-10">
+                        <Image
+                            src="/demo.png"
+                            alt="Picture of the author"
+                            width={160}
+                            height={100}
+                            className='rounded-3xl'
+                            layout='responsive'
+                            objectFit='contain'
 
-                                />
-                                </div>
+                        />
+                    </div>
+                    <div className="visible md:hidden  w-[70%] h-[61.8%] ml-[23%] overflow-hidden mt-2">
+                        <Image
+                            src="/demo.png"
+                            alt="Picture of the author"
+                            width={30}
+                            height={50}
+                            className='rounded-3xl'
+                            layout='responsive'
+                            objectFit='contain'
+
+                        />
+                    </div>
+
                     {/* <h1 className='text-7xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-[700] mb-8 tracking-tighter  '> People analytics on demand</h1> */}
 
                     {/* <div className="text-lg text-left font-[200]">The DotCollector is the best people analytics tool designed for teams to get a clear,transparent measure of their peer's skills and abilities.
@@ -118,7 +140,7 @@ function Landing() {
 
 
 
-                <div className=" bg-gray-200  w-full h-full pt-5  ">
+                <div className="hidden md:block bg-gray-200  w-full h-full pt-5  ">
 
 
 
@@ -154,8 +176,8 @@ function Landing() {
 
                             <div className=" w-full  text-center mt-2 px-2 racking-tight text-md  text-gray-700 font-[200]">
 
-Create your skill set package to use for your sessions/meetings. These skills are what's people are going to be measured on.
-                                 </div>
+                                Create your skill set package to use for your sessions/meetings. These skills are what's people are going to be measured on.
+                            </div>
                         </div>
                         <div className="w-[20%] h-[100%] ">
 
@@ -172,8 +194,8 @@ Create your skill set package to use for your sessions/meetings. These skills ar
                             </div>
                             <div className=" w-full  text-center mt-2 px-2 racking-tight text-md  text-gray-700 font-[200]">
 
-Create your one-time session , choose which skill package you want, and invite your teammates through email.
-     </div>
+                                Create your one-time session , choose which skill package you want, and invite your teammates through email.
+                            </div>
                         </div>
 
 
@@ -191,12 +213,12 @@ Create your one-time session , choose which skill package you want, and invite y
                             <div className=" w-full  text-center mt-2 px-2 racking-tight text-md  text-gray-700 font-[200]">
 
 
-Once all teammates are joined, select the person to grade, and start measuring their skills by creating dots.
-     </div>
+                                Once all teammates are joined, select the person to grade, and start measuring their skills by creating dots.
+                            </div>
                             <div className=" w-full  text-center mt-2 px-2 racking-tight text-md  text-gray-700 font-[200]">
 
 
-     </div>
+                            </div>
                         </div>
 
 
@@ -215,8 +237,8 @@ Once all teammates are joined, select the person to grade, and start measuring t
                             </div>
                             <div className=" w-full  text-center mt-2 px-2 racking-tight text-md  text-gray-700 font-[200]">
 
-Head over to the dashboard to see your results . View the powerful radar chart to see your strengths and weaknesses.
-     </div>
+                                Head over to the dashboard to see your results . View the powerful radar chart to see your strengths and weaknesses.
+                            </div>
                         </div>
 
 
@@ -241,13 +263,152 @@ Head over to the dashboard to see your results . View the powerful radar chart t
 
                 </div>
 
+{/* for mobile */}
+                <div className="visible md:hidden bg-gray-200  w-full h-[350%] pt-5  ">
 
 
-                <div className=" w-full h-[130%]  bg-gray-100 relative pt-4 px-24">
+
+                    <h1 className="text-xl font-[700]  w-[50%] h-[3%] pt-9  ml-[25%] text-center text-transparent bg-clip-text bg-gradient-to-r	 from-indigo-500 via-purple-500 to-pink-500   tracking-tight">How Dots Works</h1>
+
+                    <h1 className="text-sm font-[200] text-gray-700  w-[50%] h-[2%]  ml-[25%] text-center	 tracking-tight">Get Started in 4 Easy Steps</h1>
+
+                    <div className=" mt-5  w-full h-full gap-x-[3%] px-8 py-[4%] pl-[10%]   ">
+
+                        <div className=' mb-16'>
+                            <div className="mx-[9%] w-[80%] h-[10%]    ">
+
+
+                                <div className=" w-full h-[100%]  ">
+                                    <Image
+                                        src="/Step1.png"
+                                        alt="Picture of the author"
+                                        width={300}
+                                        height={300}
+                                        className='rounded-xl'
+
+                                    />
+                                </div>
+
+                                <div className=" w-full  text-center mt-10 px-2 racking-tight text-xl  text-gray-700 font-[700]">
+
+                                    1 . Create custom skill set list
+
+                                </div>
+
+                                <div className=" w-full  text-center mt-2 px-2 racking-tight text-md  text-gray-700 font-[200]">
+
+                                    Create your skill set package to use for your sessions/meetings. These skills are what's people are going to be measured on.
+                                </div>
+                            </div>
+                        </div>
 
 
 
-                <h1 className="text-4xl font-[700]  w-[50%] h-[10%] pt-9  ml-[25%] text-center text-transparent bg-clip-text bg-gradient-to-r	 from-indigo-500 via-purple-500 to-pink-500  tracking-tight  mt-8 mb-5">Dots Top Features</h1>
+
+                        <div className=' mb-6'>
+                            <div className="mx-[9%] w-[80%] h-[10%]  ">
+
+                                <div className=" w-full h-[100%] ">
+
+                                    <Slider />
+
+                                </div>
+
+                                <div className=" w-full  text-center mt-12 md:mt-20 px-2 racking-tight text-xl font-[700] text-gray-700">
+
+                                    2 . Create session and invite teammembers
+
+                                </div>
+                                <div className=" w-full  text-center mt-2 px-2 racking-tight text-md  text-gray-700 font-[200]">
+
+                                    Create your one-time session , choose which skill package you want, and invite your teammates through email.
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div className="mb-6">
+                            <div className="mx-[9%] w-[80%] h-[10%] md:w-[20%] md:h-[100%] ">
+
+                                <div className=" w-full h-[60%] pt-3 ">
+                                    <img className='rounded-3xl w-[90%] h-[80%] ml-4 mt-8   ' src='Step3.png'></img>
+                                </div>
+
+                                <div className=" w-full  text-center mt-12 px-2 racking-tight text-xl font-[700] text-gray-700">
+
+                                    3 . Collect dots
+
+                                </div>
+                                <div className=" w-full  text-center mt-2 px-2 racking-tight text-md  text-gray-700 font-[200]">
+
+
+                                    Once all teammates are joined, select the person to grade, and start measuring their skills by creating dots.
+                                </div>
+                                <div className=" w-full  text-center mt-2 px-2 racking-tight text-md  text-gray-700 font-[200]">
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div className=" mb-6">
+
+
+                            <div className=" mx-[9%] w-[80%] h-[10%] md:w-[20%] md:h-[100%]  ">
+
+                                <div className=" w-full h-[60%] pt-10 md:pt-32">
+
+                                    <Slider_2 />
+
+                                </div>
+
+                                <div className=" w-full  text-center mt-12 px-2 racking-tight text-xl font-[700] text-gray-700">
+
+                                    4 . View results
+
+                                </div>
+                                <div className=" w-full  text-center mt-2 px-2 racking-tight text-md  text-gray-700 font-[200]">
+
+                                    Head over to the dashboard to see your results . View the powerful radar chart to see your strengths and weaknesses.
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+
+                    
+                    {/* <div className="h-64 w-[50%]    ml-8 mt-32 ">
+<div className='text-5xl text-black font-[700] mb-8 tracking-tighter'>Post live "dots" to measure team member skills and attributes</div>
+
+<div className="text-xl font-[200] text-gray-700   tracking-tight">The DotCollector is the best people analytics tool designed for teams to get a clear,transparent measure of their peer's skills and abilities.
+    The DotCollector does this by leveraging a 2-D grid where teams place "dots" on an attribute/skill. The dots place a numerical value from 1-10 on a particular skill of the member.
+    These dots are then processed by algorithims to give the best picture of a candidates/team members skills/attributes.</div>
+
+</div>
+
+
+
+
+<div className='h-full w-[50%]  rounded-3xl p-16 pt-24'>
+<img src="dot.png" className='rounded-3xl'></img>
+</div> */}
+
+
+                </div>
+
+                {/* weird right side gap starts here */}
+
+
+                <div className=" hidden md:block w-full h-[130%]  bg-gray-100 relative pt-4 px-24">
+
+
+
+                    <h1 className="text-4xl font-[700]  w-[50%] h-[10%] pt-9  ml-[25%] text-center text-transparent bg-clip-text bg-gradient-to-r	 from-indigo-500 via-purple-500 to-pink-500  tracking-tight  mt-8 mb-5">Dots Top Features</h1>
 
                     <div className="flex w-full h-full relative gap-x-24">
 
@@ -256,41 +417,41 @@ Head over to the dashboard to see your results . View the powerful radar chart t
                             <div className="h-[40%] w-full pt-3">
                                 <div className="w-[40%] h-[40%] ml-[30%] mb-3 pt-3">
 
-                                <Image
-                                    src="/feat-1.png"
-                                    alt="Picture of the author"
-                                    width={120}
-                                    height={60}
-                                    className='rounded-3xl'
-                                    layout='responsive'
-                                    objectFit='fill'
+                                    <Image
+                                        src="/feat-1.png"
+                                        alt="Picture of the author"
+                                        width={120}
+                                        height={60}
+                                        className='rounded-3xl'
+                                        layout='responsive'
+                                        objectFit='fill'
 
-                                />
+                                    />
 
                                 </div>
 
 
-                               
+
                                 <div className=" text-center text-bold font-[700] text-xl mb-3">Detach From Yourself</div>
 
-                                <div className=" text-center text-lg font-[200] text-gray-500">Dots forces you to emphasize the impermanent nature of all skills and work. 
-                                Dots makes holding onto things impermanent by giving you an objective view of yourself and naturally kills your ego . 
-                               The feeling of detachment Dots culativates involves not identifying one's sense of self-worth, happiness, or identity with external conditions, like a bad grade/dot.</div>
+                                <div className=" text-center text-lg font-[200] text-gray-500">Dots forces you to emphasize the impermanent nature of all skills and work.
+                                    Dots makes holding onto things impermanent by giving you an objective view of yourself and naturally kills your ego .
+                                    The feeling of detachment Dots culativates involves not identifying one's sense of self-worth, happiness, or identity with external conditions, like a bad grade/dot.</div>
 
                             </div>
 
                             <div className=" h-[40%] w-full pt-3">
                                 <div className=" w-[40%] h-[40%] ml-[30%] mb-3 pt-3">
-                                <Image
-                                    src="/feat-3.png"
-                                    alt="Picture of the author"
-                                    width={120}
-                                    height={50}
-                                    className='rounded-3xl'
-                                    layout='responsive'
-                                    objectFit='fill'
+                                    <Image
+                                        src="/feat-3.png"
+                                        alt="Picture of the author"
+                                        width={120}
+                                        height={50}
+                                        className='rounded-3xl'
+                                        layout='responsive'
+                                        objectFit='fill'
 
-                                />
+                                    />
 
 
                                 </div>
@@ -307,16 +468,16 @@ Head over to the dashboard to see your results . View the powerful radar chart t
                             <div className=" h-[40%] w-full pt-3">
                                 <div className=" w-[40%] h-[40%] ml-[30%] mb-3 pt-3">
 
-                                <Image
-                                    src="/feat-2.png"
-                                    alt="Picture of the author"
-                                    width={120}
-                                    height={50}
-                                    className='rounded-3xl'
-                                    layout='responsive'
-                                    objectFit='fill'
+                                    <Image
+                                        src="/feat-2.png"
+                                        alt="Picture of the author"
+                                        width={120}
+                                        height={50}
+                                        className='rounded-3xl'
+                                        layout='responsive'
+                                        objectFit='fill'
 
-                                />
+                                    />
 
                                 </div>
                                 <div className=" text-center text-bold font-[700] text-xl mb-3">Proactively Observe</div>
@@ -328,16 +489,16 @@ Head over to the dashboard to see your results . View the powerful radar chart t
                             <div className=" h-[40%] w-full pt-3">
                                 <div className=" w-[40%] h-[40%] ml-[30%] mb-3 pt-3">
 
-                                <Image
-                                    src="/feat-4.png"
-                                    alt="Picture of the author"
-                                    width={120}
-                                    height={50}
-                                    className='rounded-3xl'
-                                    layout='responsive'
-                                    objectFit='fill'
+                                    <Image
+                                        src="/feat-4.png"
+                                        alt="Picture of the author"
+                                        width={120}
+                                        height={50}
+                                        className='rounded-3xl'
+                                        layout='responsive'
+                                        objectFit='fill'
 
-                                />
+                                    />
 
                                 </div>
                                 <div className="text-center text-bold font-[700] text-xl mb-3">Radical Transparency and Accountability</div>
@@ -357,26 +518,27 @@ Head over to the dashboard to see your results . View the powerful radar chart t
 
                 </div>
 
+{/* footer */}
 
-                <div className=" flex w-full h-[50%] px-28 bg-gradient-to-t g-gradient-to-t from-purple-600 via-blue-600 to-gray-200 pt-20 ">
+                <div className="   hidden md:block flex w-full h-[50%] px-28 bg-gradient-to-t g-gradient-to-t from-purple-600 via-blue-600 to-gray-200 pt-20 ">
 
                     <footer className=" text-white py-10 ml-[55%] mt-[5%]">
                         <div className="container mx-auto flex flex-wrap justify-between">
-                            <div className="w-full md:w-1/4 mb-4 md:mb-0">
-                                <p className="text-gray-200 mt-2">People analytics on demand.</p>
+                            <div className="w-full md:w-1/4 mb-4 md:mb-0  ">
+                                <p className="text-gray-200 mt-2 ">People analytics on demand.</p>
                             </div>
                             <div className="w-full md:w-1/4 mb-4 md:mb-0">
                                 <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
                                 <ul className="text-gray-200">
                                     <li><a href="#home" className="hover:text-white">Home</a></li>
-                                    <li><a href="#services" className="hover:text-white">Services</a></li>
-                                    <li><a href="#portfolio" className="hover:text-white">Portfolio</a></li>
+                                    <li><a href="#services" className="hover:text-white">Features</a></li>
+                                    <li><a href="#portfolio" className="hover:text-white">Pricing</a></li>
                                     <li><a href="#contact" className="hover:text-white">Contact</a></li>
                                 </ul>
                             </div>
                             <div className="w-full md:w-1/4 mb-4 md:mb-0">
                                 <h3 className="text-lg font-semibold mb-2">Contact Us</h3>
-                                <p className="text-gray-200">Email: <a href="mailto:info@example.com" className="hover:text-white">info@example.com</a></p>
+                                <p className="text-gray-200">Email: <a href="mailto:dots@gmail.com" className="hover:text-white">dots@gmail.com</a></p>
                                 <p className="text-gray-200">Phone: <a href="tel:+1234567890" className="hover:text-white">+1 (234) 567-890</a></p>
                             </div>
                         </div>
@@ -389,6 +551,46 @@ Head over to the dashboard to see your results . View the powerful radar chart t
 
                 </div>
 
+{/* for mobile */}
+
+                <div className="  visible md:hidden flex w-full h-[100%] px-2 bg-gradient-to-t g-gradient-to-t from-purple-600 via-blue-600 to-gray-200 pt-20 ">
+
+<footer className="mt-24 text-white py-10 ml-[1%] mt-[5%]">
+    
+    <div className="container mx-auto flex flex-wrap justify-between">
+        <div className="w-full md:w-1/4 mb-4 md:mb-0  ">
+            <p className="text-gray-200 mt-2 ">People analytics on demand.</p>
+        </div>
+        <div className="w-full md:w-1/4 mb-4 md:mb-0">
+            <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
+            <ul className="text-gray-200">
+                <li><a href="#home" className="hover:text-white">Home</a></li>
+                <li><a href="#services" className="hover:text-white">Features</a></li>
+                <li><a href="#portfolio" className="hover:text-white">Pricing</a></li>
+                <li><a href="#contact" className="hover:text-white">Contact</a></li>
+            </ul>
+        </div>
+        <div className="w-full md:w-1/4 mb-4 md:mb-0">
+            <h3 className="text-lg font-semibold mb-2">Contact Us</h3>
+            <p className="text-gray-200">Email: <a href="dots@gmail.com" className="hover:text-white">dots@gmail.com</a></p>
+            <p className="text-gray-200">Phone: <a href="tel:+1234567890" className="hover:text-white">+1 (234) 567-890</a></p>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div className="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p className="text-gray-300 ">&copy; 2023 , Dots. All rights reserved.</p>
+    </div>
+</footer>
+
+
+
+                </div>
 
 
 

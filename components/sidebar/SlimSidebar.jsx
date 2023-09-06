@@ -40,6 +40,8 @@ import MarkUnreadChatAltIcon from '@mui/icons-material/MarkUnreadChatAlt';
 import PersonIcon from '@mui/icons-material/Person';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 import DescriptionIcon from '@mui/icons-material/Description';
+
+import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import { FRONT_END } from '../../utils/deployments';
 
@@ -163,7 +165,7 @@ window.location.href = `${FRONT_END}/login/Login`;
 
 {/* <span className='text-[20px] font-200 text-red-500 '>Dots</span> */}
 
-
+<div onClick={()=>{router.push(`/home/${user?.userid}`)}}>
 <Image
       src="/logo.png"
       alt="Picture of the author"
@@ -172,27 +174,27 @@ window.location.href = `${FRONT_END}/login/Login`;
       className=''
       objectFit='contain'
     />
-    <hr></hr>
 
+</div>
     <Tooltip placement="right" content={'Dashboard'} color='invert' rounded >
           <div onClick={()=>{router.push(`/home/${user?.userid}`)}} className=' data-tooltip-target="tooltip-right" data-tooltip-placement="right"  w-full items-center mt-5 mb-9 px-1.5 py-1 cursor-pointer'>
             <GridViewIcon sx={{ color: '#C00B00', fontSize:"30px"}}   />
           </div>
     </Tooltip>
     
-    <Tooltip placement="right" content={'Feed'} color='invert' rounded >
+    {/* <Tooltip placement="right" content={'Feed'} color='invert' rounded >
     
           <div onClick={()=>{router.push("/users")}}className=' w-full items-center mt-5 mb-9 px-1.5 py-1 cursor-pointer'>
             <PeopleAltIcon sx={{ color: '#C00B00' , fontSize:"30px" }}   />
           </div>
-          </Tooltip>
+          </Tooltip> */}
     
 
 
 
 <Tooltip placement="right" content={'Create Attribute Package'} color='invert' rounded >
      <div onClick={()=>{router.push("/attributes/Attributes")}} className='  w-full items-center mt-5 mb-9 px-1.5 py-1 cursor-pointer'>
-            <ProductionQuantityLimitsOutlinedIcon sx={{ color: '#C00B00' , fontSize:"30px"}}   />
+            <AddToPhotosIcon sx={{ color: '#C00B00' , fontSize:"30px"}}   />
           </div>
           </Tooltip>
     
@@ -207,12 +209,12 @@ window.location.href = `${FRONT_END}/login/Login`;
           ))}
 
 <hr></hr>
-
+{/* 
     <Tooltip placement="right" content={'Profile'} color='invert' rounded >
     <div onClick={()=>{router.push("/profile")}} className='  w-full items-center mt-5 mb-9 px-1.5 py-1cursor-pointer'>
             <QueryStatsIcon sx={{ color: '#C00B00', fontSize:"30px" }} />
           </div>
-          </Tooltip>
+          </Tooltip> */}
 
 
 
@@ -223,27 +225,27 @@ window.location.href = `${FRONT_END}/login/Login`;
     
     <Tooltip placement="right" content={'Logout'} color='invert' rounded >
      <div  onClick={()=>{logOut()}}  className='  w-full items-center mt-5 mb-9 px-1.5 py-1 cursor-pointer'>
-            <FaceIcon sx={{ color: '#C00B00', fontSize:"30px" }}  />
+            <LogoutIcon sx={{ color: '#C00B00', fontSize:"30px" }}  />
           </div>
           </Tooltip>
 
 
 
-
+{/* 
     
     <Tooltip placement="right" content={'Financials'} color='invert' rounded >
      <div className='  w-full items-center mt-5 mb-9 px-1.5 py-1 cursor-pointer'>
             <LogoutIcon sx={{ color: '#C00B00', fontSize:"30px" }}  />
           </div>
-          </Tooltip>
+          </Tooltip> */}
     
-    
+{/*     
     <Tooltip placement="right" content={'Creditors'} color='invert' rounded >
      <div className='  w-full items-center mt-5 mb-9 px-1.5 py-1 cursor-pointer'>
             <DescriptionIcon sx={{ color: '#C00B00' , fontSize:"30px"}}  />
           </div>
           </Tooltip>
-    
+     */}
          
     
      

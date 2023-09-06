@@ -53,7 +53,9 @@ function AttributeSelector({userid,childToParent}) {
 
 
 <Dropdown>
-<Dropdown.Button flat>Attributes</Dropdown.Button>
+  <div className='mt-2'>
+<Dropdown.Button flat >Attributes</Dropdown.Button>
+</div>
 <Dropdown.Menu aria-label="Dynamic Actions" items={attributes}  onAction={(key)=>{childToParent(key)}}>
     
         {(item) => (
