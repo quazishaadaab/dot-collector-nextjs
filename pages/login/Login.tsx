@@ -151,7 +151,7 @@ function Login() {
 
 <div className='md:flex-[33%] 2xl:flex-[26%] bg-white md:py-28 md:px-10  2xl:py-44 2xl:px-12 text-slate-600 max-h-full rounded '>
 
-<div className=' md:text-2xl font-[600] pb-1'>Welcome to DotCollector</div>
+<div className=' md:text-2xl font-[600] pb-1'>Welcome to Upplif</div>
 
 <div className=' font-[400] text-slate-400 text-base '>Please sign-in to your account using any of the login options</div>
 

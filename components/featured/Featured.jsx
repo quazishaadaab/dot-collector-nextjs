@@ -40,7 +40,7 @@ dotCollection?(count=Object.keys(dotCollection).length):(count=0);
 
   return (
     <div className={styles.featured}>
-      Featured
+      Participation Gauge
       <div className={styles.top}>
         <div className={styles.title}>Total Dots</div>
         <MoreVertIcon fontSize="small" />
@@ -49,13 +49,13 @@ dotCollection?(count=Object.keys(dotCollection).length):(count=0);
 
         <div className={styles.featuredChart}>
 
-        <CircularProgressbar strokeWidth={1} value={count*10} text={`${count*10}%`} />;
+        <CircularProgressbar strokeWidth={1} value={1} text={`${count/100}%`} />
 
         </div>
 
         <p className={styles.title}>Total meetings made so far</p>
       <p className={styles.amount}>{count}</p>
-      <p className={styles.desc}>Previous transactions processing.Last payments may not be included.</p>
+      {/* <p className={styles.desc}>Previous transactions processing.Last payments may not be included.</p> */}
       
 <div className={styles.summary}>
 

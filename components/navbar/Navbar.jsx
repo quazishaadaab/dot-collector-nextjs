@@ -36,14 +36,15 @@ const Navbar = () => {
 <NoSSR_Search  searchtype={'peer'} roomid={null}/>
 {/* <SearchIcon/> */}
 </div>
+<div className="mb-3 mt-3 ">{payload?.username}</div>
+
 <Image 
 layout='fixed'
-width={50}
-height={50}
-className="rounded-xl"
+width={40}
+height={40}
+className="rounded-3xl"
 src={`${payload?.userPhoto}`}
 />
-
 
 
 {/* <div className={styles.items}>

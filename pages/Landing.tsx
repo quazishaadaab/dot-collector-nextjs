@@ -36,6 +36,8 @@ function Landing() {
             __html: `<iframe src="${FRONT_END}/rooms/a2883fc6-aaad-4de8-acf4-ebfde60c1420" width="100%"  ; overflow-y="hidden"   ;  height="100%"; border="0"; frameborder="0"; position="absolute"  ></iframe>`
         }
     }
+
+
     return (
 
 
@@ -46,7 +48,8 @@ function Landing() {
 
         <>
             <div className='h-full w-full '>
-                <div className=" bg-gradient-to-b from-purple-400 to-gray-100  h-[15%] w-full p-3 rounded-3x flex relative ">
+             
+                <div className=" bg-gradient-to-b from-red-700 to-gray-100  h-[15%] w-full p-3 rounded-3x flex relative ">
 
                     {/* header */}
                     {/* 
@@ -55,10 +58,21 @@ function Landing() {
                     <div className="mt-4 ml-3"><Text size={20}>demo</Text></div> */}
 
                     {/* landing page */}
+                    <div className="w-[10%] h-[100%] ml-12 ">
+                    <Image 
+layout='fixed'
+width={100}
+height={100}
+className="rounded-xl"
+src="/logo.png"
+/>
+                    </div>
+
+
 
                     <div className="hidden md:block ml-[80%] mt-5  absolute ">
 
-                        <Button shadow size="lg" color="gradient" auto onClick={() => { location.href = "/login/Login"; }}>
+                        <Button shadow size="lg" color="secondary" auto onClick={() => { location.href = "/login/Login"; }}>
                             Get Started
                         </Button>
 
@@ -66,7 +80,7 @@ function Landing() {
 
                     <div className="visible md:hidden ml-[60%] mt-5  absolute ">
 
-                        <Button shadow size="sm" color="gradient" auto onClick={() => { location.href = "/login/Login"; }}>
+                        <Button shadow size="sm" color="secondary" auto onClick={() => { location.href = "/login/Login"; }}>
                             Get Started
                         </Button>
 
@@ -144,7 +158,7 @@ function Landing() {
 
 
 
-                    <h1 className="text-4xl font-[700]  w-[50%] h-[10%] pt-9  ml-[25%] text-center text-transparent bg-clip-text bg-gradient-to-r	 from-indigo-500 via-purple-500 to-pink-500   tracking-tight">How Dots Works</h1>
+                    <h1 className="text-4xl font-[700]  w-[50%] h-[10%] pt-9  ml-[25%] text-center text-transparent bg-clip-text bg-gradient-to-r	 from-indigo-500 via-purple-500 to-pink-500   tracking-tight">How Upplif Works</h1>
 
                     <h1 className="text-lg font-[200] text-gray-700  w-[50%] h-[2%]  ml-[25%] text-center	 tracking-tight">Get Started in 4 Easy Steps</h1>
 
@@ -166,7 +180,7 @@ function Landing() {
                                 />
                             </div>
 
-                            <div className=" w-full  text-center mt-16 px-2 racking-tight text-xl  text-gray-700 font-[700]">
+                            <div className=" w-full  text-center mt-12 px-2 racking-tight text-xl  text-gray-700 font-[700]">
 
                                 1 . Create custom skill set list
 
@@ -181,13 +195,13 @@ function Landing() {
                         </div>
                         <div className="w-[20%] h-[100%] ">
 
-                            <div className=" w-full h-[60%]">
+                            <div className=" w-[full] h-[60%]">
 
                                 <Slider />
 
                             </div>
 
-                            <div className=" w-full  text-center mt-20 px-2 racking-tight text-xl font-[700] text-gray-700">
+                            <div className=" w-full  text-center mt-12 px-2 racking-tight text-xl font-[700] text-gray-700">
 
                                 2 . Create session and invite teammembers
 
@@ -268,7 +282,7 @@ function Landing() {
 
 
 
-                    <h1 className="text-xl font-[700]  w-[50%] h-[3%] pt-9  ml-[25%] text-center text-transparent bg-clip-text bg-gradient-to-r	 from-indigo-500 via-purple-500 to-pink-500   tracking-tight">How Dots Works</h1>
+                    <h1 className="text-xl font-[700]  w-[50%] h-[3%] pt-9  ml-[25%] text-center text-transparent bg-clip-text bg-gradient-to-r	 from-indigo-500 via-purple-500 to-pink-500   tracking-tight">How Upplif Works</h1>
 
                     <h1 className="text-sm font-[200] text-gray-700  w-[50%] h-[2%]  ml-[25%] text-center	 tracking-tight">Get Started in 4 Easy Steps</h1>
 
@@ -278,7 +292,7 @@ function Landing() {
                             <div className="mx-[9%] w-[80%] h-[10%]    ">
 
 
-                                <div className=" w-full h-[100%]  ">
+                                <div className=" w-full h-[100%] ml-5  ">
                                     <Image
                                         src="/Step1.png"
                                         alt="Picture of the author"
@@ -408,7 +422,7 @@ function Landing() {
 
 
 
-                    <h1 className="text-4xl font-[700]  w-[50%] h-[10%] pt-9  ml-[25%] text-center text-transparent bg-clip-text bg-gradient-to-r	 from-indigo-500 via-purple-500 to-pink-500  tracking-tight  mt-8 mb-5">Dots Top Features</h1>
+                    <h1 className="text-4xl font-[700]  w-[50%] h-[10%] pt-9  ml-[25%] text-center text-transparent bg-clip-text bg-gradient-to-r	 from-indigo-500 via-purple-500 to-pink-500  tracking-tight  mt-8 mb-5"> Upplif Top Features</h1>
 
                     <div className="flex w-full h-full relative gap-x-24">
 
@@ -434,9 +448,9 @@ function Landing() {
 
                                 <div className=" text-center text-bold font-[700] text-xl mb-3">Detach From Yourself</div>
 
-                                <div className=" text-center text-lg font-[200] text-gray-500">Dots forces you to emphasize the impermanent nature of all skills and work.
-                                    Dots makes holding onto things impermanent by giving you an objective view of yourself and naturally kills your ego .
-                                    The feeling of detachment Dots culativates involves not identifying one's sense of self-worth, happiness, or identity with external conditions, like a bad grade/dot.</div>
+                                <div className=" text-center text-lg font-[200] text-gray-500">Upplif forces you to emphasize the impermanent nature of all skills and work.
+                                    Upplif makes holding onto things impermanent by giving you an objective view of yourself and naturally kills your ego .
+                                    The feeling of detachment Upplif culativates involves not identifying one's sense of self-worth, happiness, or identity with external conditions, like a bad grade/dot.</div>
 
                             </div>
 
@@ -457,7 +471,7 @@ function Landing() {
                                 </div>
                                 <div className="text-center text-bold font-[700] text-xl mb-3">Know Yourself</div>
 
-                                <div className="text-center text-lg font-[200] text-gray-500">With all the quantitive feedback recieved from teammates, Dots provides a platform that you can use to analyze and diagnose your weaknesses so you know exactly where you need to improve.  </div>
+                                <div className="text-center text-lg font-[200] text-gray-500">With all the quantitive feedback recieved from teammates, Upplif provides a platform that you can use to analyze and diagnose your weaknesses so you know exactly where you need to improve.  </div>
 
                             </div>
                         </div>
@@ -482,7 +496,7 @@ function Landing() {
                                 </div>
                                 <div className=" text-center text-bold font-[700] text-xl mb-3">Proactively Observe</div>
 
-                                <div className=" text-center text-lg font-[200] text-gray-500">Since the Dots platform facilitates an agile continous process of feedback and improvement (CF/CI), the way you operate becomes a beautiful proactive process instead of a painful reactive one.   </div>
+                                <div className=" text-center text-lg font-[200] text-gray-500">Since the Upplif platform facilitates an agile continous process of feedback and improvement (CF/CI), the way you operate becomes a beautiful proactive process instead of a painful reactive one.   </div>
 
                             </div>
 
@@ -503,7 +517,7 @@ function Landing() {
                                 </div>
                                 <div className="text-center text-bold font-[700] text-xl mb-3">Radical Transparency and Accountability</div>
 
-                                <div className=" text-center text-lg font-[200] text-gray-500">Dots gives you a platform to be radically transparent with one another. If you have something to say about a person , express it with a dot ! This forces a team to hold each other accountable . </div>
+                                <div className=" text-center text-lg font-[200] text-gray-500">Upplif gives you a platform to be radically transparent with one another. If you have something to say about a person , express it with a dot ! This forces a team to hold each other accountable . </div>
 
                             </div>
                         </div>
@@ -538,12 +552,12 @@ function Landing() {
                             </div>
                             <div className="w-full md:w-1/4 mb-4 md:mb-0">
                                 <h3 className="text-lg font-semibold mb-2">Contact Us</h3>
-                                <p className="text-gray-200">Email: <a href="mailto:dots@gmail.com" className="hover:text-white">dots@gmail.com</a></p>
+                                <p className="text-gray-200">Email: <a href="mailto:Upplif@gmail.com" className="hover:text-white">Upplif@gmail.com</a></p>
                                 <p className="text-gray-200">Phone: <a href="tel:+1234567890" className="hover:text-white">+1 (234) 567-890</a></p>
                             </div>
                         </div>
-                        <div className="border-t border-gray-700 mt-8 pt-8 text-center">
-                            <p className="text-gray-300 ml-[30%]">&copy; 2023 , Dots. All rights reserved.</p>
+                        <div className="border-t border-gray-700 mt-8  text-center">
+                            <p className="text-gray-300 ml-[30%]">&copy; 2023 , Upplif. All rights reserved.</p>
                         </div>
                     </footer>
 
@@ -572,7 +586,7 @@ function Landing() {
         </div>
         <div className="w-full md:w-1/4 mb-4 md:mb-0">
             <h3 className="text-lg font-semibold mb-2">Contact Us</h3>
-            <p className="text-gray-200">Email: <a href="dots@gmail.com" className="hover:text-white">dots@gmail.com</a></p>
+            <p className="text-gray-200">Email: <a href="Upplif@gmail.com" className="hover:text-white">Upplif@gmail.com</a></p>
             <p className="text-gray-200">Phone: <a href="tel:+1234567890" className="hover:text-white">+1 (234) 567-890</a></p>
         </div>
     </div>
@@ -584,7 +598,7 @@ function Landing() {
 
 
     <div className="border-t border-gray-700 mt-8 pt-8 text-center">
-        <p className="text-gray-300 ">&copy; 2023 , Dots. All rights reserved.</p>
+        <p className="text-gray-300 ">&copy; 2023 , Upplif. All rights reserved.</p>
     </div>
 </footer>
 

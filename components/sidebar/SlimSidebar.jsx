@@ -169,9 +169,9 @@ window.location.href = `${FRONT_END}/login/Login`;
 <Image
       src="/logo.png"
       alt="Picture of the author"
-      width={700}
-      height={700}
-      className=''
+      width={900}
+      height={800}
+      className='rounded-lg'
       objectFit='contain'
     />
 
