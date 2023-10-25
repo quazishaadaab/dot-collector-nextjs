@@ -36,7 +36,7 @@ const render=()=>{
 </div>
 
 
-<div className="ml-[22%] md:ml-[30%] mt-2 ">
+<div className="ml-[22%] md:ml-[25%] mt-2 ">
  <Pagination animated shadow color={'warning'} noMargin loop total={2} initialPage={1} onChange={(page:number)=>{
 setPage(page)
  }}/>

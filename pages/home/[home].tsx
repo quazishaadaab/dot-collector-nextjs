@@ -163,7 +163,7 @@ setSelectedAttribute(selected)
 
         <div className={styles.charts}>
           <Featured />
-          <Chart selectedAttribute={selectedAttribute} title={'Last 6 months'} aspect={2/1}/>
+          <Chart selectedAttribute={selectedAttribute} title={'Radar Chart of Skill Breakdown'} aspect={2/1}/>
         </div>
 
         <div className="bg-white rounded-[15px] ">
