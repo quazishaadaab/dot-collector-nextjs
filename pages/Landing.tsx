@@ -78,7 +78,7 @@ src="/logo.png"
 
                     </div>
 
-                    <div className="AAvisible md:hidden ml-[60%] mt-5  absolute ">
+                    <div className="visible md:hidden ml-[60%] mt-5  absolute ">
 
                         <Button shadow size="sm" color="secondary" auto onClick={() => { location.href = "/login/Login"; }}>
                             Get Started
