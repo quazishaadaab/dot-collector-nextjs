@@ -253,4 +253,4 @@ useEffect(() => {
 
 }
 
-export default Horz
+export default Horz                          
