@@ -64,6 +64,8 @@ user_data = JSON.parse(data_parsed?.user)
 }
 else{
   location.reload()
+  user_data = JSON.parse(data_parsed?.user)
+
 }
 
 
