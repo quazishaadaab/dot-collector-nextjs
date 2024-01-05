@@ -51,9 +51,22 @@ let payload :Payload;
 //I think we should remove userid below because we are not passing anything to it
 const Home = ({userid}:id ) => {
 
-const data_unparsed : any = window.localStorage.getItem('persist:root')
+const data_unparsed : any = window.localStorage?.getItem('persist:root')
+
+console.log(data_unparsed)
 const data_parsed = JSON.parse(data_unparsed)
-const user_data = JSON.parse(data_parsed?.user)
+console.log(data_parsed)
+//const user_data = JSON.parse(data_parsed?.user)
+
+var user_data:Payload ;
+if(data_parsed?.user){
+user_data = JSON.parse(data_parsed?.user)
+}
+else{
+  location.reload()
+}
+
+
 const dispatch = useDispatch()
 const router= useRouter()
 

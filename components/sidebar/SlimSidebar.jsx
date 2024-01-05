@@ -75,6 +75,7 @@ React.useEffect(() => {
    setUser(user_data)
 
 // setUserid(uid)
+//when a new room is created we want to launch it. this is inefficient as we will need to make the launch function more specefic and narrow. its using too much memory
  DataService2.launch()
 
 // its best practice to put all your code in one function/method because useEffect only runs everything once. inside a method,

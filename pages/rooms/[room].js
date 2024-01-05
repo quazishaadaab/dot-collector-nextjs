@@ -91,7 +91,12 @@ const Rooms = (unique_id) => {
 
   //useEffect for all functions( no dependency)
   React.useEffect(() => {
+
+    //we need launch here to launch a new room when it is created. However, slimSidebar has this launch call so putting it here in rooms is redundant. what we need to do is have 2 launches, one in slimSidebar and one in home.
+    //the one in slidesidebar will need to be specefic , meaning it will launch only that one specefic room pertaining to the user . right now its launching everything so its super redundant and we are doing duplicates and causing lag.
     DataService2.launch()
+    
+    
     DataService.sendRoomId(roomId)
     insertPeersInRoom(usersDoc)
 
