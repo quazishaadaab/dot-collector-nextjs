@@ -630,4 +630,3 @@ src="/logo.png"
 
 export default Landing
 
-
