@@ -21,8 +21,8 @@ const CANVAS_BACKEND="https://backendstaticcanvas.up.railway.app"
 // const FRONT_END = "https://dotcollector.ca"
 // const FRONT_END = "https://dots-prod-tau.vercel.app"
 
- const FRONT_END = "https://upplif.ca"
-//  const FRONT_END = "http://localhost:3000"
+  const FRONT_END = "https://upplif.ca"
+  // const FRONT_END = "http://localhost:3000"
 
 export {BASE_BACKEND}
 export {CANVAS_BACKEND}

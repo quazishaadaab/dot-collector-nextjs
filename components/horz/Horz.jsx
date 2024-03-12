@@ -13,7 +13,7 @@ import { BASE_BACKEND } from '../../utils/deployments';
 import { useRouter } from 'next/router'
 import Loading from '../../pages/loading';
 
-import Skeleton from 'react-loading-skeleton'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
 
 let number_of_users = 0
@@ -167,8 +167,7 @@ useEffect(() => {
 
 
         {userData?.map(data => {
-
-
+    
           return (
 
             //if the userid is equal to the speakerid of the room(from the database not from the component state)
@@ -176,9 +175,6 @@ useEffect(() => {
              speaker==data?.userid? (
               <Grid>
       
-          
-
-
             <div className={` cursor-pointer xl:pl-[.8rem] xl:pr-1 2xl:pl-[.8rem] ${text_gap}`} onClick={()=>{setSpeaker(data?.userid);setSpeakerForRoom(data?.userid)} }>
 
               <div className={styles.overlap}>
@@ -201,6 +197,7 @@ useEffect(() => {
 
             </div>
             
+           
             </div>
             </Grid>
             ):(
@@ -233,11 +230,6 @@ useEffect(() => {
               </Grid>
             ) 
 
-
-            
-
-
-
           )
 
         })}
@@ -247,7 +239,11 @@ useEffect(() => {
 
 
 
-      </div>
+     
+     
+     
+     
+     </div>
     )
 
 
