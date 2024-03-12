@@ -351,7 +351,7 @@ Invitation sent
         Close
       </Button>
       <Button auto onClick={ ()=>{
-      axios.post(`${BASE_BACKEND}/sendEmailInvite`,{email:email, roomlink:`${FRONT_END}/rooms/${uniqueid}`})  
+      axios.post(`${BASE_BACKEND}/sendEmailInvite`,{email:email, roomlink:`${FRONT_END}/rooms2/${uniqueid}`})  
       setEmail('');
          const emailInput = document.getElementById('emailinput');
          emailInput.value='';

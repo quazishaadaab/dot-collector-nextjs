@@ -47,9 +47,9 @@ function Landing() {
         // </div>
 
         <>
-            <div className='h-full w-full '>
-             
-                <div className=" bg-gradient-to-b from-red-700 to-gray-100  h-[15%] w-full p-3 rounded-3x flex relative ">
+            <div className="bg-[url('/qama.png')] bg-cover bg-no-repeat  absolute h-[500%] w-full  ">
+
+                <div className=" bg-roed-500  h-[3%] w-full p-3 rounded-3x flex relative ">
 
                     {/* header */}
                     {/* 
@@ -59,13 +59,13 @@ function Landing() {
 
                     {/* landing page */}
                     <div className="w-[10%] h-[100%] ml-12 ">
-                    <Image 
-layout='fixed'
-width={100}
-height={100}
-className="rounded-xl"
-src="/logo.png"
-/>
+                        <Image
+                            layout='fixed'
+                            width={100}
+                            height={100}
+                            className="rounded-xl"
+                            src="/logo.png"
+                        />
                     </div>
 
 
@@ -97,74 +97,56 @@ src="/logo.png"
 
                 </div>
 
-                <div className="bg-gray-100  h-[100%] w-full md:h-[150%] pt-10 pb-8 ">
+
+
+                <div className="  bg-ried-300 h-[25%] relative w-full md:h-[20%]  pt-10   flex" >
+
+
+                    {/* <h1 className=' text-2xl h-[8%] ml-12 bg-red-300  md:text-7xl  text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-[700] tracking-tighter md:ml-[18%] mb-[3%] xl:ml-[20%] 2xl:ml-[25%]  '> People analytics on demand</h1> */}
+
+                    {/* <div className=" text-center   text-lg md:text-xl font-[200] text-gray-700  tracking-tight">The first Continuous Feedback, Continuous Improvement Platform</div> */}
 
 
 
-                    <h1 className='text-2xl h-[8%] ml-12 bg-red-300  md:text-7xl  text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-[700] tracking-tighter md:ml-[18%] mb-[3%] xl:ml-[20%] 2xl:ml-[25%]  '> People analytics on demand</h1>
+                    <div className="bg-rkd-300   w-[50%] h-full px-14 xl:py-6 2xl:py-14">
+                        <Button color="warning" size={'lg'} bordered className='mb-5'>
+                            REAL-TIME FEEDBACK
+                        </Button>
+                        <div className="bg-yelklow-200 w-full h-[50%]  text-left  xl:h-[44%] xl:mb-[5%]  2xl:h-[40%] 2xl: mb-[5%] text-6xl xl:text-7xl  2xl:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-[700] tracking-tighter  ">The most complete AI powered micro-feedback platform</div>
+                        <div className="bg-grkeen-200 w-full h-[30%] text-left xl:text-2xl 2xl:text-3xl font-[300] tracking-tighter text-white">Upplif is a platform to collect and share micro-feedback to team members for fostering a continuous growth culture in an agile organization.
 
-                    <div className="text-center   text-lg md:text-xl font-[200] text-gray-700  tracking-tight">The first Continuous Feedback, Continuous Improvement Platform</div>
-                    {/* Reactivate when iframe is ready and doesnt need authentication */}
-                    {/* <div id='dangerousHtml' className='  w-[70%] h-[61.8%] ml-[15%] overflow-hidden	' dangerouslySetInnerHTML={iframe()} /> */}
-                    <div className=" hidden md:block w-[70%] h-[61.8%] ml-[15%] overflow-hidden mt-10">
-                        <Image
-                            src="/demo.png"
-                            alt="Picture of the author"
-                            width={160}
-                            height={100}
-                            className='rounded-3xl'
-                            layout='responsive'
-                            objectFit='contain'
+                            <Button color="error" size={'lg'} solid auto className='mt-7'>
+                                Get Started For Free
+                            </Button>
+                        </div>
 
-                        />
-                    </div>
-                    <div className="visible md:hidden  w-[70%] h-[61.8%] ml-[23%] overflow-hidden mt-2">
-                        <Image
-                            src="/demo.png"
-                            alt="Picture of the author"
-                            width={30}
-                            height={50}
-                            className='rounded-3xl'
-                            layout='responsive'
-                            objectFit='contain'
-
-                        />
                     </div>
 
-                    {/* <h1 className='text-7xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-[700] mb-8 tracking-tighter  '> People analytics on demand</h1> */}
+                    <div className="bg-ggreen-300 relative w-[50%] h-full xl:pt-[5.5%] xl:mr-6 2xl:pt-[2%] 2xl:mr-6 ">
 
-                    {/* <div className="text-lg text-left font-[200]">The DotCollector is the best people analytics tool designed for teams to get a clear,transparent measure of their peer's skills and abilities.
-                        The DotCollector does this by leveraging a 2-D grid where teams place "dots" on an attribute/skill. The dots place a numerical value from 1-10 on a particular skill of the member.
-                        These dots are then processed by algorithims to give the best picture of a candidates/team members skills/attributes.</div>
+                        <div className="bg-[url('/attribute_canvas.svg')] bg-cover rounded-[5%]	bg-no-repeat bg-red-300	bg-no-repeat h-[100%] w-[100%] md:h-[100%]  pt-10 " >
+                        </div>
 
-                </div> */}
-
-                    {/* <div className="text-2xl  text-left font-[200]">A people analytics tool that measures peer skills, makes capabilities transparent, and ranks strengths/weaknessses.</div> */}
+                    </div>
 
 
-
-
-                    {/* <div className='h-[80%] w-[70%]  mt-30 ml-8 mr-8 '>
-               
-                </div> */}
 
 
                 </div>
 
 
+                <div className=" hidden md:block bg-gra4y-200  w-full h-[25%]  relative pt-20	   " >
 
 
-                <div className="hidden md:block bg-gray-200  w-full h-full pt-5  ">
+                    <h1 className="text-4xl font-[700]  w-[50%] h-[10%] pt-9  ml-[25%] text-center text-transparent text-black tracking-tight">How Upplif Works</h1>
+
+                    <h1 className="text-4xl font-[500] text-gray-700  w-[50%] h-[2%]  ml-[25%] text-center	 tracking-tight">Get Started in 4 Easy Steps</h1>
 
 
-
-                    <h1 className="text-4xl font-[700]  w-[50%] h-[10%] pt-9  ml-[25%] text-center text-transparent bg-clip-text bg-gradient-to-r	 from-indigo-500 via-purple-500 to-pink-500   tracking-tight">How Upplif Works</h1>
-
-                    <h1 className="text-lg font-[200] text-gray-700  w-[50%] h-[2%]  ml-[25%] text-center	 tracking-tight">Get Started in 4 Easy Steps</h1>
 
                     <div className=" mt-5 flex w-full h-[80%] gap-x-[3%] px-8 py-[4%] pl-[10%] ">
 
-                        <div className=" w-[20%] h-[100%]  ">
+                        <div className=" w-[20%] h-[100%] rounded-3xl 	bg-white 	px-2	  ">
 
 
                             <div className=" w-full h-[60%]  ">
@@ -193,7 +175,10 @@ src="/logo.png"
                                 Create your skill set package to use for your sessions/meetings. These skills are what's people are going to be measured on.
                             </div>
                         </div>
-                        <div className="w-[20%] h-[100%] ">
+
+
+
+                        <div className="w-[20%] h-[100%] rounded-3xl 	bg-white px-2   ">
 
                             <div className=" w-[full] h-[60%]">
 
@@ -213,7 +198,7 @@ src="/logo.png"
                         </div>
 
 
-                        <div className=" w-[20%] h-[100%] ">
+                        <div className=" w-[20%] h-[100%] rounded-3xl 	bg-white   ">
 
                             <div className=" w-full h-[60%] pt-3 ">
                                 <img className='rounded-3xl w-[90%] h-[80%] ml-4 mt-8   ' src='Step3.png'></img>
@@ -236,7 +221,7 @@ src="/logo.png"
                         </div>
 
 
-                        <div className=" w-[20%] h-[100%]  ">
+                        <div className=" w-[20%] h-[100%] rounded-3xl 	bg-white    ">
 
                             <div className=" w-full h-[60%] pt-32">
 
@@ -258,26 +243,12 @@ src="/logo.png"
 
 
                     </div>
-                    {/* <div className="h-64 w-[50%]    ml-8 mt-32 ">
-                    <div className='text-5xl text-black font-[700] mb-8 tracking-tighter'>Post live "dots" to measure team member skills and attributes</div>
-
-                    <div className="text-xl font-[200] text-gray-700   tracking-tight">The DotCollector is the best people analytics tool designed for teams to get a clear,transparent measure of their peer's skills and abilities.
-                        The DotCollector does this by leveraging a 2-D grid where teams place "dots" on an attribute/skill. The dots place a numerical value from 1-10 on a particular skill of the member.
-                        These dots are then processed by algorithims to give the best picture of a candidates/team members skills/attributes.</div>
 
                 </div>
 
 
 
-
-                <div className='h-full w-[50%]  rounded-3xl p-16 pt-24'>
-                    <img src="dot.png" className='rounded-3xl'></img>
-                </div> */}
-
-
-                </div>
-
-{/* for mobile */}
+                {/* for mobile */}
                 <div className="visible md:hidden bg-gray-200  w-full h-[350%] pt-5  ">
 
 
@@ -395,7 +366,7 @@ src="/logo.png"
 
                     </div>
 
-                    
+
                     {/* <div className="h-64 w-[50%]    ml-8 mt-32 ">
 <div className='text-5xl text-black font-[700] mb-8 tracking-tighter'>Post live "dots" to measure team member skills and attributes</div>
 
@@ -415,126 +386,203 @@ src="/logo.png"
 
                 </div>
 
-                {/* weird right side gap starts here */}
+                {/* Master removing bias */}
+                <div className="w-full backdrop-blur-md bg-gray-400/25 border-none	 w-[90%] ml-[5%] rounded-3xl border-4
+                 h-[5%] text-4xl xl:text-[300%] 2xl:text-[400%]  content-center pt-20 xl:pt-20 2xl:pt-24  font-[500] tracking-tight  flex">
 
 
-                <div className=" hidden md:block w-full h-[130%]  bg-gray-100 relative pt-4 px-24">
+                    <p className="w-auto h-full ml-32 xl:ml-32 2xl:ml-36 text-white"> Instantly&nbsp;</p>
+                    <p className="w-auto h-full text-[800] underline decoration-wavy	decoration-black	 text-gray-400">remove bias&nbsp;</p>
+                    <div className="w-auto h-full text-white">  from your desision making </div>
+                </div>
+
+                {/* Feature Slides v2*/}
+
+
+                <div className="SECTOR CHAMPS bg-grepen-300 w-full h-[18%] flex   mt-10 px-24 shadow-2xl">
+
+                    {/* bg-[url('/champions.png')] bg-cover */}
+                    <div className="bg-yellpow-300 w-[50%] h-full py-14 ">
+
+                        {/* <div  className=" bg-[url('/champions.png')] bg-fill 	bg-no-repeat  w-[20%]  h-[20%] rounded-3xl mt-6"></div> */}
+                        <img src='/champions.png' className='w-[95%] 2xl:h-auto xl:w-[95%]  2xl:w-[80%]  xl:ml-[1%] 2xl:ml-[12%] '></img>
+                    </div>
+
+                    <div className="bg-blpue-300 w-[50%] h-full py-28 pl-12 2xl:py-42 ">
+
+                        <h1 className="bg-blfue-400 text-left  text-7xl 2xl:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-[700] tracking-tighter ">Easily identify top talent in each attribute</h1>
+                        <p className="bg-slafte-400 text-left text-3xl mt-6 2xl:text-3xl 2xl:mt-9   text-gray-300 font-[300] tracking-tight ">Find the sector champions in your organziation and reward greatness. Use these results to pick the right people for a project. Leverage the champions as a benchmark for others employees to strive for. </p>
+
+                    </div>
+
+                </div>
+
+
+                <div className="MASTER REMOVING BIAS bg-gfreen-300 w-full h-[18%] flex  px-24 shadow-2xl">
+
+                    {/* bg-[url('/champions.png')] bg-cover */}
+
+                    <div className="bg-bflue-300 w-[50%] h-full py-28 xl:pr-7 2xl:py-42 2xl:pr-16 ">
+
+                        <h1 className="bg-blfue-400 text-right  text-7xl 2xl:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-[700] tracking-tighter ">Master removing bias by developing a checklist</h1>
+                        <p className="bg-slatfe-400 text-right text-3xl mt-6 2xl:text-3xl 2xl:mt-9   text-gray-300 font-[300] tracking-tight ">Develop checklists or guidelines for idea evaluation. These can include criteria that are based on the goals and objectives of the project rather than personal preferences. </p>
+
+                    </div>
+
+                    <div className="bg-yellpow-300 w-[50%] h-full py-14 ">
+
+                        {/* <div  className=" bg-[url('/champions.png')] bg-fill 	bg-no-repeat  w-[20%]  h-[20%] rounded-3xl mt-6"></div> */}
+                        <img src='/elim_bias.png' className='w-[95%] 2xl:h-auto xl:w-[95%]  2xl:w-[80%]  xl:ml-[8%] 2xl:ml-[6%] '></img>
+                    </div>
+
+
+                </div>
+
+
+                <div className="ASK AI bg-black w-full h-[18%] flex  pr-24 shadow-2xl">
+
+                    {/* bg-[url('/champions.png')] bg-cover */}
+                    <div className="bg-yelglow-300 w-[70%] h-full py-14 mt-24 2xl:mt-10 ">
+
+                        {/* <div  className=" bg-[url('/champions.png')] bg-fill 	bg-no-repeat  w-[20%]  h-[20%] rounded-3xl mt-6"></div> */}
+                        <img src='/AI.png' className='w-[95%] 2xl:h-[50%] 2xl:w-[100%] xl:w-auto xl:h-auto  xl:ml-[1%] 2xl:msl-[1%] '></img>
+                    </div>
+
+                    <div className="bg-bluge-300 w-[50%] h-full py-28 pl-12 2xl:py-42 ">
+
+                        <h1 className="bg-blgue-400 text-left h-[47%] text-7xl 2xl:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-[700] tracking-tighter ">Ask A.I for the best people for a job</h1>
+                        <p className="bg-slagte-400 text-left text-3xl mt-9 2xl:text-3xl 2xl:mt-9   text-gray-300 font-[300] tracking-tight ">Ask AI to choose the best people who match the criteria requested for a certain role or project. </p>
+
+                    </div>
+
+                </div>
 
 
 
-                    <h1 className="text-4xl font-[700]  w-[50%] h-[10%] pt-9  ml-[25%] text-center text-transparent bg-clip-text bg-gradient-to-r	 from-indigo-500 via-purple-500 to-pink-500  tracking-tight  mt-8 mb-5"> Upplif Top Features</h1>
+                <div className="USE PREBUILT  bg-black w-full h-[18%] flex  px-24 shadow-2xl">
 
-                    <div className="flex w-full h-full relative gap-x-24">
+                    {/* bg-[url('/champions.png')] bg-cover */}
 
-                        <div className=" w-[50%] h-[100%]  ">
+                    <div className="bg-bflue-300 w-[50%] h-full py-28 xl:pr-7 2xl:py-42 2xl:pr-16 ">
 
-                            <div className="h-[40%] w-full pt-3">
-                                <div className="w-[40%] h-[40%] ml-[30%] mb-3 pt-3">
+                        <h1 className="bg-blfue-400 text-right  text-7xl 2xl:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-[700] tracking-tighter ">Get started right away by using 75+ prebuilt attributes</h1>
+                        <p className="bg-slatfe-400 text-right text-3xl mt-6 2xl:text-3xl 2xl:mt-9   text-gray-300 font-[300] tracking-tight ">There are over 75 pre-built attributes you can choose from that have been well researched by experts that demonstrate their importance in the workplace.</p>
 
-                                    <Image
-                                        src="/feat-1.png"
-                                        alt="Picture of the author"
-                                        width={120}
-                                        height={60}
-                                        className='rounded-3xl'
-                                        layout='responsive'
-                                        objectFit='fill'
+                    </div>
 
-                                    />
+                    <div className="bg-yellpow-300 w-[50%] h-full py-14 ">
 
-                                </div>
+                        {/* <div  className=" bg-[url('/champions.png')] bg-fill 	bg-no-repeat  w-[20%]  h-[20%] rounded-3xl mt-6"></div> */}
+                        <img src='/champions.png' className='w-[95%] 2xl:h-auto xl:w-[95%]  2xl:w-[80%]  xl:ml-[8%] 2xl:ml-[6%] '></img>
+                    </div>
+
+
+                </div>
 
 
 
-                                <div className=" text-center text-bold font-[700] text-xl mb-3">Detach From Yourself</div>
 
-                                <div className=" text-center text-lg font-[200] text-gray-500">Upplif forces you to emphasize the impermanent nature of all skills and work.
-                                    Upplif makes holding onto things impermanent by giving you an objective view of yourself and naturally kills your ego .
-                                    The feeling of detachment Upplif culativates involves not identifying one's sense of self-worth, happiness, or identity with external conditions, like a bad grade/dot.</div>
+                <div className="MEASURE AND VISUALIZE bg-black w-full h-[18%] flex px-24 shadow-2xl">
 
-                            </div>
+                    {/* bg-[url('/champions.png')] bg-cover */}
+                    <div className="bg-yellpow-300 w-[50%] h-full py-14 ">
 
-                            <div className=" h-[40%] w-full pt-3">
-                                <div className=" w-[40%] h-[40%] ml-[30%] mb-3 pt-3">
-                                    <Image
-                                        src="/feat-3.png"
-                                        alt="Picture of the author"
-                                        width={120}
-                                        height={50}
-                                        className='rounded-3xl'
-                                        layout='responsive'
-                                        objectFit='fill'
+                        {/* <div  className=" bg-[url('/champions.png')] bg-fill 	bg-no-repeat  w-[20%]  h-[20%] rounded-3xl mt-6"></div> */}
+                        <img src='/champions.png' className='w-[95%] 2xl:h-auto xl:w-[95%]  2xl:w-[80%]  xl:ml-[1%] 2xl:ml-[12%] '></img>
+                    </div>
 
-                                    />
+                    <div className="bg-blpue-300 w-[50%] h-full py-28 pl-12 2xl:py-42 ">
+
+                        <h1 className="bg-blfue-400 text-left h-[44%] text-7xl 2xl:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-[700] tracking-tighter ">Measure and visualize your feedback data</h1>
+                        <p className="bg-slafte-400 text-left text-3xl mt-6 2xl:text-3xl 2xl:mt-9   text-gray-300 font-[300] tracking-tight ">Powerful charts and widgets make it easy to hold everyone accountable and visualize continous improvement. </p>
+
+                    </div>
+
+                </div>
+
+                {/* The most complete platform */}
+
+                <div className="bg-black h-[5%] w-full py-6 ">
+                    <div className="w-full backdrop-blur-md bg-gray-400/25 border-none 	 w-[90%] ml-[5%] rounded-3xl border-4
+                 h-[100%] text-2xl xl:text-[220%] 2xl:text-[290%]  content-center pt-12 xl:pt-14 2xl:pt-20  font-[500] tracking-tight  flex">
 
 
-                                </div>
-                                <div className="text-center text-bold font-[700] text-xl mb-3">Know Yourself</div>
+                        <p className="w-auto h-full ml-[3%] 2xl:ml-[5%] text-white"> The most&nbsp;</p>
+                        <p className="w-auto h-full text-[800] underline decoration-wavy	decoration-red-600 text-transparent	bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-[700] tracking-tighter">complete & powerful&nbsp;</p>
+                        <div className="w-auto h-full text-white">people analytics platform you will ever use </div>
 
-                                <div className="text-center text-lg font-[200] text-gray-500">With all the quantitive feedback recieved from teammates, Upplif provides a platform that you can use to analyze and diagnose your weaknesses so you know exactly where you need to improve.  </div>
+                    </div>
 
-                            </div>
+                </div>
+
+
+
+
+
+                {/* The most complete platform */}
+
+                <div className="bg-black h-[10%] w-full py-6 ">
+                    <div className="w-full backdrop-blur-md bg-gray-400/25 border-none 	 w-[90%] ml-[5%] rounded-3xl border-4
+                 h-[100%] xl:text-[220%] 2xl:text-[290%]  content-center   font-[500] tracking-tight  flex">
+
+                        <div className="bg-repd-300 w-[33%] h-full px-8 pt-28 content-center text-center text-white">
+                            <h1 className='text-6xl xl:text-6xl 2xl:text-9xl font-[900] mb-2'>10x</h1>
+                            <h1 className='bg-groeen-900 h-auto xl:h-[40%] 2xl:h-[30%] text-4xl xl:text-5xl 2xl:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 tracking-tighter'>your productivity</h1>
                         </div>
 
-
-                        <div className="w-[50%] h-[100%]  ">
-
-                            <div className=" h-[40%] w-full pt-3">
-                                <div className=" w-[40%] h-[40%] ml-[30%] mb-3 pt-3">
-
-                                    <Image
-                                        src="/feat-2.png"
-                                        alt="Picture of the author"
-                                        width={120}
-                                        height={50}
-                                        className='rounded-3xl'
-                                        layout='responsive'
-                                        objectFit='fill'
-
-                                    />
-
-                                </div>
-                                <div className=" text-center text-bold font-[700] text-xl mb-3">Proactively Observe</div>
-
-                                <div className=" text-center text-lg font-[200] text-gray-500">Since the Upplif platform facilitates an agile continous process of feedback and improvement (CF/CI), the way you operate becomes a beautiful proactive process instead of a painful reactive one.   </div>
-
-                            </div>
-
-                            <div className=" h-[40%] w-full pt-3">
-                                <div className=" w-[40%] h-[40%] ml-[30%] mb-3 pt-3">
-
-                                    <Image
-                                        src="/feat-4.png"
-                                        alt="Picture of the author"
-                                        width={120}
-                                        height={50}
-                                        className='rounded-3xl'
-                                        layout='responsive'
-                                        objectFit='fill'
-
-                                    />
-
-                                </div>
-                                <div className="text-center text-bold font-[700] text-xl mb-3">Radical Transparency and Accountability</div>
-
-                                <div className=" text-center text-lg font-[200] text-gray-500">Upplif gives you a platform to be radically transparent with one another. If you have something to say about a person , express it with a dot ! This forces a team to hold each other accountable . </div>
-
-                            </div>
+                        <div className="bg-repd-300 w-[33%] h-full px-8 pt-28 content-center text-center text-white">
+                            <h1 className='text-6xl xl:text-6xl 2xl:text-9xl font-[900] mb-2'>10x</h1>
+                            <h1 className='bg-groeen-900 h-auto xl:h-[40%] 2xl:h-[40%] text-4xl xl:text-5xl 2xl:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 tracking-tighter'>your research quality</h1>
                         </div>
+
+                        <div className="bg-repd-300 w-[33%] h-full px-8 pt-28 content-center text-center text-white">
+                            <h1 className='text-6xl xl:text-6xl 2xl:text-9xl font-[900] mb-2'>10x</h1>
+                            <h1 className='bg-groeen-900 h-auto xl:h-[40%] 2xl:h-[30%] text-4xl xl:text-5xl 2xl:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 tracking-tighter'>your people data</h1>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                {/* Upplif digital transformation */}
+                {/* The most complete platform */}
+
+                <div className="bg-black h-[10%] w-full py-6 ">
+                    <div className="w-full backdrop-blur-md bg-gray-400/25 border-none 	 w-[90%] ml-[5%] rounded-3xl border-4
+                 h-[100%] xl:text-[220%] 2xl:text-[290%]  content-center   font-[500] tracking-tight xl:px-1 2xl:px-8 px-10 pt-20 ">
+
+                        <div className="bg-repd-300 h-[40%] w-auto px-8 pt-10 content-center text-center text-white flex">
+                            <p className='text-6xl xl:text-[130%] 2xl:text-6xl font-[500] mb-2 tracking-tighter'>Upplif will serve as your best tool to lead a&nbsp; </p>
+                            <p className='text-6xl xl:text-[130%] 2xl:text-6xl font-[500] mb-5 tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>big data revolution&nbsp; </p>
+                        </div>
+
+                        <div className=' h-[25%] w-auto px-8 pt-2 content-center text-center flex ml-[10%]'>
+                            <p className='text-6xl xl:text-[130%] 2xl:text-6xl font-[500] mb-2 tracking-tighter text-white'>and</p>
+                            <p className='text-6xl xl:text-[130%] 2xl:text-6xl font-[500] mb-2 tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>&nbsp;digital transformation&nbsp;</p>
+                            <p className='text-6xl xl:text-[130%] 2xl:text-6xl font-[500] mb-2 tracking-tighter text-white'>in your organization</p>
+
+                        </div>
+                        {/* <div className='flex'>
+                            <p className='bg-groeen-900 h-auto w-auto text-4xl xl:text-6xl 2xl:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 tracking-tighter'>transformation</p>
+                        </div> */}
+
+
+
 
 
 
                     </div>
 
-
-
-
-
                 </div>
 
-{/* footer */}
 
-                <div className="   hidden md:block flex w-full h-[50%] px-28 bg-gradient-to-t g-gradient-to-t from-purple-600 via-blue-600 to-gray-200 pt-20 ">
+
+        
+
+                {/* footer */}
+
+                <div className=" bg-black  hidden md:block flex w-full h-[15%] px-28  pt-20 ">
 
                     <footer className=" text-white py-10 ml-[55%] mt-[5%]">
                         <div className="container mx-auto flex flex-wrap justify-between">
@@ -565,31 +613,33 @@ src="/logo.png"
 
                 </div>
 
-{/* for mobile */}
+
+
+                {/* for mobile */}
 
                 <div className="  visible md:hidden flex w-full h-[100%] px-2 bg-gradient-to-t g-gradient-to-t from-purple-600 via-blue-600 to-gray-200 pt-20 ">
 
-<footer className="mt-24 text-white py-10 ml-[1%] mt-[5%]">
-    
-    <div className="container mx-auto flex flex-wrap justify-between">
-        <div className="w-full md:w-1/4 mb-4 md:mb-0  ">
-            <p className="text-gray-200 mt-2 ">People analytics on demand.</p>
-        </div>
-        <div className="w-full md:w-1/4 mb-4 md:mb-0">
-            <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
-            <ul className="text-gray-200">
-                <li><a href="#home" className="hover:text-white">Home</a></li>
-                <li><a href="#services" className="hover:text-white">Features</a></li>
-                <li><a href="#portfolio" className="hover:text-white">Pricing</a></li>
-                <li><a href="#contact" className="hover:text-white">Contact</a></li>
-            </ul>
-        </div>
-        <div className="w-full md:w-1/4 mb-4 md:mb-0">
-            <h3 className="text-lg font-semibold mb-2">Contact Us</h3>
-            <p className="text-gray-200">Email: <a href="Upplif@gmail.com" className="hover:text-white">Upplif@gmail.com</a></p>
-            <p className="text-gray-200">Phone: <a href="tel:+1234567890" className="hover:text-white">+1 (234) 567-890</a></p>
-        </div>
-    </div>
+                    <footer className="mt-24 text-white py-10 ml-[1%] mt-[5%]">
+
+                        <div className="container mx-auto flex flex-wrap justify-between">
+                            <div className="w-full md:w-1/4 mb-4 md:mb-0  ">
+                                <p className="text-gray-200 mt-2 ">People analytics on demand.</p>
+                            </div>
+                            <div className="w-full md:w-1/4 mb-4 md:mb-0">
+                                <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
+                                <ul className="text-gray-200">
+                                    <li><a href="#home" className="hover:text-white">Home</a></li>
+                                    <li><a href="#services" className="hover:text-white">Features</a></li>
+                                    <li><a href="#portfolio" className="hover:text-white">Pricing</a></li>
+                                    <li><a href="#contact" className="hover:text-white">Contact</a></li>
+                                </ul>
+                            </div>
+                            <div className="w-full md:w-1/4 mb-4 md:mb-0">
+                                <h3 className="text-lg font-semibold mb-2">Contact Us</h3>
+                                <p className="text-gray-200">Email: <a href="Upplif@gmail.com" className="hover:text-white">Upplif@gmail.com</a></p>
+                                <p className="text-gray-200">Phone: <a href="tel:+1234567890" className="hover:text-white">+1 (234) 567-890</a></p>
+                            </div>
+                        </div>
 
 
 
@@ -597,10 +647,10 @@ src="/logo.png"
 
 
 
-    <div className="border-t border-gray-700 mt-8 pt-8 text-center">
-        <p className="text-gray-300 ">&copy; 2023 , Upplif. All rights reserved.</p>
-    </div>
-</footer>
+                        <div className="border-t border-gray-700 mt-8 pt-8 text-center">
+                            <p className="text-gray-300 ">&copy; 2023 , Upplif. All rights reserved.</p>
+                        </div>
+                    </footer>
 
 
 
