@@ -115,9 +115,10 @@ function Landing() {
                         <div className="bg-yelklow-200 w-full h-[50%]  text-left  xl:h-[44%] xl:mb-[5%]  2xl:h-[40%] 2xl: mb-[5%] text-6xl xl:text-7xl  2xl:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-[700] tracking-tighter  ">The most complete AI powered micro-feedback platform</div>
                         <div className="bg-grkeen-200 w-full h-[30%] text-left xl:text-2xl 2xl:text-3xl font-[300] tracking-tighter text-white">Upplif is a platform to collect and share micro-feedback to team members for fostering a continuous growth culture in an agile organization.
 
-                            <Button color="error" size={'lg'} solid auto className='mt-7'>
+                            <Button color="error" size={'lg'}  auto className='mt-7'>
                                 Get Started For Free
                             </Button>
+
                         </div>
 
                     </div>
